@@ -17,7 +17,7 @@ function NavBar() {
         Home
       </Link>
       <Link to="/Memo" style={{ textDecoration: "none",marginRight: "25px", color: "black" }}>
-        My
+        Memo
       </Link>
       <Link to="/ToDoList" style={{ textDecoration: "none", marginRight: "25px",color: "black" }}>
         ToDoList
