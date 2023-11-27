@@ -1,7 +1,15 @@
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  background: red;
+`;
+
 function Home() {
     return (
       <>
-        <h1>Home Page</h1>
+        <Wrapper>
+          <h1>Home Page</h1>
+        </Wrapper>
       </>
     );
   }
