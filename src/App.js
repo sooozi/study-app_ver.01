@@ -12,10 +12,10 @@ function App() {
     <NavBar />
     <Routes>
       <Route>
-        <Route path='/' element={<Home />} />
-        <Route path='/Memo' element={<Memo />} />
-        <Route path='/Pomodoro' element={<Pomodoro />} />
-        <Route path='/ToDoList' element={<ToDoList />} />
+        <Route path='/study-app_ver.01' element={<Home />} />
+        <Route path='/study-app_ver.01/Memo' element={<Memo />} />
+        <Route path='/study-app_ver.01/Pomodoro' element={<Pomodoro />} />
+        <Route path='/study-app_ver.01/ToDoList' element={<ToDoList />} />
       </Route>
     </Routes>
     </>
