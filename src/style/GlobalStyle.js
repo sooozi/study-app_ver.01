@@ -5,8 +5,13 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
 
   body{
-    background-color: #ffff0026;
+    background-color: rgba(255, 219, 184, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
+
 `;
 
 export default GlobalStyle;
