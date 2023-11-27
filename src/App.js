@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Memo from './pages/Memo';
 import Pomodoro from './pages/Pomodoro';
-import ToDoList from './pages/ToDoList';
+import ToDoList from './pages/Memo';
 import NavBar from './layout/NavBar';
 
 function App() {
@@ -12,10 +12,10 @@ function App() {
     <NavBar />
     <Routes>
       <Route>
-        <Route path='/study-app_ver.01' element={<Home />} />
-        <Route path='/study-app_ver.01/Memo' element={<Memo />} />
-        <Route path='/study-app_ver.01/Pomodoro' element={<Pomodoro />} />
-        <Route path='/study-app_ver.01/ToDoList' element={<ToDoList />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/Memo' element={<Memo />} />
+        <Route path='/Pomodoro' element={<Pomodoro />} />
+        <Route path='/ToDoList' element={<ToDoList />} />
       </Route>
     </Routes>
     </>
