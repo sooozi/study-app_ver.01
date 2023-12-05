@@ -14,7 +14,7 @@ const BigTxt = styled.h3`
 `;
 
 const GradaBigTxt = styled.h3`
-  background-image: linear-gradient(to left, ${(props) => props.leftColor}, ${(props) => props.rightColor});
+  background-image: linear-gradient(to left, ${(props) => props.leftColor} 30%, ${(props) => props.rightColor});
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(0,0,0,0);
   text-align: center;
@@ -28,7 +28,7 @@ function Home() {
       <>
         <Wrapper>
           <BigTxt>Improve Your</BigTxt>
-          <GradaBigTxt leftColor="teal" rightColor="red">Favorite Language</GradaBigTxt>
+          <GradaBigTxt rightColor="rgb(255, 175, 88)" leftColor="rgb(255, 65, 65)">Favorite Language</GradaBigTxt>
           <BigTxt>With Natives</BigTxt>
         </Wrapper>
       </>

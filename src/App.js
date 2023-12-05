@@ -7,7 +7,7 @@ import { default as Memo, default as ToDoList } from './pages/Memo';
 import Pomodoro from './pages/Pomodoro';
 
 const AppWrap = styled.div`
-  background: rgba(255, 243, 230, 1);
+  background: rgba(255, 243, 229, 1);
   width: 90%;
   height: 80%;
   border-radius: 3rem;
