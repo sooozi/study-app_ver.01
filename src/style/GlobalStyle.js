@@ -4,8 +4,8 @@ import reset from "styled-reset";
 const GlobalStyle = createGlobalStyle`
   ${reset}
 
-  body{
-    background-color: rgba(255, 219, 184, .5);
+  #root {
+    background-color: rgba(255, 219, 184, 1);
     display: flex;
     justify-content: center;
     align-items: center;

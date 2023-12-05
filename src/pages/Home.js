@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  
+    height: inherit;
+    padding-top: 3rem;
 `;
 
 const BigTxt = styled.h3`
