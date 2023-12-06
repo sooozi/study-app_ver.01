@@ -1,4 +1,4 @@
-.bigTxt {
+.bigTxt, .gradientText {
     text-align: center;
     font-size: 3rem;
     font-weight: bolder;
@@ -8,7 +8,6 @@
 }
 
 .gradientText {
-    composes: bigTxt;
     background-image: linear-gradient(to left, var(--leftColor) 30%, var(--rightColor));
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(0, 0, 0, 0);
@@ -18,4 +17,4 @@
     text-decoration: none;
     margin-right: 1rem;
     color: black;
-  }
+}
