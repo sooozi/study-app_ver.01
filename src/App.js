@@ -5,6 +5,8 @@ import NavBar from './layout/NavBar';
 import Home from './pages/Home';
 import { default as Memo, default as ToDoList } from './pages/Memo';
 import Pomodoro from './pages/Pomodoro';
+import './style/Text.module.css';
+
 
 const AppWrap = styled.div`
   background: rgba(255, 243, 229, 1);
