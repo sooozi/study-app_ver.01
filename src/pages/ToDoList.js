@@ -1,7 +1,12 @@
+import React from 'react';
+import { Title } from '../components/Title';
+
 function ToDoList() {
     return (
       <>
-        <h1>ToDoList Page</h1>
+        <Title titleText="ToDoList Page" />
+        <Title subTitleText="잊지말고 기억하세요!" />
+        <input></input>
       </>
     );
   }

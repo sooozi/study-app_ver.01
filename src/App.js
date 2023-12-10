@@ -3,8 +3,9 @@ import { Route, Routes } from 'react-router-dom';
 import styled from "styled-components";
 import NavBar from './layout/NavBar';
 import Home from './pages/Home';
-import { default as Memo, default as ToDoList } from './pages/Memo';
+import Memo from './pages/Memo';
 import Pomodoro from './pages/Pomodoro';
+import ToDoList from './pages/ToDoList';
 import GlobalStyle from './style/GlobalStyle';
 
 const AppWrap = styled.div`
@@ -14,6 +15,7 @@ const AppWrap = styled.div`
   border-radius: 3rem;
   overflow: hidden;
 `;
+
 
 function App() {
   return (
