@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import Button from '../components/Button';
 
 const Wrapper = styled.div`
     padding-top: 3rem;
+    text-align: center;
 `;
 
 const BigTxt = styled.h3 `
@@ -38,6 +40,7 @@ function Home() {
             Make your study time delightful with the Zipcoak study app!<br></br>
             Hope you enjoy it! 😉
           </Description>
+          <Button buttonText="Get Started" showArrow={false} isGradButton={true} />
         </Wrapper>
       </>
     );
