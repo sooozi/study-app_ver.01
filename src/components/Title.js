@@ -11,12 +11,12 @@ const TitTxt = styled.h1`
   font-weight: 700;
   font-size: ${txtSize.large};
   margin-bottom: 8px;
-`
+`;
 
 const SubTitTxt = styled.h2`
   font-weight: 400;
   font-size: ${txtSize.medium};
-` 
+`;
 
 const Title = function({ titleText, subTitleText }){
   return(

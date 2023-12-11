@@ -1,11 +1,6 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
 import styled from "styled-components";
-import NavBar from './layout/NavBar';
-import Home from './pages/Home';
-import Memo from './pages/Memo';
-import Pomodoro from './pages/Pomodoro';
-import ToDoList from './pages/ToDoList';
+import Header from './layout/Header';
 import GlobalStyle from './style/GlobalStyle';
 
 const AppWrap = styled.div`
@@ -16,21 +11,12 @@ const AppWrap = styled.div`
   overflow: hidden;
 `;
 
-
 function App() {
   return (
     <>
       <GlobalStyle />
       <AppWrap>
-        <NavBar />
-        <Routes>
-          <Route>
-            <Route path='/' element={<Home />} />
-            <Route path='/Memo' element={<Memo />} />
-            <Route path='/Pomodoro' element={<Pomodoro />} />
-            <Route path='/ToDoList' element={<ToDoList />} />
-          </Route>
-        </Routes>
+        <Header />  
       </AppWrap>
     </>
   );
