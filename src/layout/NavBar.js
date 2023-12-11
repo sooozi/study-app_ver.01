@@ -6,6 +6,10 @@ const Nav = styled.nav`
   display: flex;
   justify-content: center;
   gap: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   a {
     text-align: center;
     flex: 1;

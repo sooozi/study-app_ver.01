@@ -12,7 +12,8 @@ const HeaderWrap = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 5rem;
+    padding: 3rem;
+    position: relative;
 `;
 
 const LogoWrap = styled.div`
@@ -30,7 +31,7 @@ function Header() {
             <LogoWrap>logo</LogoWrap>
             <NavBar />
             <UserWrap>
-                <Button buttonText="Login" showArrow={false} isBorderButton={true} style={{ marginRight: "0.5rem"}}/>
+                <Button buttonText="Login" showArrow={false} isBorderButton={true} />
                 <Button buttonText="Sign up" showArrow={false} isGradButton={true} />
             </UserWrap>
         </HeaderWrap>

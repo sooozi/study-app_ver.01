@@ -11,6 +11,10 @@ const ButtonStyle = css`
   overflow: hidden;
   border: 0;
   background-color: transparent;
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-right: 0.5rem;
+  }
   span {
     font-family: 'Montserrat';
     font-weight: 100;
