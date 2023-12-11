@@ -1,8 +1,6 @@
 import styled from "styled-components";
-// import textStyles from "../style/Text.module.css";
 
 const Wrapper = styled.div`
-    height: inherit;
     padding-top: 3rem;
 `;
 
