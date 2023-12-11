@@ -9,7 +9,7 @@ const BigTxt = styled.h3 `
   font-size: 3rem;
   font-weight: bolder;
   letter-spacing: -0.1rem;
-  line-height: 1.5;
+  line-height: 1.4;
   color: rgb(57, 32, 5);
 `;
 
@@ -19,13 +19,25 @@ const GradaBigTxt = styled(BigTxt) `
   -webkit-text-fill-color: rgba(0, 0, 0, 0);
 `;
 
+const Description = styled.p`
+    color: rgb(165, 159, 159);
+    text-align: center;
+    font-weight: 100;
+    line-height: 1.3;
+    margin-top: 1rem;
+`;
+
 function Home() {
     return (
       <>
         <Wrapper>
-          <BigTxt>Improve Your</BigTxt>
-          <GradaBigTxt leftColor="rgb(255, 175, 88)" rightColor="rgb(255, 65, 65)">Favorite Language</GradaBigTxt>
-          <BigTxt>With Natives</BigTxt>
+          <BigTxt>Hello! Friend👋</BigTxt>
+          <GradaBigTxt leftColor="rgb(255, 175, 88)" rightColor="rgb(255, 65, 65)">I'm Study App</GradaBigTxt>
+          <BigTxt>With Zipcoak</BigTxt>
+          <Description>
+            Make your study time delightful with the Zipcoak study app!<br></br>
+            Hope you enjoy it! 😉
+          </Description>
         </Wrapper>
       </>
     );
