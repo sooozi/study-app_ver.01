@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: "Montserrat";
+    color: rgb(57, 32, 5);
   }
 
   #root {

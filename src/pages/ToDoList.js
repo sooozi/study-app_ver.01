@@ -4,8 +4,7 @@ import { Title } from '../components/Title';
 function ToDoList() {
     return (
       <>
-        <Title titleText="ToDoList Page" />
-        <Title subTitleText="잊지말고 기억하세요!" />
+        <Title titleText="Let's" gradTitleText="ToDoList"  subTitleText="Take notes and never forget!" />
         <input></input>
       </>
     );

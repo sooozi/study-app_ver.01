@@ -1,27 +1,38 @@
 import styled from "styled-components";
 
 const txtSize = {
-    large: '36px',
+    titLarge: '45px',
+    large: '40px',
     medium: '20px',
     default: '16px',
     small: '12px',
   }
 
-const TitTxt = styled.h1`
+const TitTxt = styled.h3`
+  display: inline-block;
   font-weight: 700;
-  font-size: ${txtSize.large};
-  margin-bottom: 8px;
+  font-size: ${txtSize.titLarge};
+  margin-bottom: 15px;
 `;
 
-const SubTitTxt = styled.h2`
-  font-weight: 400;
+const GradaTitTxt = styled(TitTxt) `
+  background-image: linear-gradient(to right, rgb(255, 175, 88) 30%, rgb(255, 65, 65) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  margin-left: 15px;
+`;
+
+const SubTitTxt = styled.span`
+  display: block;
+  font-weight: 500;
   font-size: ${txtSize.medium};
 `;
 
-const Title = function({ titleText, subTitleText }){
+const Title = function({ titleText, gradTitleText, subTitleText }){
   return(
-    <div style={{margin: '10px 0 20px 0',}}>
+    <div style={{margin: '0 0 20px 0',}}>
       <TitTxt>{titleText}</TitTxt>
+      <GradaTitTxt>{gradTitleText}</GradaTitTxt>
       <SubTitTxt>{subTitleText}</SubTitTxt>
     </div>
   )
