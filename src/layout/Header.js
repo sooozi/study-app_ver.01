@@ -50,6 +50,9 @@ const ToastBox = styled.div`
 function Header() {
     const PreparingNotify = () => toast('Preparing...!', {
         icon: '🙇‍♀️',
+        style: {
+          fontWeight: '600',
+        },
     });
 
     return (

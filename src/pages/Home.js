@@ -38,6 +38,8 @@ const ToastBox = styled.div`
   margin: 0 auto;
   button {
     margin: 0 !important;
+    height: 45px;
+    padding: 0 2rem;
   }
   .btn_hide {
     position: absolute;
@@ -55,9 +57,17 @@ const ToastBox = styled.div`
 
 
 function Home() {
-    const PreparingNotify = () => toast('Preparing...!', {
-      icon: '🙇‍♀️',
-    });
+    const StartNotify = () => toast('Click Menu!',
+    {
+      icon: '🖱️',
+      style: {
+        borderRadius: '10px',
+        background: '#ffbe77',
+        color: '#fff',
+        fontWeight: '600',
+      },
+    }
+  );
 
     return (
       <>
@@ -73,9 +83,9 @@ function Home() {
           </Description>
           <ToastBox>
             <Button buttonText={<span style={{ fontWeight: 'bold' }}>Get Started</span>} showArrow={false} isGradButton={true} />
-            <button className="btn_hide" onClick={PreparingNotify} />
+            <button className="btn_hide" onClick={StartNotify} />
           </ToastBox>
-          <Toaster position="top-right" />
+          <Toaster position="top-center" />
         </Wrapper>
       </>
     );

@@ -26,6 +26,9 @@ const Container = styled.div`
 function App() {
   const PreparingNotify = () => toast('Preparing...!', {
     icon: '🙇‍♀️',
+    style: {
+      fontWeight: '600',
+    },
   });
 
   return (
@@ -35,7 +38,7 @@ function App() {
         <Container>
           <Header /> 
         </Container>
-        <Toaster position="top-right" />   
+        <Toaster position="top-center" />   
       </AppWrap>
     </>
   );
