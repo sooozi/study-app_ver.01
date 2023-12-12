@@ -1,7 +1,11 @@
+import React from 'react';
+import { Title } from '../components/Title';
+
 function Pomodoro() {
     return (
       <>
-        <h1>Pomodoro Page</h1>
+        <Title titleText="Let's" gradTitleText="Pomodoro" iconBox="⏰" subTitleText="Change your day, one Pomodoro at a time!" />
+        <input></input>
       </>
     );
   }

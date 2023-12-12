@@ -22,17 +22,22 @@ const GradaTitTxt = styled(TitTxt) `
   margin-left: 15px;
 `;
 
+const IconBox = styled(TitTxt) `
+  margin-left: 3px;
+`;
+
 const SubTitTxt = styled.span`
   display: block;
   font-weight: 500;
   font-size: ${txtSize.medium};
 `;
 
-const Title = function({ titleText, gradTitleText, subTitleText }){
+const Title = function({ titleText, gradTitleText, iconBox, subTitleText }){
   return(
     <div style={{margin: '0 0 20px 0',}}>
       <TitTxt>{titleText}</TitTxt>
       <GradaTitTxt>{gradTitleText}</GradaTitTxt>
+      <IconBox>{iconBox}</IconBox>
       <SubTitTxt>{subTitleText}</SubTitTxt>
     </div>
   )

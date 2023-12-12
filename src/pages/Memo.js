@@ -1,9 +1,13 @@
+import React from 'react';
+import { Title } from '../components/Title';
+
 function Memo() {
-    return (
-      <>
-        <h1>Memo Page</h1>
-      </>
-    );
-  }
+  return (
+    <>
+      <Title titleText="Let's" gradTitleText="Memo" iconBox="✏️" subTitleText="Great ideas start as notepad scribbles!" />
+      <input></input>
+    </>
+  );
+}
   
   export default Memo;
