@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import styled from "styled-components";
 import Button from '../components/Button';
 import Home from '../pages/Home';
-import Memo from '../pages/Memo';
+import Note from '../pages/Note';
 import Pomodoro from '../pages/Pomodoro';
 import ToDoList from '../pages/ToDoList';
 import NavBar from './NavBar';
@@ -74,7 +74,7 @@ function Header() {
         <Routes>
             <Route>
                 <Route path='/' element={<Home />} />
-                <Route path='/Memo' element={<Memo />} />
+                <Route path='/Note' element={<Note />} />
                 <Route path='/Pomodoro' element={<Pomodoro />} />
                 <Route path='/ToDoList' element={<ToDoList />} />
             </Route>

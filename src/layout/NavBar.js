@@ -28,8 +28,8 @@ function NavBar() {
         <Link to="/">
           Home
         </Link>
-        <Link to="/Memo">
-          Memo
+        <Link to="/Note">
+          Notes
         </Link>
         <Link to="/ToDoList">
           ToDoList
