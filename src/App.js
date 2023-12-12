@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from './layout/Header';
 import GlobalStyle from './style/GlobalStyle';
 
+
 const AppWrap = styled.div`
   background: rgba(255, 243, 229, 1);
   width: 90%;

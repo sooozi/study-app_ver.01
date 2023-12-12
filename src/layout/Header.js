@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import styled from "styled-components";
 import Button from '../components/Button';
@@ -21,18 +22,50 @@ const LogoWrap = styled.div`
 `;
 
 const UserWrap = styled.div`
- 
+    display: flex;
+    gap: 5px;
+`;
+
+const ToastBox = styled.div`
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  button {
+    margin: 0 !important;
+  }
+  .btn_hide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
 `;
 
 function Header() {
+    const PreparingNotify = () => toast('Preparing...!', {
+        icon: '🙇‍♀️',
+    });
+
     return (
       <>
         <HeaderWrap>
             <LogoWrap>logo</LogoWrap>
             <NavBar />
             <UserWrap>
-                <Button buttonText="Login" showArrow={false} isBorderButton={true} />
-                <Button buttonText="Sign up" showArrow={false} isGradButton={true} />
+                <ToastBox>
+                    <Button buttonText="Login" showArrow={false} isBorderButton={true} />
+                    <button className="btn_hide" onClick={PreparingNotify} />
+                </ToastBox>
+                <ToastBox>
+                    <Button buttonText="Sign up" showArrow={false} isGradButton={true} />
+                    <button className="btn_hide" onClick={PreparingNotify} />
+                </ToastBox>
             </UserWrap>
         </HeaderWrap>
         <Routes>

@@ -5,16 +5,15 @@ const ButtonStyle = css`
   position: relative;
   padding: 0 1.5rem;
   border-radius: 3rem;
+  min-width: 90px;
   height: 33px;
   display: inline-flex;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
   border: 0;
   background-color: transparent;
   cursor: pointer;
-  &:not(:last-child) {
-    margin-right: 0.5rem;
-  }
   span {
     font-size: 15px;
     font-family: 'Montserrat';
