@@ -9,11 +9,10 @@ const AppWrap = styled.div`
   background: rgba(255, 243, 229, 1);
   width: 100%;
   max-width: 1080px;
-  height: 90%;
   border-radius: 3rem;
-  overflow: hidden;
-  padding: 0 50px;
+  padding: 50px;
   margin: 0 50px;
+  height: 75vh;
 `;
 
 const Container = styled.div`
