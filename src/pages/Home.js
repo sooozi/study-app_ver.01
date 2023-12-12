@@ -25,22 +25,23 @@ const Description = styled.p`
     color: rgb(165, 159, 159);
     text-align: center;
     font-weight: 100;
-    line-height: 1.3;
-    margin-top: 1rem;
+    line-height: 1.4;
+    margin: 2rem 0 3rem;
 `;
+
 
 function Home() {
     return (
       <>
         <Wrapper>
           <BigTxt>Hello! Friend👋</BigTxt>
-          <GradaBigTxt leftColor="rgb(255, 175, 88)" rightColor="rgb(255, 65, 65)">I'm Study App</GradaBigTxt>
+          <GradaBigTxt leftColor="rgb(255, 175, 88)" rightColor="rgb(255, 65, 65)">Enjoy Study App</GradaBigTxt>
           <BigTxt>With Zipcoak</BigTxt>
           <Description>
             Make your study time delightful with the Zipcoak study app!<br></br>
             Hope you enjoy it! 😉
           </Description>
-          <Button buttonText="Get Started" showArrow={false} isGradButton={true} />
+          <Button buttonText={<span style={{ fontWeight: 'bold' }}>Get Started</span>} showArrow={false} isGradButton={true} />
         </Wrapper>
       </>
     );

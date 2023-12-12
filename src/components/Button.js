@@ -16,9 +16,10 @@ const ButtonStyle = css`
     margin-right: 0.5rem;
   }
   span {
+    font-size: 15px;
     font-family: 'Montserrat';
     font-weight: 100;
-    letter-spacing: -0.05rem;
+    letter-spacing: 0;
   }
 `;
 

@@ -6,7 +6,8 @@ import GlobalStyle from './style/GlobalStyle';
 const AppWrap = styled.div`
   background: rgba(255, 243, 229, 1);
   width: 90%;
-  height: 80%;
+  max-width: 1280px;
+  height: 90%;
   border-radius: 3rem;
   overflow: hidden;
 `;
