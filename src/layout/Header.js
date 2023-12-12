@@ -13,7 +13,7 @@ const HeaderWrap = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 2rem;
+    padding: 3rem 0;
     position: relative;
 `;
 
