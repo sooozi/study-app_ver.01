@@ -67,6 +67,7 @@ const AddNewNote= styled.button `
 
 function NotesAdd() {
 
+    // 입력값 받아오기
     const [inputValue, setInputValue] = useState('');
     const [textareaValue, setTextareaValue] = useState('');
 
