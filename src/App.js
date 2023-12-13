@@ -10,9 +10,9 @@ const AppWrap = styled.div`
   width: 100%;
   max-width: 1080px;
   border-radius: 3rem;
-  padding: 50px 2rem;
+  padding: 1.5rem 2rem;
   margin: 0 50px;
-  height: 75vh;
+  height: 85vh;
 `;
 
 const Container = styled.div`

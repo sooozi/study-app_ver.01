@@ -29,7 +29,7 @@ const IconBox = styled(TitTxt) `
 const SubTitTxt = styled.span`
   display: block;
   font-weight: 500;
-  font-size: ${txtSize.medium};
+  font-size: ${txtSize.default};
 `;
 
 const Title = function({ titleText, gradTitleText, iconBox, subTitleText }){

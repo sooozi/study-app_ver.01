@@ -10,6 +10,13 @@ const NoteAddInner= styled.div `
     width: clamp(150px, 14vw, 250px);
 `;
 
+const NoteInnerTit = styled.span `
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 1rem;
+`;
+
 const NewNoteTit= styled.input `
     padding: 0.5rem;
     border-radius: 5px;
@@ -42,15 +49,29 @@ const NewNoteDesc= styled.textarea `
 `;
 
 const AddNewNote= styled.button `
-    
+    border-radius: 5px;
+    height: 33px;
+    overflow: hidden;
+    border: 0;
+    background-color: rgb(255, 175, 88);
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: #fff;
+    &:hover {
+        background-color: rgb(255, 65, 65);
+    }
 `;
 
 function NotesAdd() {
   return (
     <NoteAddInner>
+        <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
         <NewNoteTit></NewNoteTit>
         <NewNoteDesc></NewNoteDesc>
-        <AddNewNote>+ ADD NEW NOTE</AddNewNote>
+        <AddNewNote>+ Add new note</AddNewNote>
     </NoteAddInner>
   );
 }
