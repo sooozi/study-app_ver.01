@@ -1,4 +1,4 @@
-import React from 'react';
+import { default as React, useState } from 'react';
 import styled from "styled-components";
 
 const NoteAddInner= styled.div `
@@ -66,11 +66,32 @@ const AddNewNote= styled.button `
 `;
 
 function NotesAdd() {
+
+    const [inputValue, setInputValue] = useState('');
+    const [textareaValue, setTextareaValue] = useState('');
+
+    const handleInputChange = (event) => {
+      setInputValue(event.target.value);
+      console.log(event.target.value);
+    };
+    const handleTextareaChange = (event) => {
+        setTextareaValue(event.target.value);
+        console.log(event.target.value);
+    };
+
+  
   return (
     <NoteAddInner>
         <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
-        <NewNoteTit></NewNoteTit>
-        <NewNoteDesc></NewNoteDesc>
+        <NewNoteTit
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+        />
+        <NewNoteDesc 
+            value={textareaValue}
+            onChange={handleTextareaChange}
+        />
         <AddNewNote>+ Add new note</AddNewNote>
     </NoteAddInner>
   );

@@ -3,7 +3,7 @@ import styled, { StyleSheetManager, css } from "styled-components";
 import Button from '../components/Button';
 
 const Wrapper = styled.div`
-    padding-top: 3rem;
+    padding-top: 5rem;
     text-align: center;
 `;
 
