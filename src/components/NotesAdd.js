@@ -66,22 +66,44 @@ const AddNewNote= styled.button `
 `;
 
 function NotesAdd() {
-
-    // 입력값 받아오기
     const [inputValue, setInputValue] = useState('');
     const [textareaValue, setTextareaValue] = useState('');
 
     const handleInputChange = (event) => {
-      setInputValue(event.target.value);
+        setInputValue(event.target.value);
     };
 
     const handleTextareaChange = (event) => {
         setTextareaValue(event.target.value);
     };
 
+    const handleAddNote = () => {
+        // 로컬스토리지에서 메모 가져오기
+        let memos = JSON.parse(localStorage.getItem('memos')) || [];
+        
+        // 새로운 메모 객체 생성
+        let newMemo = {
+            id: Date.now(), // 이 부분을 고유한 ID로 변경하거나 적절한 방법으로 설정하세요.
+            title: inputValue,
+            content: textareaValue,
+            date: new Date().toLocaleDateString(),
+        };
+
+        // 새로운 메모를 memos 배열에 추가
+        memos.push(newMemo);
+
+        // memos 배열을 로컬스토리지에 저장
+        localStorage.setItem('memos', JSON.stringify(memos));
+
+        // 입력값 초기화
+        setInputValue('');
+        setTextareaValue('');
+    };
+
+
+
     
 
-  
   return (
     <NoteAddInner>
         <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
@@ -94,7 +116,7 @@ function NotesAdd() {
             value={textareaValue}
             onChange={handleTextareaChange}
         />
-        <AddNewNote>+ Add new note</AddNewNote>
+        <AddNewNote onClick={handleAddNote}>+ Add new note</AddNewNote>
     </NoteAddInner>
   );
 }
