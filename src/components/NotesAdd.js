@@ -73,11 +73,10 @@ function NotesAdd() {
 
     const handleInputChange = (event) => {
       setInputValue(event.target.value);
-      console.log(event.target.value);
     };
+
     const handleTextareaChange = (event) => {
         setTextareaValue(event.target.value);
-        console.log(event.target.value);
     };
 
     
