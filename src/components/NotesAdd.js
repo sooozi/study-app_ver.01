@@ -79,6 +79,8 @@ function NotesAdd() {
         console.log(event.target.value);
     };
 
+    
+
   
   return (
     <NoteAddInner>
