@@ -1,4 +1,4 @@
-import { default as React, useState } from 'react';
+import { default as React, useEffect, useState } from 'react';
 import styled from "styled-components";
 
 const NoteAddInner= styled.div `
@@ -68,6 +68,13 @@ const AddNewNote= styled.button `
 function NotesAdd() {
     const [inputValue, setInputValue] = useState('');
     const [textareaValue, setTextareaValue] = useState('');
+    const [memos, setMemos] = useState([]);
+
+    useEffect(() => {
+        // 로컬스토리지에서 메모 가져와서 최신순으로 정렬
+        let storedMemos = JSON.parse(localStorage.getItem('memos')) || [];
+        setMemos(storedMemos);
+    }, []);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -92,6 +99,9 @@ function NotesAdd() {
         // 새로운 메모를 memos 배열에 추가
         memos.push(newMemo);
 
+        // 새로운 메모를 memos 배열에 추가
+        setMemos((prevMemos) => [...prevMemos, newMemo]);
+
         // memos 배열을 로컬스토리지에 저장
         localStorage.setItem('memos', JSON.stringify(memos));
 
@@ -104,7 +114,7 @@ function NotesAdd() {
 
     
 
-  return (
+    return (
     <NoteAddInner>
         <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
         <NewNoteTit
@@ -118,7 +128,7 @@ function NotesAdd() {
         />
         <AddNewNote onClick={handleAddNote}>+ Add new note</AddNewNote>
     </NoteAddInner>
-  );
+    );
 }
   
-  export default NotesAdd;
+export default NotesAdd;
