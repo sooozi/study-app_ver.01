@@ -1,11 +1,11 @@
 import React from 'react';
 
 function NotesCont() {
-    return (
-      <>
+  return (
+    <>
 
-      </>
-    );
-  }
-    
-    export default NotesCont;
+    </>
+  );
+}
+  
+export default NotesCont;
