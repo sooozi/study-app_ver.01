@@ -117,6 +117,7 @@ function NotesAdd() {
     return (
     <NoteAddInner>
         <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
+        <For
         <NewNoteTit
             type="text"
             value={inputValue}
