@@ -8,12 +8,13 @@ const NoteAddInner= styled.div `
     padding: 1.5rem 1rem;
     border-radius: 1.5rem;
     width: clamp(150px, 14vw, 250px);
+    min-width: 150px;
 `;
 
 const NoteInnerTit = styled.span `
     display: block;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     margin-bottom: 1rem;
 `;
 
@@ -26,6 +27,8 @@ const NewNoteTit= styled.input `
     outline: 0;
     color: rgb(57, 32, 5);
     margin-bottom: 10px;
+    width: 100%;
+    max-width: fit-content;
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
@@ -42,6 +45,8 @@ const NewNoteDesc= styled.textarea `
     margin-bottom: 10px;
     min-height: 100px;
     resize: none;
+    width: 100%;
+    max-width: fit-content;
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
@@ -60,6 +65,8 @@ const AddNewNote= styled.button `
     font-weight: 300;
     letter-spacing: -0.5px;
     color: #fff;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
     &:hover {
         background-color: rgb(255, 65, 65);
     }
