@@ -65,6 +65,9 @@ const AddNewNote= styled.button `
     }
 `;
 
+const Form = styled.form `
+`;
+
 function NotesAdd() {
     const [inputValue, setInputValue] = useState('');
     const [textareaValue, setTextareaValue] = useState('');
@@ -117,17 +120,18 @@ function NotesAdd() {
     return (
     <NoteAddInner>
         <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
-        <For
-        <NewNoteTit
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-        />
-        <NewNoteDesc 
-            value={textareaValue}
-            onChange={handleTextareaChange}
-        />
-        <AddNewNote onClick={handleAddNote}>+ Add new note</AddNewNote>
+        <Form>
+            <NewNoteTit
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+            />
+            <NewNoteDesc 
+                value={textareaValue}
+                onChange={handleTextareaChange}
+            />
+            <AddNewNote onClick={handleAddNote}>+ Add new note</AddNewNote>
+        </Form>
     </NoteAddInner>
     );
 }
