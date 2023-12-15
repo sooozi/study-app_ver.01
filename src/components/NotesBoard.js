@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import NotesCont from './NotesCont';
 
 const NoteAddWrap= styled.div `
   background: #fff;
@@ -12,7 +13,7 @@ const NoteAddWrap= styled.div `
 function NotesBoard() {
   return (
     <NoteAddWrap>
-
+      <NotesCont />
     </NoteAddWrap>
   );
 }

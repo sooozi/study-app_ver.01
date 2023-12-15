@@ -120,10 +120,6 @@ function NotesAdd() {
         setTextareaValue('');
     };
 
-
-
-    
-
     return (
     <NoteAddInner>
         <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
