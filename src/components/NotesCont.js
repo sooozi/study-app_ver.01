@@ -241,13 +241,15 @@ function NotesCont() {
             {selectedMemo && selectedMemo.id === memo.id ? (
               <SaveBtn onClick={handleSaveClick}>🔽Save</SaveBtn>
               ) : (
-              <EditBtn onClick={() => handleEditClick(memo.id)}>✒️ Edit</EditBtn>
+                <>
+                  <EditBtn onClick={() => handleEditClick(memo.id)}>✒️ Edit</EditBtn>
+                  <DeleteBtn onClick={() => handleDeleteClick(memo.id)}>⛔Delete</DeleteBtn>
+                </>
             )}
             {/* Edit 모드인 경우 Cancel 버튼 표시 */}
             {selectedMemo && selectedMemo.id === memo.id && (
               <CancelBtn onClick={handleCancelClick}>❎Cancel</CancelBtn>
             )}
-            <DeleteBtn onClick={() => handleDeleteClick(memo.id)}>⛔Delete</DeleteBtn>
           </NoteListCont>
         ))}
       </NoteListWrap>
