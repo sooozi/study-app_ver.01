@@ -88,8 +88,12 @@ const NoteContDate= styled.span `
 
 const DeleteBtn= styled.button `
     font-size: 12px;
-    color: #9d9d9d;
     font-weight: 100;
+    background: rgb(255, 106, 106);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
 `;
 
 const EditBtn= styled.button `
