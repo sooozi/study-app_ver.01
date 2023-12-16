@@ -16,7 +16,7 @@ const NoteInnerTit = styled.span `
 
 const NoteListCont= styled.li `
     padding: 15px;
-    min-width: 220px; 
+    min-width: 230px; 
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px  rgba(255, 243, 229, 1);
 `;
@@ -57,6 +57,7 @@ const NewNoteDesc= styled.textarea `
 `;
 
 const NoteContTitle= styled.input `
+    font-family: 'Montserrat';
     font-size: 15px;
     font-weight: bold;
     border: none;
@@ -76,7 +77,7 @@ const NoteContDesc= styled.textarea `
     margin-bottom: 10px;
     cursor: default;
     min-height: 50px;
-    overflow-y: scroll;
+    overflow: auto;
 `;
 
 const NoteContDate= styled.span `
@@ -88,6 +89,7 @@ const NoteContDate= styled.span `
 `;
 
 const DeleteBtn= styled.button `
+    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 100;
     background: rgb(255, 106, 106);
@@ -99,6 +101,7 @@ const DeleteBtn= styled.button `
 `;
 
 const EditBtn= styled.button `
+    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 100;
     background: rgb(255, 175, 88);
@@ -109,6 +112,7 @@ const EditBtn= styled.button `
 `;
 
 const SaveBtn= styled.button `
+    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 100;
     background: rgb(66, 168, 216);
@@ -119,6 +123,7 @@ const SaveBtn= styled.button `
 `;
 
 const CancelBtn= styled.button `
+    font-family: 'Montserrat';
     font-size: 12px;
     font-weight: 100;
     background: rgb(51, 210, 157);

@@ -16,7 +16,7 @@ const Nav = styled.nav`
     text-decoration: none;
     color: black;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 15px;
     letter-spacing: -0.01rem;
   }
 `;
