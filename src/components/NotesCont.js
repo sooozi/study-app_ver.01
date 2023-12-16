@@ -15,8 +15,9 @@ const NoteInnerTit = styled.span `
 `;
 
 const NoteListCont= styled.li `
-    border-radius: 10px;
     padding: 15px;
+    min-width: 220px; 
+    border-radius: 10px;
     box-shadow: 0px 0px 5px 1px  rgba(255, 243, 229, 1);
 `;
 
@@ -94,12 +95,38 @@ const DeleteBtn= styled.button `
     border: none;
     border-radius: 20px;
     padding: 5px 10px;
+    margin-left: 5px;
 `;
 
 const EditBtn= styled.button `
     font-size: 12px;
-    color: skyblue;
     font-weight: 100;
+    background: rgb(255, 175, 88);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+`;
+
+const SaveBtn= styled.button `
+    font-size: 12px;
+    font-weight: 100;
+    background: rgb(66, 168, 216);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+`;
+
+const CancelBtn= styled.button `
+    font-size: 12px;
+    font-weight: 100;
+    background: rgb(51, 210, 157);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-left: 5px;
 `;
 
 
@@ -207,15 +234,15 @@ function NotesCont() {
             )}
             {/* Edit 모드인 경우 Save 버튼 표시, 그 외에는 Edit 버튼 표시 */}
             {selectedMemo && selectedMemo.id === memo.id ? (
-              <DeleteBtn onClick={handleSaveClick}>Save</DeleteBtn>
+              <SaveBtn onClick={handleSaveClick}>🔽Save</SaveBtn>
               ) : (
-              <EditBtn onClick={() => handleEditClick(memo.id)}>🎨 Edit</EditBtn>
+              <EditBtn onClick={() => handleEditClick(memo.id)}>✒️ Edit</EditBtn>
             )}
-            <DeleteBtn onClick={() => handleDeleteClick(memo.id)}>❌️ Delete</DeleteBtn>
             {/* Edit 모드인 경우 Cancel 버튼 표시 */}
             {selectedMemo && selectedMemo.id === memo.id && (
-              <DeleteBtn onClick={handleCancelClick}>Cancel</DeleteBtn>
+              <CancelBtn onClick={handleCancelClick}>❎Cancel</CancelBtn>
             )}
+            <DeleteBtn onClick={() => handleDeleteClick(memo.id)}>⛔Delete</DeleteBtn>
           </NoteListCont>
         ))}
       </NoteListWrap>
