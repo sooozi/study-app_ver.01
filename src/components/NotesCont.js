@@ -79,9 +79,11 @@ const NoteContDesc= styled.textarea `
 `;
 
 const NoteContDate= styled.span `
+    display: block;
     font-size: 12px;
     color: #9d9d9d;
     font-weight: 100;
+    margin-bottom: 10px;
 `;
 
 const DeleteBtn= styled.button `
@@ -174,6 +176,7 @@ function NotesCont() {
             {/* Edit 모드인 경우에만 수정 가능한 입력 필드로 변경 */}
             {selectedMemo && selectedMemo.id === memo.id ? (
               <>
+                <NoteContDate>{memo.date}</NoteContDate>
                 <NewNoteTit
                   type="text"
                   defaultValue={memo.title}
@@ -186,6 +189,7 @@ function NotesCont() {
               </>
             ) : (
               <>
+                <NoteContDate>{memo.date}</NoteContDate>
                 <NoteContTitle
                   type="text"
                   value={memo.title}
@@ -197,7 +201,6 @@ function NotesCont() {
                 />
               </>
             )}
-            <NoteContDate>{memo.date}</NoteContDate>
             <DeleteBtn onClick={() => handleDeleteClick(memo.id)}>❌️ Delete</DeleteBtn>
             {/* Edit 모드인 경우 Save 버튼 표시, 그 외에는 Edit 버튼 표시 */}
             {selectedMemo && selectedMemo.id === memo.id ? (
