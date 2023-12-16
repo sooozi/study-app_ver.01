@@ -81,7 +81,7 @@ function NotesAdd() {
     const [memos, setMemos] = useState([]);
 
     useEffect(() => {
-        // 로컬스토리지에서 메모 가져와서 최신순으로 정렬
+        // 로컬스토리지에서 메모 가져와서 차례대로 정렬
         let storedMemos = JSON.parse(localStorage.getItem('memos')) || [];
         setMemos(storedMemos);
     }, []);
@@ -121,21 +121,21 @@ function NotesAdd() {
     };
 
     return (
-    <NoteAddInner>
-        <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
-        <Form>
-            <NewNoteTit
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-            />
-            <NewNoteDesc 
-                value={textareaValue}
-                onChange={handleTextareaChange}
-            />
-            <AddNewNote onClick={handleAddNote}>+ Add new note</AddNewNote>
-        </Form>
-    </NoteAddInner>
+        <NoteAddInner>
+            <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
+            <Form>
+                <NewNoteTit
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                />
+                <NewNoteDesc 
+                    value={textareaValue}
+                    onChange={handleTextareaChange}
+                />
+                <AddNewNote onClick={handleAddNote}>+ Add new note</AddNewNote>
+            </Form>
+        </NoteAddInner>
     );
 }
   
