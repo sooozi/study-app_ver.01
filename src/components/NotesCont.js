@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from "styled-components";
 
 const NoteListWrap= styled.ul `
@@ -16,17 +16,66 @@ const NoteInnerTit = styled.span `
 
 const NoteListCont= styled.li `
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     box-shadow: 0px 0px 5px 1px  rgba(255, 243, 229, 1);
 `;
 
-const NoteContTitle= styled.h5 `
-    font-size: 15px;
+const NewNoteTit= styled.input `
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ffdbb8;
+    font-size: 12px;
     font-weight: bold;
+    outline: 0;
+    color: rgb(57, 32, 5);
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: -webkit-fill-available;
+    &:focus, &:focus-visible  {
+        border: 1px solid rgba(255, 243, 229, 1);
+        background-color: rgba(255, 243, 229, 1);
+    }
 `;
 
-const NoteContDesc= styled.p `
+const NewNoteDesc= styled.textarea `
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ffdbb8;
     font-size: 12px;
+    outline: 0;
+    color: rgb(57, 32, 5);
+    margin-bottom: 10px;
+    resize: none;
+    width: 100%;
+    max-width: -webkit-fill-available;
+    min-height: 100px;
+    &:focus, &:focus-visible  {
+        border: 1px solid rgba(255, 243, 229, 1);
+        background-color: rgba(255, 243, 229, 1);
+    }
+`;
+
+const NoteContTitle= styled.input `
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    outline: 0;
+    color: rgb(57, 32, 5);
+    margin-bottom: 10px;
+    cursor: default;
+`;
+
+const NoteContDesc= styled.textarea `
+    font-size: 12px;
+    border: none;
+    outline: 0;
+    resize: none;
+    width: 100%;
+    color: rgb(57, 32, 5);
+    margin-bottom: 10px;
+    cursor: default;
+    min-height: 50px;
+    overflow-y: scroll;
 `;
 
 const NoteContDate= styled.span `
@@ -47,44 +96,15 @@ const EditBtn= styled.button `
     font-weight: 100;
 `;
 
-const NewNoteTit= styled.input `
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #ffdbb8;
-    font-size: 12px;
-    font-weight: bold;
-    outline: 0;
-    color: rgb(57, 32, 5);
-    margin-bottom: 10px;
-    width: 100%;
-    max-width: fit-content;
-    &:focus, &:focus-visible  {
-        border: 1px solid rgba(255, 243, 229, 1);
-        background-color: rgba(255, 243, 229, 1);
-    }
-`;
 
-const NewNoteDesc= styled.textarea `
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #ffdbb8;
-    font-size: 12px;
-    outline: 0;
-    color: rgb(57, 32, 5);
-    margin-bottom: 10px;
-    min-height: 100px;
-    resize: none;
-    width: 100%;
-    max-width: fit-content;
-    &:focus, &:focus-visible  {
-        border: 1px solid rgba(255, 243, 229, 1);
-        background-color: rgba(255, 243, 229, 1);
-    }
-`;
 
 
 function NotesCont() {
   const [memos, setMemos] = useState([]);
+  // 메모 수정을 위한 상태와 ref를 추가합니다.
+  const [selectedMemo, setSelectedMemo] = useState(null);
+  const newNoteTitRef = useRef(null);
+  const newNoteDescRef = useRef(null);
 
   useEffect(() => {
     // 로컬 스토리지에서 메모 데이터를 가져옵니다.
@@ -92,8 +112,11 @@ function NotesCont() {
     
     // 가져온 메모 데이터로 상태를 업데이트합니다.
     setMemos(storedMemos);
+
+    // 컴포넌트가 마운트될 때 ref를 초기화합니다.
+    newNoteTitRef.current = document.getElementById('newNoteTit');
+    newNoteDescRef.current = document.getElementById('newNoteDesc');
   }, []);
-  // 이제 'memos' 상태를 컴포넌트에서 렌더링하거나 다른 작업에 사용할 수 있습니다.
 
 
   // 'Delete' 버튼 클릭 시 메모를 삭제하는 함수
@@ -108,43 +131,84 @@ function NotesCont() {
     setMemos(updatedMemos);
   };
 
-  // 'Edit' 버튼 클릭 시 메모를 수정하는 함수
+  // 'Edit' 버튼 클릭 시 해당 메모를 수정 모드로 설정합니다.
   const handleEditClick = (id) => {
-    // 클릭된 메모의 id를 기반으로 수정하는 함수 호출
-    setEditBtn(id);
+    const selected = memos.find((memo) => memo.id === id);
+    setSelectedMemo(selected);
+
+    if (newNoteTitRef.current && newNoteDescRef.current) {
+      newNoteTitRef.current.value = selected.title;
+      newNoteDescRef.current.value = selected.content;
+    }
   };
 
-  // 메모 수정 버튼 누르면 실행되는 함수
-  function setEditBtn(id) {
-    // 클릭된 메모의 정보 가져오기
-    const selectedMemo = memos.find((memo) => memo.id === id);
+  // 'Save' 버튼 클릭 시 메모를 저장하고 상태를 업데이트합니다.
+  const handleSaveClick = () => {
+    if (selectedMemo) {
+      const id = selectedMemo.id;
+      const updatedTitle = newNoteTitRef.current.value;
+      const updatedContent = newNoteDescRef.current.value;
+      
+      const updatedMemos = memos.map((memo) =>
+        memo.id === id ? { ...memo, title: updatedTitle, content: updatedContent } : memo
+      );
 
-    // 가져온 메모의 제목과 내용을 메모장에 나타내기
-    NewNoteTit.querySelector('.memo-title').value = selectedMemo.title;
-    NewNoteDesc.querySelector('.memo-content').value = selectedMemo.content;
+      localStorage.setItem('memos', JSON.stringify(updatedMemos));
 
-    // 클릭된 메모 배열에서 자르기
-    const updatedMemos = memos.filter((memo) => memo.id !== id);
+      setSelectedMemo(null);
+      setMemos(updatedMemos);
+    }
+  };
 
-    // 자른 메모 배열을 로컬 스토리지에 저장
-    localStorage.setItem('memos', JSON.stringify(updatedMemos));
-
-    // 새로운 메모 배열을 상태에 업데이트
-    setMemos(updatedMemos);
-  }
+  // 'Cancel' 버튼 클릭 시 선택된 메모를 초기화합니다.
+  const handleCancelClick = () => {
+    setSelectedMemo(null);
+  };
 
   return (
     <>
       <NoteInnerTit>Overview</NoteInnerTit>
       <NoteListWrap>
-        {/* 'memos' 상태를 필요에 따라 렌더링하거나 사용합니다. */}
         {memos.map((memo) => (
           <NoteListCont key={memo.id}>
-            <NoteContTitle>{memo.title}</NoteContTitle>
-            <NoteContDesc>{memo.content}</NoteContDesc>
+            {/* Edit 모드인 경우에만 수정 가능한 입력 필드로 변경 */}
+            {selectedMemo && selectedMemo.id === memo.id ? (
+              <>
+                <NewNoteTit
+                  type="text"
+                  defaultValue={memo.title}
+                  ref={newNoteTitRef}
+                />
+                <NewNoteDesc
+                  defaultValue={memo.content}
+                  ref={newNoteDescRef}
+                />
+              </>
+            ) : (
+              <>
+                <NoteContTitle
+                  type="text"
+                  value={memo.title}
+                  readOnly
+                />
+                <NoteContDesc
+                  value={memo.content}
+                  readOnly
+                />
+              </>
+            )}
             <NoteContDate>{memo.date}</NoteContDate>
             <DeleteBtn onClick={() => handleDeleteClick(memo.id)}>❌️ Delete</DeleteBtn>
-            <EditBtn onClick={() => handleEditClick(memo.id)}>🎨 Edit</EditBtn>
+            {/* Edit 모드인 경우 Save 버튼 표시, 그 외에는 Edit 버튼 표시 */}
+            {selectedMemo && selectedMemo.id === memo.id ? (
+              <DeleteBtn onClick={handleSaveClick}>Save</DeleteBtn>
+            ) : (
+              <EditBtn onClick={() => handleEditClick(memo.id)}>🎨 Edit</EditBtn>
+            )}
+            {/* Edit 모드인 경우 Cancel 버튼 표시 */}
+            {selectedMemo && selectedMemo.id === memo.id && (
+              <DeleteBtn onClick={handleCancelClick}>Cancel</DeleteBtn>
+            )}
           </NoteListCont>
         ))}
       </NoteListWrap>
