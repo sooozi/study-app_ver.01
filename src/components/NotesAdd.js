@@ -18,6 +18,21 @@ const NoteInnerTit = styled.span `
     margin-bottom: 1rem;
 `;
 
+const SelectBox = styled.select `
+    margin-left: 5px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ffdbb8;
+    font-size: 12px;
+    font-weight: bold;
+    outline: 0;
+    color: rgb(57, 32, 5);
+    &:focus, &:focus-visible  {
+        border: 1px solid rgba(255, 243, 229, 1);
+        background-color: rgba(255, 243, 229, 1);
+    }
+`;
+
 const NewNoteTit= styled.input `
     padding: 0.5rem;
     border-radius: 5px;
@@ -78,6 +93,7 @@ const Form = styled.form `
 function NotesAdd() {
     const [inputValue, setInputValue] = useState('');
     const [textareaValue, setTextareaValue] = useState('');
+    const [selectedOption, setSelectedOption] = useState('');
     const [memos, setMemos] = useState([]);
 
     useEffect(() => {
@@ -94,6 +110,10 @@ function NotesAdd() {
         setTextareaValue(event.target.value);
     };
 
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
+
     const handleAddNote = () => {
         // 로컬스토리지에서 메모 가져오기
         let memos = JSON.parse(localStorage.getItem('memos')) || [];
@@ -103,8 +123,11 @@ function NotesAdd() {
             id: Date.now(), // 이 부분을 고유한 ID로 변경하거나 적절한 방법으로 설정하세요.
             title: inputValue,
             content: textareaValue,
-            date: new Date().toLocaleDateString(),
+            date: new Date().toLocaleString(),
         };
+
+        // 새로운 메모 객체에 선택된 옵션 추가
+        newMemo.category = selectedOption;
 
         // 새로운 메모를 memos 배열에 추가
         memos.push(newMemo);
@@ -124,6 +147,12 @@ function NotesAdd() {
         <NoteAddInner>
             <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
             <Form>
+                <SelectBox value={selectedOption} onChange={handleSelectChange}>
+                    <option value="">정렬 기준</option>
+                    <option value="Project">Project</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Etc">Etc</option>
+                </SelectBox>
                 <NewNoteTit
                     type="text"
                     value={inputValue}

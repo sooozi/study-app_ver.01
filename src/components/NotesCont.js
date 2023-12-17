@@ -82,6 +82,18 @@ const NoteContDesc= styled.textarea `
     overflow: auto;
 `;
 
+const NoteContCategory = styled.span `
+    display: inline-block;
+    font-size: 10px;
+    color: rgb(255, 175, 88);
+    font-weight: bolder;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    border: 1px solid rgb(255, 175, 88);
+    line-height: 11px;
+`;
+
 const NoteContDate= styled.span `
     display: block;
     font-size: 12px;
@@ -143,10 +155,17 @@ function NotesCont() {
   const newNoteTitRef = useRef(null);
   const newNoteDescRef = useRef(null);
   const [searchValue, setSearchValue] = useState('');
+  const [sortOption, setSortOption] = useState('');
 
   useEffect(() => {
     // 로컬 스토리지에서 메모 데이터를 가져옵니다.
     let storedMemos = JSON.parse(localStorage.getItem('memos')) || [];
+
+    // 만약 updatedAt이 없다면 date 값으로 초기화합니다.
+    storedMemos = storedMemos.map(memo => ({
+      ...memo,
+      updatedAt: memo.updatedAt || memo.date
+    }));
     
     // 가져온 메모 데이터로 상태를 업데이트합니다.
     setMemos(storedMemos);
@@ -186,8 +205,19 @@ function NotesCont() {
       const id = selectedMemo.id;
       const updatedTitle = newNoteTitRef.current.value;
       const updatedContent = newNoteDescRef.current.value;
+      const updatedDate = new Date().toLocaleString(); // 현재 날짜 및 시간으로 업데이트
+      const updatedCategory = selectedMemo.category;
       const updatedMemos = memos.map((memo) =>
-        memo.id === id ? { ...memo, title: updatedTitle, content: updatedContent } : memo
+        memo.id === id
+          ? {
+            ...memo,
+            title: updatedTitle,
+            content: updatedContent,
+            date: updatedDate,
+            updatedAt: updatedDate,
+            category: updatedCategory,
+          }
+        : memo
       );
 
       localStorage.setItem('memos', JSON.stringify(updatedMemos));
@@ -205,6 +235,26 @@ function NotesCont() {
     setSearchValue(value);
   };
 
+  const handleSortChange = (option) => {
+    setSortOption(option);
+    // 정렬 옵션에 따라 메모를 정렬하는 로직 추가
+    let sortedMemos;
+
+    // 최근 생성순으로 정렬
+    if (option === 'createdAt') {
+      sortedMemos = [...memos].sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    // 최근 수정순으로 정렬
+    else if (option === 'updatedAt') {
+      sortedMemos = [...memos].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+    }
+    // 정렬 옵션이 없을 경우 기본 상태 그대로 사용
+    else {
+      sortedMemos = memos;
+    }
+    setMemos(sortedMemos);
+  };
+
   // 검색어에 따라 메모를 필터링합니다.
   const filteredMemos = memos.filter((memo) => {
     const titleIncludes = memo.title.toLowerCase().includes(searchValue.toLowerCase());
@@ -215,7 +265,7 @@ function NotesCont() {
   return (
     <>
       <NoteInnerTit>Overview</NoteInnerTit>
-      <NotesFilter onSearchChange={handleSearchChange} />
+      <NotesFilter onSearchChange={handleSearchChange} onSortChange={handleSortChange}  />
       <NoteListWrap>
         {/* filteredMemos가 정의되어 있을 때에만 map 함수를 호출하도록 수정 */}
         {filteredMemos && filteredMemos.map((memo) => (
@@ -223,6 +273,7 @@ function NotesCont() {
             {/* Edit 모드인 경우에만 수정 가능한 입력 필드로 변경 */}
             {selectedMemo && selectedMemo.id === memo.id ? (
               <>
+                <NoteContCategory>{memo.category}</NoteContCategory>
                 <NoteContDate>{memo.date}</NoteContDate>
                 <NewNoteTit
                   type="text"
@@ -236,6 +287,7 @@ function NotesCont() {
               </>
             ) : (
               <>
+                <NoteContCategory>{memo.category}</NoteContCategory>
                 <NoteContDate>{memo.date}</NoteContDate>
                 <NoteContTitle
                   type="text"
