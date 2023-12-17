@@ -19,7 +19,6 @@ const NoteInnerTit = styled.span `
 `;
 
 const SelectBox = styled.select `
-    margin-left: 5px;
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #ffdbb8;
@@ -27,6 +26,8 @@ const SelectBox = styled.select `
     font-weight: bold;
     outline: 0;
     color: rgb(57, 32, 5);
+    margin-bottom: 10px;
+    width: 100%;
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
