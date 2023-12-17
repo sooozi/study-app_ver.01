@@ -149,7 +149,7 @@ function NotesAdd() {
             <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
             <Form>
                 <SelectBox value={selectedOption} onChange={handleSelectChange}>
-                    <option value="">정렬 기준</option>
+                    <option value="">Sort By</option>
                     <option value="Project">Project</option>
                     <option value="Personal">Personal</option>
                     <option value="Etc">Etc</option>
