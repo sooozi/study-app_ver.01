@@ -136,15 +136,13 @@ const CancelBtn= styled.button `
     margin-left: 5px;
 `;
 
-
-
-
 function NotesCont() {
   const [memos, setMemos] = useState([]);
   // 메모 수정을 위한 상태와 ref를 추가합니다.
   const [selectedMemo, setSelectedMemo] = useState(null);
   const newNoteTitRef = useRef(null);
   const newNoteDescRef = useRef(null);
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     // 로컬 스토리지에서 메모 데이터를 가져옵니다.
@@ -188,13 +186,11 @@ function NotesCont() {
       const id = selectedMemo.id;
       const updatedTitle = newNoteTitRef.current.value;
       const updatedContent = newNoteDescRef.current.value;
-      
       const updatedMemos = memos.map((memo) =>
         memo.id === id ? { ...memo, title: updatedTitle, content: updatedContent } : memo
       );
 
       localStorage.setItem('memos', JSON.stringify(updatedMemos));
-
       setSelectedMemo(null);
       setMemos(updatedMemos);
     }
@@ -205,12 +201,24 @@ function NotesCont() {
     setSelectedMemo(null);
   };
 
+  const handleSearchChange = (value) => {
+    setSearchValue(value);
+  };
+
+  // 검색어에 따라 메모를 필터링합니다.
+  const filteredMemos = memos.filter((memo) => {
+    const titleIncludes = memo.title.toLowerCase().includes(searchValue.toLowerCase());
+    const contentIncludes = memo.content.toLowerCase().includes(searchValue.toLowerCase());
+    return titleIncludes || contentIncludes;
+  });
+
   return (
     <>
       <NoteInnerTit>Overview</NoteInnerTit>
-      <NotesFilter />
+      <NotesFilter onSearchChange={handleSearchChange} />
       <NoteListWrap>
-        {memos.map((memo) => (
+        {/* filteredMemos가 정의되어 있을 때에만 map 함수를 호출하도록 수정 */}
+        {filteredMemos && filteredMemos.map((memo) => (
           <NoteListCont key={memo.id}>
             {/* Edit 모드인 경우에만 수정 가능한 입력 필드로 변경 */}
             {selectedMemo && selectedMemo.id === memo.id ? (

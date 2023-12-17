@@ -26,11 +26,13 @@ const Form = styled.form `
     display: flex;
 `;
 
-function NotesFilter() {
-    const [inputValue, setInputValue] = useState('');
+function NotesFilter({ onSearchChange }) {
+    const [searchValue, setSearchValue] = useState('');
 
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
+    const handleSearchChange = (event) => {
+        setSearchValue(event.target.value);
+        // 부모 컴포넌트에서 전달한 콜백 함수 호출
+        onSearchChange(event.target.value);
     };
 
     return (
@@ -38,9 +40,9 @@ function NotesFilter() {
             <Form>
                 <SearchBar
                     type="text"
-                    value={inputValue}
+                    value={searchValue}
                     placeholder='🔍 Search'
-                    onChange={handleInputChange}
+                    onChange={handleSearchChange}
                 />
             </Form>
         </NoteFilterInner>
