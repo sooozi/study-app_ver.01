@@ -8,6 +8,7 @@ const NoteContainer = styled.div `
   box-sizing: border-box; /* 박스 모델의 영향을 고려하여 box-sizing 설정 */
   display: flex;
   gap: 1rem;
+  height: 80%;
 `;
 
 
@@ -16,13 +17,8 @@ function Note() {
     <>
       <Title titleText="Let's" gradTitleText="Notes" iconBox="✏️" subTitleText="Great ideas start with notes and scribbles!" />
       <NoteContainer>
-        <NotesAdd>
-          
-        </NotesAdd>
-
-        <NotesBoard>
-
-        </NotesBoard>
+        <NotesAdd />
+        <NotesBoard />
       </NoteContainer>
     </>
   );

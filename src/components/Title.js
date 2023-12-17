@@ -34,11 +34,11 @@ const SubTitTxt = styled.span`
 
 const Title = function({ titleText, gradTitleText, iconBox, subTitleText }){
   return(
-    <div style={{margin: '0 0 20px 0',}}>
+    <div style={{margin: '0 0 0 0',}}>
       <TitTxt>{titleText}</TitTxt>
       <GradaTitTxt>{gradTitleText}</GradaTitTxt>
       <IconBox>{iconBox}</IconBox>
-      <SubTitTxt>{subTitleText}</SubTitTxt>
+      {/* <SubTitTxt>{subTitleText}</SubTitTxt> */}
     </div>
   )
 }
