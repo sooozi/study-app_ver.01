@@ -16,7 +16,7 @@ const NoteInnerTit = styled.span `
 
 const NoteListCont= styled.li `
     padding: 15px;
-    min-width: 230px; 
+    width: clamp(150px, 10rem, 250px);
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px  rgba(255, 243, 229, 1);
 `;
@@ -60,6 +60,7 @@ const NoteContTitle= styled.input `
     font-family: 'Montserrat';
     font-size: 15px;
     font-weight: bold;
+    width: -webkit-fill-available;
     border: none;
     outline: 0;
     color: rgb(57, 32, 5);

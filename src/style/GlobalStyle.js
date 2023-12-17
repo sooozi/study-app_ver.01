@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   textarea::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.1);
     border-radius: 5px;
