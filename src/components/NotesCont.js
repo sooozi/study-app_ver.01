@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from "styled-components";
+import NotesFilter from "./NotesFilter";
 
 const NoteListWrap= styled.ul `
     display: grid;
@@ -207,6 +208,7 @@ function NotesCont() {
   return (
     <>
       <NoteInnerTit>Overview</NoteInnerTit>
+      <NotesFilter />
       <NoteListWrap>
         {memos.map((memo) => (
           <NoteListCont key={memo.id}>
