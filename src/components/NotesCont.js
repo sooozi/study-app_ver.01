@@ -252,7 +252,7 @@ function NotesCont() {
     else {
       sortedMemos = memos;
     }
-    setMemos(sortedMemos);
+    setMemos(sortedMemos.reverse());
   };
 
   // 검색어에 따라 메모를 필터링합니다.
