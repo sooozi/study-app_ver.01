@@ -273,7 +273,7 @@ function NotesCont() {
             {/* Edit 모드인 경우에만 수정 가능한 입력 필드로 변경 */}
             {selectedMemo && selectedMemo.id === memo.id ? (
               <>
-                <NoteContCategory>{memo.category}</NoteContCategory>
+                {/* <NoteContCategory>{memo.category}</NoteContCategory> */}
                 <NoteContDate>{memo.date}</NoteContDate>
                 <NewNoteTit
                   type="text"
@@ -287,7 +287,7 @@ function NotesCont() {
               </>
             ) : (
               <>
-                <NoteContCategory>{memo.category}</NoteContCategory>
+                {/* <NoteContCategory>{memo.category}</NoteContCategory> */}
                 <NoteContDate>{memo.date}</NoteContDate>
                 <NoteContTitle
                   type="text"

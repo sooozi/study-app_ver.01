@@ -68,9 +68,9 @@ function NotesFilter({ onSearchChange, onSortChange }) {
                     onChange={handleSearchChange}
                 />
                 <SelectBox value={sortOption} onChange={handleSortChange}>
-                    <option value="">Sort By</option>
-                    <option value="createdAt">Recent Created</option>
-                    <option value="updatedAt">Recent Updated</option>
+                    <option value="">Oldest First</option>
+                    <option value="createdAt">Recent First</option>
+                    {/* <option value="updatedAt">Recent Updated</option> */}
                 </SelectBox>
             </Form>
         </NoteFilterInner>

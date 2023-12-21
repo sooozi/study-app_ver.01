@@ -148,12 +148,12 @@ function NotesAdd() {
         <NoteAddInner>
             <NoteInnerTit>👇 Write your Notes</NoteInnerTit>
             <Form>
-                <SelectBox value={selectedOption} onChange={handleSelectChange}>
+                {/* <SelectBox value={selectedOption} onChange={handleSelectChange}>
                     <option value="">Sort By</option>
                     <option value="Project">Project</option>
                     <option value="Personal">Personal</option>
                     <option value="Etc">Etc</option>
-                </SelectBox>
+                </SelectBox> */}
                 <NewNoteTit
                     type="text"
                     value={inputValue}
