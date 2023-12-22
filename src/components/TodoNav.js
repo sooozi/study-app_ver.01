@@ -1,6 +1,7 @@
 import { default as React, useState } from 'react';
 import styled from "styled-components";
 import InnerFilter from "./InnerFilter";
+import ListCalendar from "./ListCalendar";
 
 const TodoInner= styled.div `
     display: flex;
@@ -63,7 +64,7 @@ function TodoNav({ onSearchChange }) {
                 </div>
                 <ContBox>
                     <InnerTit>Calendar</InnerTit>
-
+                    <ListCalendar />
                 </ContBox>
             </ContWrap>
         </TodoInner>
