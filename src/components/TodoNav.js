@@ -1,7 +1,7 @@
 import { default as React, useState } from 'react';
+import Calendar from 'react-calendar';
 import styled from "styled-components";
 import InnerFilter from "./InnerFilter";
-import ListCalendar from "./ListCalendar";
 
 const TodoInner= styled.div `
     display: flex;
@@ -42,6 +42,7 @@ const ContBox= styled.div `
 
 function TodoNav({ onSearchChange }) {
     const [searchValue, setSearchValue] = useState('');
+    const [value, onChange] = useState(new Date());
 
     const handleSearchChange = (event) => {
         setSearchValue(event.target.value);
@@ -64,7 +65,12 @@ function TodoNav({ onSearchChange }) {
                 </div>
                 <ContBox>
                     <InnerTit>Calendar</InnerTit>
-                    <ListCalendar />
+                    <div>
+                        <Calendar
+                            onChange={onChange}
+                            value={value}
+                        />
+                    </div>
                 </ContBox>
             </ContWrap>
         </TodoInner>
