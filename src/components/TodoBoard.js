@@ -9,6 +9,13 @@ const NoteAddWrap= styled.div `
   width: 100%;
 `;
 
+const InnerTopTit = styled.span `
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 1rem;
+`;
+
 const InnerTit = styled.span `
     display: block;
     font-weight: 500;
@@ -108,7 +115,7 @@ function TodoBoard() {
 
     return (
         <NoteAddWrap>
-            <InnerTit>Overview</InnerTit>
+            <InnerTopTit>Today</InnerTopTit>
             <Form>
                 {/* <SelectBox value={selectedOption} onChange={handleSelectChange}>
                     <option value="">Sort By</option>

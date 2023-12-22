@@ -12,11 +12,26 @@ const TodoInner= styled.div `
     min-width: 150px;
 `;
 
+const InnerTopTit = styled.span `
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 1rem;
+`;
+
 const InnerTit = styled.span `
     display: block;
     font-weight: 500;
     font-size: 14px;
+`;
+
+const ContWrap= styled.div `
+    border: 1px solid blue;
+`;
+
+const ContBox= styled.div `
     margin-bottom: 1rem;
+    border: 1px solid red;
 `;
 
 
@@ -51,8 +66,23 @@ function TodoNav({ onSearchChange, onSortChange }) {
 
     return (
         <TodoInner>
-            <InnerTit>Overview</InnerTit>
-            <InnerFilter onSearchChange={handleSearchChange} onSortChange={handleSortChange}  />
+            <InnerTopTit>Menu</InnerTopTit>
+            <ContWrap>
+                <>
+                    <ContBox>
+                        <InnerTit>Search</InnerTit>
+                        <InnerFilter onSearchChange={handleSearchChange} onSortChange={handleSortChange} />
+                    </ContBox>
+                    <ContBox>
+                        <InnerTit>Tasks</InnerTit>
+
+                    </ContBox>
+                </>
+                <ContBox>
+                    <InnerTit>Calendar</InnerTit>
+
+                </ContBox>
+            </ContWrap>
         </TodoInner>
     );
 }
