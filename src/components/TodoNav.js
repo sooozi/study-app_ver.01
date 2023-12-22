@@ -1,4 +1,4 @@
-import { default as React, useEffect, useState } from 'react';
+import { default as React, useState } from 'react';
 import styled from "styled-components";
 import InnerFilter from "./InnerFilter";
 
@@ -27,6 +27,10 @@ const InnerTit = styled.span `
 
 const ContWrap= styled.div `
     border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 `;
 
 const ContBox= styled.div `
@@ -35,49 +39,28 @@ const ContBox= styled.div `
 `;
 
 
-
-function TodoNav({ onSearchChange, onSortChange }) {
+function TodoNav({ onSearchChange }) {
     const [searchValue, setSearchValue] = useState('');
-    const [sortOption, setSortOption] = useState('');
-    const [inputValue, setInputValue] = useState('');
-    const [textareaValue, setTextareaValue] = useState('');
-    const [selectedOption, setSelectedOption] = useState('');
-    const [memos, setMemos] = useState([]);
-
-    useEffect(() => {
-        // 로컬스토리지에서 메모 가져와서 차례대로 정렬
-        let storedMemos = JSON.parse(localStorage.getItem('memos')) || [];
-        setMemos(storedMemos);
-    }, []);
-
 
     const handleSearchChange = (event) => {
         setSearchValue(event.target.value);
-        // 부모 컴포넌트에서 전달한 콜백 함수 호출
         onSearchChange(event.target.value);
-    };
-
-    const handleSortChange = (event) => {
-        const selectedSortOption = event.target.value;
-        setSortOption(selectedSortOption);
-        // 부모 컴포넌트에서 전달한 콜백 함수 호출
-        onSortChange(selectedSortOption);
     };
 
     return (
         <TodoInner>
             <InnerTopTit>Menu</InnerTopTit>
             <ContWrap>
-                <>
+                <div>
                     <ContBox>
                         <InnerTit>Search</InnerTit>
-                        <InnerFilter onSearchChange={handleSearchChange} onSortChange={handleSortChange} />
+                        <InnerFilter onSearchChange={handleSearchChange} />
                     </ContBox>
                     <ContBox>
                         <InnerTit>Tasks</InnerTit>
 
                     </ContBox>
-                </>
+                </div>
                 <ContBox>
                     <InnerTit>Calendar</InnerTit>
 
@@ -87,5 +70,4 @@ function TodoNav({ onSearchChange, onSortChange }) {
     );
 }
   
-
 export default TodoNav;
