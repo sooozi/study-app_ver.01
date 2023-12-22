@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
@@ -35,13 +35,11 @@ function ListCalendar ({ user }){
         onChange={onChange}
         value={value}
         formatDay={(locale, date) =>
-          //xx일 -> xx 으로 format 변경
           new Date(date).toLocaleDateString("en-us", {
             day: "2-digit",
           })
         }
         tileContent={({ date, view }) => {
-          //
           const exist = dateArr.find(
             (oneDate) =>
               oneDate ===
