@@ -7,7 +7,7 @@ const TodoInner= styled.div `
     display: flex;
     flex-direction: column;
     background: #fff;
-    padding: 1.5rem 1rem;
+    padding: 1.2rem 1rem;
     border-radius: 1.5rem;
     width: clamp(150px, 14vw, 250px);
     min-width: 150px;
@@ -58,7 +58,6 @@ const TaskBtn= styled.button `
 `;
 
 const ContWrap= styled.div `
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -67,7 +66,6 @@ const ContWrap= styled.div `
 
 const ContBox= styled.div `
     margin-bottom: 1rem;
-    border: 1px solid red;
 `;
 
 

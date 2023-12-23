@@ -14,7 +14,7 @@ const HeaderWrap = styled.div`
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 `;
 
 const LogoWrap = styled.div`

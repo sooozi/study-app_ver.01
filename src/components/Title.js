@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const txtSize = {
-    titLarge: '40px',
+    titLarge: '35px',
     large: '30px',
     medium: '20px',
     default: '16px',
