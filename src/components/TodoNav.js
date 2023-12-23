@@ -1,5 +1,6 @@
 import { default as React, useState } from 'react';
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import styled from "styled-components";
 import InnerFilter from "./InnerFilter";
 
@@ -66,6 +67,18 @@ const ContWrap= styled.div `
 
 const ContBox= styled.div `
     margin-bottom: 1rem;
+`;
+
+export const StyleCalendar = styled(Calendar)`
+    .react-calendar * {
+        font-size: 10px;
+    }
+    .react-calendar__navigation {
+        height: 30px;
+    }
+    .react-calendar__navigation button {
+        min-width: 20px;
+    }
 `;
 
 
