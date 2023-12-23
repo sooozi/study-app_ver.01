@@ -37,6 +37,9 @@ const NewTodoTit= styled.input `
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
+        &::placeholder {
+            color: transparent;
+        }
     }
 `;
 
@@ -71,6 +74,7 @@ const AddNewTodo= styled.button `
     letter-spacing: -0.5px;
     color: #fff;
     width: 100%;
+    max-width: 100px;
     transition: all 0.2s ease-in-out;
     &:hover {
         background-color: rgb(255, 65, 65);
@@ -78,20 +82,18 @@ const AddNewTodo= styled.button `
 `;
 
 const Form = styled.form `
+    display: flex;
+    gap: 1rem;
 `;
 
 
 function TodoBoard() {
     const [inputValue, setInputValue] = useState('');
-    const [textareaValue, setTextareaValue] = useState('');
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
-    const handleTextareaChange = (event) => {
-        setTextareaValue(event.target.value);
-    };
 
     const handleAddNote = () => {
         // 로컬스토리지에서 메모 가져오기
@@ -101,7 +103,6 @@ function TodoBoard() {
         let newMemo = {
             id: Date.now(), // 이 부분을 고유한 ID로 변경하거나 적절한 방법으로 설정하세요.
             title: inputValue,
-            content: textareaValue,
             date: new Date().toLocaleString(),
         };
 
@@ -110,29 +111,19 @@ function TodoBoard() {
 
         // 입력값 초기화
         setInputValue('');
-        setTextareaValue('');
     };
 
     return (
         <NoteAddWrap>
             <InnerTopTit>Today</InnerTopTit>
             <Form>
-                {/* <SelectBox value={selectedOption} onChange={handleSelectChange}>
-                    <option value="">Sort By</option>
-                    <option value="Project">Project</option>
-                    <option value="Personal">Personal</option>
-                    <option value="Etc">Etc</option>
-                </SelectBox> */}
                 <NewTodoTit
                     type="text"
+                    placeholder='➕ Add New Todo List'
                     value={inputValue}
                     onChange={handleInputChange}
                 />
-                <NewTodoDesc 
-                    value={textareaValue}
-                    onChange={handleTextareaChange}
-                />
-                <AddNewTodo onClick={handleAddNote}>+ Add new note</AddNewTodo>
+                <AddNewTodo onClick={handleAddNote}>+ Add Todo</AddNewTodo>
             </Form>
         </NoteAddWrap>
     );
