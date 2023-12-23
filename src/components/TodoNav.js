@@ -11,6 +11,7 @@ const TodoInner= styled.div `
     border-radius: 1.5rem;
     width: clamp(150px, 14vw, 250px);
     min-width: 150px;
+    height: initial;
 `;
 
 const InnerTopTit = styled.span `
@@ -24,6 +25,36 @@ const InnerTit = styled.span `
     display: block;
     font-weight: 500;
     font-size: 14px;
+    margin-bottom: 10px;
+`;
+
+const InnerTask = styled.div `
+    margin: 10px 0 0;
+`;
+
+const TaskBtn= styled.button `
+    width: 100%;
+    height: 30px;
+    padding: 0 0.5rem;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid #ffdbb8;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: rgb(57, 32, 5);
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
+    &:hover {
+        border: 1px solid rgba(255, 243, 229, 1);
+        background-color: rgba(255, 243, 229, 1);
+    }
 `;
 
 const ContWrap= styled.div `
@@ -56,11 +87,15 @@ function TodoNav({ onSearchChange }) {
                 <div>
                     <ContBox>
                         <InnerTit>Search</InnerTit>
-                        <InnerFilter onSearchChange={handleSearchChange} />
+                        <InnerFilter onSearchChange={handleSearchChange} style={{ margin: 0 }} />
                     </ContBox>
                     <ContBox>
                         <InnerTit>Tasks</InnerTit>
-
+                        <InnerTask>
+                            <TaskBtn>🟥 All</TaskBtn>
+                            <TaskBtn>⭕ Todo</TaskBtn>
+                            <TaskBtn>✅ Done</TaskBtn>
+                        </InnerTask>
                     </ContBox>
                 </div>
                 <ContBox>

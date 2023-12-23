@@ -23,7 +23,7 @@ const SearchBar= styled.input `
     }
 `;
 
-function InnerFilter({ onSearchChange, onSortChange }) {
+function InnerFilter({ onSearchChange, onSortChange, style }) {
     const [searchValue, setSearchValue] = useState('');
 
     const handleSearchChange = (event) => {
@@ -33,7 +33,7 @@ function InnerFilter({ onSearchChange, onSortChange }) {
     };
 
     return (
-        <FilterInner>
+        <FilterInner style={{ ...style }}>
             <SearchBar
                 type="text"
                 value={searchValue}
