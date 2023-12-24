@@ -12,6 +12,9 @@ const CalendarWrap = styled.div`
 `;
 
 const StyleCalendar = styled(Calendar)`
+    .react-calendar__month-view__days__day--neighboringMonth {
+        color: #75757552;
+    }
     .react-calendar__navigation button:enabled:hover, .react-calendar__navigation button:enabled:focus,
     .react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus {
         background-color: rgba(255, 243, 229, 0.5);
@@ -50,10 +53,14 @@ const StyleCalendar = styled(Calendar)`
         font-weight: bold;
     }
     .react-calendar__tile--active {
-        background: #006edc;
+        background: #2d8ae7;
         border-radius: 50%;
     }
-    
+    .react-calendar__navigation__label__labelText {
+        font-family: 'Montserrat';
+        font-size: 11px;
+        font-weight: 600;
+    }
 `;
 
 function TodoCalendar() {
