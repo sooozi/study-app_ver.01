@@ -15,6 +15,8 @@ const StyleCalendar = styled(Calendar)`
     .react-calendar__navigation button:enabled:hover, .react-calendar__navigation button:enabled:focus,
     .react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus {
         background-color: rgba(255, 243, 229, 0.5);
+        color: rgb(57, 32, 5);
+        border-radius: 50%;
     }
     .react-calendar__navigation__label__labelText {
         font-size: 10px;
@@ -22,6 +24,9 @@ const StyleCalendar = styled(Calendar)`
     .react-calendar__navigation {
         height: 30px;
         margin-bottom: 0;
+    }
+    .react-calendar__navigation__label {
+        pointer-events: none;
     }
     .react-calendar__navigation button {
         min-width: 20px;
@@ -38,9 +43,17 @@ const StyleCalendar = styled(Calendar)`
         padding: 1px;
     }
     .react-calendar__tile--now {
-        background: #fffd76;
+        background: rgb(255, 175, 88);
         border-radius: 50%;
     }
+    .react-calendar__tile--active {
+        font-weight: bold;
+    }
+    .react-calendar__tile--active {
+        background: #006edc;
+        border-radius: 50%;
+    }
+    
 `;
 
 function TodoCalendar() {

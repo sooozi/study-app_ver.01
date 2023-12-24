@@ -65,7 +65,9 @@ const ContWrap= styled.div `
 `;
 
 const ContBox= styled.div `
-    margin-bottom: 1rem;
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
 `;
 
 
