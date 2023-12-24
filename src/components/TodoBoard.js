@@ -70,7 +70,11 @@ const AddNewTodo= styled.button `
 const TodoItem = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 10px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ffdbb8;
 `;
 
 const Checkbox = styled.input`
@@ -78,12 +82,10 @@ const Checkbox = styled.input`
 `;
 
 const DeleteButton = styled.button`
-  background-color: #f44336;
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
   cursor: pointer;
+  background-color: transparent;
 `;
 
 const Form = styled.form `
@@ -172,7 +174,7 @@ function TodoBoard() {
                             {todo.detail}
                         </p>
                         <p>{todo.date}</p>
-                        <DeleteButton onClick={() => handleDeleteTodo(todo.id)}>Delete</DeleteButton>
+                        <DeleteButton onClick={() => handleDeleteTodo(todo.id)}>⛔</DeleteButton>
                     </TodoItem>
                 ))}
             </TodoListWrap>
