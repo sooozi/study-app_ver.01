@@ -1,4 +1,4 @@
-import { default as React, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 
 const TodoBoardWrap = styled.div `
@@ -11,9 +11,7 @@ const TodoBoardWrap = styled.div `
 const TodoAddWrap = styled.div `
 `;
 
-const TodoListWrap = styled.div `
-
-`;
+const TodoListWrap = styled.div ``;
 
 const InnerTopTit = styled.span `
     display: block;
@@ -77,28 +75,35 @@ const Form = styled.form `
 
 function TodoBoard() {
     const [inputValue, setInputValue] = useState('');
+    const [todoList, setTodoList] = useState([]);
+
+    useEffect(() => {
+        const savedTodoList = JSON.parse(localStorage.getItem('todolist')) || [];
+        setTodoList(savedTodoList);
+    }, []);
+
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
     const handleAddTodo = () => {
-        // 로컬스토리지에서 투두리스트 가져오기
-        let TodoList = JSON.parse(localStorage.getItem('todolist')) || [];
-        
-        // 새로운 투두리스트 객체 생성
-        let newTodo = {
-            id: Date.now(), // 이 부분을 고유한 ID로 변경하거나 적절한 방법으로 설정하세요.
-            title: inputValue,
+        const newTodo = {
+            id: Date.now(),
+            detail: inputValue,
             date: new Date().toLocaleString(),
         };
 
-        // memos 배열을 로컬스토리지에 저장
-        localStorage.setItem('todolist', JSON.stringify(newTodo));
-
-        // 입력값 초기화
+        localStorage.setItem('todolist', JSON.stringify([...todoList, newTodo]));
+    
+        setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
+    
         setInputValue('');
     };
+
+    // useEffect(() => {
+    //     localStorage.setItem('todolist', JSON.stringify(todoList));
+    // }, [todoList]);
 
     return (
         <TodoBoardWrap>
@@ -116,7 +121,12 @@ function TodoBoard() {
                 </Form>
             </TodoAddWrap>
             <TodoListWrap>
-
+                {todoList.map((todo) => (
+                    <div key={todo.id}>
+                        <p>{todo.detail}</p>
+                        <p>{todo.date}</p>
+                    </div>
+                ))}
             </TodoListWrap>
         </TodoBoardWrap>
     );
