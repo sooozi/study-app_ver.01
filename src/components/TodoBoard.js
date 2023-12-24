@@ -67,6 +67,16 @@ const AddNewTodo= styled.button `
     }
 `;
 
+const TodoItem = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+`;
+
+const Checkbox = styled.input`
+    margin-right: 8px;
+`;
+
 const Form = styled.form `
     display: flex;
     gap: 1rem;
@@ -91,7 +101,7 @@ function TodoBoard() {
         const newTodo = {
             id: Date.now(),
             detail: inputValue,
-            date: new Date().toLocaleString(),
+            date: new Date().DateString(),
         };
 
         localStorage.setItem('todolist', JSON.stringify([...todoList, newTodo]));
@@ -101,9 +111,13 @@ function TodoBoard() {
         setInputValue('');
     };
 
-    // useEffect(() => {
-    //     localStorage.setItem('todolist', JSON.stringify(todoList));
-    // }, [todoList]);
+    const handleCheckboxChange = (id) => {
+        setTodoList((prevTodoList) =>
+            prevTodoList.map((todo) =>
+                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            )
+        );
+    };
 
     return (
         <TodoBoardWrap>
@@ -122,10 +136,17 @@ function TodoBoard() {
             </TodoAddWrap>
             <TodoListWrap>
                 {todoList.map((todo) => (
-                    <div key={todo.id}>
-                        <p>{todo.detail}</p>
+                    <TodoItem  key={todo.id}>
+                        <Checkbox
+                            type="checkbox"
+                            checked={todo.completed}
+                            onChange={() => handleCheckboxChange(todo.id)}
+                        />
+                        <p style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                            {todo.detail}
+                        </p>
                         <p>{todo.date}</p>
-                    </div>
+                    </TodoItem>
                 ))}
             </TodoListWrap>
         </TodoBoardWrap>
