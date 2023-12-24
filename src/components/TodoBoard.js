@@ -1,11 +1,18 @@
 import { default as React, useState } from 'react';
 import styled from "styled-components";
 
-const TodoAddWrap = styled.div `
+const TodoBoardWrap = styled.div `
   background: #fff;
   padding: 1.2rem 1rem;
   border-radius: 1.5rem;
   width: 100%;
+`;
+
+const TodoAddWrap = styled.div `
+`;
+
+const TodoListWrap = styled.div `
+
 `;
 
 const InnerTopTit = styled.span `
@@ -75,39 +82,43 @@ function TodoBoard() {
         setInputValue(event.target.value);
     };
 
-
-    const handleAddNote = () => {
-        // 로컬스토리지에서 메모 가져오기
-        let memos = JSON.parse(localStorage.getItem('memos')) || [];
+    const handleAddTodo = () => {
+        // 로컬스토리지에서 투두리스트 가져오기
+        let TodoList = JSON.parse(localStorage.getItem('todolist')) || [];
         
-        // 새로운 메모 객체 생성
-        let newMemo = {
+        // 새로운 투두리스트 객체 생성
+        let newTodo = {
             id: Date.now(), // 이 부분을 고유한 ID로 변경하거나 적절한 방법으로 설정하세요.
             title: inputValue,
             date: new Date().toLocaleString(),
         };
 
         // memos 배열을 로컬스토리지에 저장
-        localStorage.setItem('memos', JSON.stringify(memos));
+        localStorage.setItem('todolist', JSON.stringify(newTodo));
 
         // 입력값 초기화
         setInputValue('');
     };
 
     return (
-        <TodoAddWrap>
-            <InnerTopTit>Today</InnerTopTit>
-            <TodayDate>📅 {new Date().toDateString()}</TodayDate>
-            <Form>
-                <NewTodoTit
-                    type="text"
-                    placeholder='➕ Add New Todo List'
-                    value={inputValue}
-                    onChange={handleInputChange}
-                />
-                <AddNewTodo onClick={handleAddNote}>+ Add Todo</AddNewTodo>
-            </Form>
-        </TodoAddWrap>
+        <TodoBoardWrap>
+            <TodoAddWrap>
+                <InnerTopTit>Today</InnerTopTit>
+                <TodayDate>📅 {new Date().toDateString()}</TodayDate>
+                <Form>
+                    <NewTodoTit
+                        type="text"
+                        placeholder='➕ Add New Todo List'
+                        value={inputValue}
+                        onChange={handleInputChange}
+                    />
+                    <AddNewTodo onClick={handleAddTodo}>+ Add Todo</AddNewTodo>
+                </Form>
+            </TodoAddWrap>
+            <TodoListWrap>
+
+            </TodoListWrap>
+        </TodoBoardWrap>
     );
 }
   
