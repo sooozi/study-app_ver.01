@@ -81,6 +81,18 @@ const Checkbox = styled.input`
     margin-right: 8px;
 `;
 
+const TodoDetail = styled.p`
+    font-weight: 500;
+    font-size: 13px;
+    color: rgba(57, 32, 5, 1);
+`;
+
+const TodoDate = styled.p`
+    font-weight: 500;
+    font-size: 10px;
+    color: rgba(57, 32, 5, 0.5);
+`;
+
 const DeleteButton = styled.button`
   color: #fff;
   border: none;
@@ -165,15 +177,17 @@ function TodoBoard() {
             <TodoListWrap>
                 {todoList.map((todo) => (
                     <TodoItem  key={todo.id}>
-                        <Checkbox
-                            type="checkbox"
-                            checked={todo.completed}
-                            onChange={() => handleCheckboxChange(todo.id)}
-                        />
-                        <p style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-                            {todo.detail}
-                        </p>
-                        <p>{todo.date}</p>
+                        <>
+                            <Checkbox
+                                type="checkbox"
+                                checked={todo.completed}
+                                onChange={() => handleCheckboxChange(todo.id)}
+                            />
+                            <TodoDetail style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                                {todo.detail}
+                            </TodoDetail>
+                        </>
+                        <TodoDate>{todo.date}</TodoDate>
                         <DeleteButton onClick={() => handleDeleteTodo(todo.id)}>⛔</DeleteButton>
                     </TodoItem>
                 ))}
