@@ -1,8 +1,7 @@
 import { default as React, useState } from 'react';
 import styled from "styled-components";
 
-
-const NoteAddWrap= styled.div `
+const TodoAddWrap = styled.div `
   background: #fff;
   padding: 1.2rem 1rem;
   border-radius: 1.5rem;
@@ -16,14 +15,7 @@ const InnerTopTit = styled.span `
     margin-bottom: 1rem;
 `;
 
-const InnerTit = styled.span `
-    display: block;
-    font-weight: 500;
-    font-size: 14px;
-    margin-bottom: 1rem;
-`;
-
-const NewTodoTit= styled.input `
+const NewTodoTit = styled.input `
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #ffdbb8;
@@ -43,22 +35,11 @@ const NewTodoTit= styled.input `
     }
 `;
 
-const NewTodoDesc= styled.textarea `
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #ffdbb8;
-    font-size: 12px;
-    outline: 0;
-    color: rgb(57, 32, 5);
-    margin-bottom: 10px;
-    min-height: 100px;
-    resize: none;
-    width: 100%;
-    max-width: fit-content;
-    &:focus, &:focus-visible  {
-        border: 1px solid rgba(255, 243, 229, 1);
-        background-color: rgba(255, 243, 229, 1);
-    }
+const TodayDate = styled.span `
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 1rem;
 `;
 
 const AddNewTodo= styled.button `
@@ -114,8 +95,9 @@ function TodoBoard() {
     };
 
     return (
-        <NoteAddWrap>
+        <TodoAddWrap>
             <InnerTopTit>Today</InnerTopTit>
+            <TodayDate>📅 {new Date().toDateString()}</TodayDate>
             <Form>
                 <NewTodoTit
                     type="text"
@@ -125,7 +107,7 @@ function TodoBoard() {
                 />
                 <AddNewTodo onClick={handleAddNote}>+ Add Todo</AddNewTodo>
             </Form>
-        </NoteAddWrap>
+        </TodoAddWrap>
     );
 }
   
