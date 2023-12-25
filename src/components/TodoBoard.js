@@ -28,7 +28,7 @@ const NewTodoTit = styled.input `
     font-weight: bold;
     outline: 0;
     color: rgb(57, 32, 5);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     height: 15px;
     width: 100%;
     max-width: -webkit-fill-available;
@@ -109,6 +109,8 @@ const DeleteButton = styled.button`
 const Form = styled.form `
     display: flex;
     gap: 10px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 15px;
 `;
 
 function TodoBoard({ filter: todoFilter  }) {
