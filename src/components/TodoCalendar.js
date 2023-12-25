@@ -50,6 +50,7 @@ const StyleCalendar = styled(Calendar)`
     }
     .react-calendar__tile {
         padding: 1px;
+        pointer-events: none;
     }
     .react-calendar__tile--now {
         background: rgb(255, 175, 88);
