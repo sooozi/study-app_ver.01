@@ -29,6 +29,7 @@ const NewTodoTit = styled.input `
     outline: 0;
     color: rgb(57, 32, 5);
     margin-bottom: 10px;
+    height: 15px;
     width: 100%;
     max-width: -webkit-fill-available;
     &:focus, &:focus-visible  {
@@ -110,8 +111,7 @@ const Form = styled.form `
     gap: 10px;
 `;
 
-
-function TodoBoard() {
+function TodoBoard({ filter: todoFilter  }) {
     const [inputValue, setInputValue] = useState('');
     const [todoList, setTodoList] = useState([]);
 
@@ -153,15 +153,27 @@ function TodoBoard() {
                 todo.id === id ? { ...todo, completed: !todo.completed } : todo
             )
         );
+
+        // 상태 갱신 후 로컬 스토리지에 업데이트
+        const updatedTodoList = todoList.map((todo) =>
+            todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        );
+        localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
     };
 
     const handleDeleteTodo = (id) => {
-        setTodoList((prevTodoList) => prevTodoList.filter((todo) => todo.id !== id));
-        localStorage.setItem(
-            'todolist',
-            JSON.stringify(todoList.filter((todo) => todo.id !== id))
-        );
+        // 상태 갱신 후 로컬 스토리지에 업데이트
+        const updatedTodoList = todoList.filter((todo) => todo.id !== id);
+        setTodoList(updatedTodoList);
+        localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
     };
+
+    const filteredTodoList = todoList.filter((todo) => {
+        if (todoFilter === 'all') return true;
+        if (todoFilter === 'todo') return !todo.completed;
+        if (todoFilter === 'done') return todo.completed;
+        return true;
+    });
 
     return (
         <TodoBoardWrap>
@@ -179,7 +191,7 @@ function TodoBoard() {
                 </Form>
             </TodoAddWrap>
             <TodoListWrap>
-                {todoList.map((todo) => (
+                {filteredTodoList.map((todo) => (
                     <TodoItem  key={todo.id}>
                         <TodoItemInner>
                             <Checkbox

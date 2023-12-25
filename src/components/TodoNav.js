@@ -55,6 +55,10 @@ const TaskBtn= styled.button `
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
     }
+    &.on {
+        border: #ffe0bc;
+        background-color: #ffe0bc;
+    }
 `;
 
 const ContWrap= styled.div `
@@ -72,12 +76,18 @@ const ContBox= styled.div `
 
 
 
-function TodoNav({ onSearchChange }) {
+function TodoNav({ onSearchChange, onFilterChange }) {
     const [searchValue, setSearchValue] = useState('');
+    const [activeFilter, setActiveFilter] = useState('all');
 
     const handleSearchChange = (event) => {
         setSearchValue(event.target.value);
         onSearchChange(event.target.value);
+    };
+
+    const handleFilterChange = (filter) => {
+        onFilterChange(filter);
+        setActiveFilter(filter);
     };
 
     return (
@@ -92,9 +102,9 @@ function TodoNav({ onSearchChange }) {
                     <ContBox>
                         <InnerTit>Tasks</InnerTit>
                         <InnerTask>
-                            <TaskBtn>🟥 All</TaskBtn>
-                            <TaskBtn>⭕ Todo</TaskBtn>
-                            <TaskBtn>✅ Done</TaskBtn>
+                            <TaskBtn onClick={() => handleFilterChange('all')} className={activeFilter === 'all' ? 'on' : ''}>🟥 All</TaskBtn>
+                            <TaskBtn onClick={() => handleFilterChange('todo')} className={activeFilter === 'todo' ? 'on' : ''}>⭕ Todo</TaskBtn>
+                            <TaskBtn onClick={() => handleFilterChange('done')} className={activeFilter === 'done' ? 'on' : ''}>✅ Done</TaskBtn>
                         </InnerTask>
                     </ContBox>
                 </div>

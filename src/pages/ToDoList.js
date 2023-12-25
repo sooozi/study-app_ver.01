@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { Title } from '../components/Title';
 import TodoBoard from '../components/TodoBoard';
@@ -12,15 +12,17 @@ const InnnerContainer = styled.div `
 `;
 
 function ToDoList() {
-    return (
-      <>
-        <Title titleText="Let's" gradTitleText="ToDoList" iconBox="📝" subTitleText="Take notes and never forget!" />
-        <InnnerContainer>
-          <TodoNav />
-          <TodoBoard />
-        </InnnerContainer>
-      </>
-    );
-  }
+  const [filter, setFilter] = useState('all');
+
+  return (
+    <>
+      <Title titleText="Let's" gradTitleText="ToDoList" iconBox="📝" subTitleText="Take notes and never forget!" />
+      <InnnerContainer>
+        <TodoNav onFilterChange={(newFilter) => setFilter(newFilter)} />
+        <TodoBoard filter={filter} />
+      </InnnerContainer>
+    </>
+  );
+}
   
-  export default ToDoList;
+export default ToDoList;
