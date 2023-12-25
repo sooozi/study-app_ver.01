@@ -113,7 +113,7 @@ const Form = styled.form `
     margin-bottom: 15px;
 `;
 
-function TodoBoard({ filter: todoFilter  }) {
+function TodoBoard({ filter: todoFilter, searchValue  }) {
     const [inputValue, setInputValue] = useState('');
     const [todoList, setTodoList] = useState([]);
 
@@ -170,12 +170,18 @@ function TodoBoard({ filter: todoFilter  }) {
         localStorage.setItem('todolist', JSON.stringify(updatedTodoList));
     };
 
-    const filteredTodoList = todoList.filter((todo) => {
-        if (todoFilter === 'all') return true;
-        if (todoFilter === 'todo') return !todo.completed;
-        if (todoFilter === 'done') return todo.completed;
-        return true;
-    });
+    const filteredTodoList = todoList
+  .filter((todo) => {
+    if (todoFilter === 'all') return true;
+    if (todoFilter === 'todo') return !todo.completed;
+    if (todoFilter === 'done') return todo.completed;
+    return true;
+  })
+  .filter((todo) => {
+    // 검색어가 포함된 TodoItem만 필터링
+    const todoDetail = todo.detail || ''; // todo.detail이 undefined인 경우 빈 문자열로 대체
+    return todoDetail.toLowerCase().includes((searchValue || '').toLowerCase());
+  });
 
     return (
         <TodoBoardWrap>

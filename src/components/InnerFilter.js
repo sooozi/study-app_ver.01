@@ -27,9 +27,15 @@ function InnerFilter({ onSearchChange, onSortChange, style }) {
     const [searchValue, setSearchValue] = useState('');
 
     const handleSearchChange = (event) => {
-        setSearchValue(event.target.value);
-        // 부모 컴포넌트에서 전달한 콜백 함수 호출
-        onSearchChange(event.target.value);
+        if (event && event.target) {
+          const value = event.target.value;
+          setSearchValue(value);
+      
+          // onSearchChange 함수가 정의되어 있다면 호출
+          if (typeof onSearchChange === 'function') {
+            onSearchChange(value);
+          }
+        }
     };
 
     return (

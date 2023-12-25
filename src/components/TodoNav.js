@@ -81,6 +81,7 @@ function TodoNav({ onSearchChange, onFilterChange }) {
     const [activeFilter, setActiveFilter] = useState('all');
 
     const handleSearchChange = (event) => {
+        const value = event.target.value;
         setSearchValue(event.target.value);
         onSearchChange(event.target.value);
     };
@@ -97,7 +98,10 @@ function TodoNav({ onSearchChange, onFilterChange }) {
                 <div>
                     <ContBox>
                         <InnerTit>Search</InnerTit>
-                        <InnerFilter onSearchChange={handleSearchChange} style={{ margin: 0 }} />
+                        <InnerFilter
+                            onSearchChange={handleSearchChange}
+                            style={{ margin: 0 }}
+                        />
                     </ContBox>
                     <ContBox>
                         <InnerTit>Tasks</InnerTit>
