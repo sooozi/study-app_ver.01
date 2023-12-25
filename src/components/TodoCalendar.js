@@ -38,6 +38,12 @@ const StyleCalendar = styled(Calendar)`
         text-decoration: none;
         font-size: 10px;
     }
+    .react-calendar__month-view__weekdays__weekday {
+        padding: 0 0 0.3em;
+        > abbr {
+            font-size: 7px;
+        }
+    } 
     .react-calendar__navigation__prev2-button,
     .react-calendar__navigation__next2-button {
         display: none;

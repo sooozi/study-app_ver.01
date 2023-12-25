@@ -77,6 +77,11 @@ const TodoItem = styled.div`
     border: 1px solid #ffdbb8;
 `;
 
+const TodoItemInner = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 const Checkbox = styled.input`
     margin-right: 8px;
 `;
@@ -102,7 +107,7 @@ const DeleteButton = styled.button`
 
 const Form = styled.form `
     display: flex;
-    gap: 1rem;
+    gap: 10px;
 `;
 
 
@@ -114,7 +119,6 @@ function TodoBoard() {
         const savedTodoList = JSON.parse(localStorage.getItem('todolist')) || [];
         setTodoList(savedTodoList);
     }, []);
-
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -177,7 +181,7 @@ function TodoBoard() {
             <TodoListWrap>
                 {todoList.map((todo) => (
                     <TodoItem  key={todo.id}>
-                        <>
+                        <TodoItemInner>
                             <Checkbox
                                 type="checkbox"
                                 checked={todo.completed}
@@ -186,9 +190,11 @@ function TodoBoard() {
                             <TodoDetail style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
                                 {todo.detail}
                             </TodoDetail>
-                        </>
-                        <TodoDate>{todo.date}</TodoDate>
-                        <DeleteButton onClick={() => handleDeleteTodo(todo.id)}>⛔</DeleteButton>
+                        </TodoItemInner>
+                        <TodoItemInner>
+                            <TodoDate>{todo.date}</TodoDate>
+                            <DeleteButton onClick={() => handleDeleteTodo(todo.id)}>⛔</DeleteButton>
+                        </TodoItemInner>
                     </TodoItem>
                 ))}
             </TodoListWrap>
