@@ -24,7 +24,7 @@ const InnerTopTit = styled.span `
 const InnerTit = styled.span `
     display: block;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 10px;
 `;
 
