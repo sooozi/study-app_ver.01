@@ -7,13 +7,21 @@ const PomoBoardWrap = styled.div `
   border-radius: 1.5rem;
 `;
 
+const TimerWrap = styled.div `
+  background: #fff;
+  padding: 1.2rem 1rem;
+  border-radius: 1.5rem;
+`;
+
 
 
 function PomoBoard() {
 
     return (
         <PomoBoardWrap>
+            <TimerWrap>
 
+            </TimerWrap>
         </PomoBoardWrap>
     );
 }
