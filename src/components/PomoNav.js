@@ -1,6 +1,5 @@
 import { default as React, useState } from 'react';
 import styled from "styled-components";
-import TodoCalendar from './TodoCalendar';
 
 const TodoInner= styled.div `
     display: flex;
@@ -73,46 +72,75 @@ const ContBox= styled.div `
     }
 `;
 
+const PomoTime = styled.input `
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ffdbb8;
+    font-size: 12px;
+    font-weight: bold;
+    outline: 0;
+    color: rgb(57, 32, 5);
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: fit-content;
+    &:focus, &:focus-visible  {
+        border: 1px solid rgba(255, 243, 229, 1);
+        background-color: rgba(255, 243, 229, 1);
+    }
+`;
+
+const AddNewPomo = styled.button `
+    border-radius: 5px;
+    height: 33px;
+    overflow: hidden;
+    border: 0;
+    background-color: rgb(255, 175, 88);
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: #fff;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: rgb(255, 65, 65);
+    }
+`;
 
 
-function TodoNav({ onSearchChange, onFilterChange }) {
-    const [searchValue, setSearchValue] = useState('');
-    const [activeFilter, setActiveFilter] = useState('all');
 
-    const handleSearchChange = (event) => {
-        if (event && event.target) {
-            const value = event.target.value;
-            setSearchValue(value);
-            onSearchChange(value);
-        }
+function TodoNav() {
+    const [minutes, setMinutes] = useState(25);
+    const [inputMinutes, setInputMinutes] = useState('');
+
+    const handleInputChange = (event) => {
+        setInputMinutes(event.target.value);
     };
 
-    const handleFilterChange = (filter) => {
-        onFilterChange(filter);
-        setActiveFilter(filter);
+    const handleSetMinutes = () => {
+        if (!isNaN(inputMinutes) && inputMinutes >= 0) {
+            setMinutes(parseInt(inputMinutes, 10));
+            setInputMinutes('');
+        }
     };
 
     return (
         <TodoInner>
-            <InnerTopTit>Menu</InnerTopTit>
+            <InnerTopTit>Setting</InnerTopTit>
             <ContWrap>
                 <div>
                     <ContBox>
-                        <InnerTit>Search</InnerTit>
-                    </ContBox>
-                    <ContBox>
-                        <InnerTit>Tasks</InnerTit>
-                        <InnerTask>
-                            <TaskBtn onClick={() => handleFilterChange('all')} className={activeFilter === 'all' ? 'on' : ''}>🟥 All</TaskBtn>
-                            <TaskBtn onClick={() => handleFilterChange('todo')} className={activeFilter === 'todo' ? 'on' : ''}>⭕ Todo</TaskBtn>
-                            <TaskBtn onClick={() => handleFilterChange('done')} className={activeFilter === 'done' ? 'on' : ''}>✅ Done</TaskBtn>
-                        </InnerTask>
+                        <InnerTit>Minutes</InnerTit>
+                        <PomoTime
+                            type="number"
+                            placeholder="Set Minutes"
+                            value={inputMinutes}
+                            onChange={handleInputChange}
+                        />
+                        <AddNewPomo onClick={handleSetMinutes}>Set Minutes</AddNewPomo>
                     </ContBox>
                 </div>
-                <ContBox>
-                    <InnerTit>Calendar</InnerTit>
-                    <TodoCalendar />
-                </ContBox>
             </ContWrap>
         </TodoInner>
     );
