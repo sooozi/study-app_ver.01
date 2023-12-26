@@ -171,17 +171,17 @@ function TodoBoard({ filter: todoFilter, searchValue  }) {
     };
 
     const filteredTodoList = todoList
-  .filter((todo) => {
-    if (todoFilter === 'all') return true;
-    if (todoFilter === 'todo') return !todo.completed;
-    if (todoFilter === 'done') return todo.completed;
-    return true;
-  })
-  .filter((todo) => {
-    // 검색어가 포함된 TodoItem만 필터링
-    const todoDetail = todo.detail || ''; // todo.detail이 undefined인 경우 빈 문자열로 대체
-    return todoDetail.toLowerCase().includes((searchValue || '').toLowerCase());
-  });
+        .filter((todo) => {
+            if (todoFilter === 'all') return true;
+            if (todoFilter === 'todo') return !todo.completed;
+            if (todoFilter === 'done') return todo.completed;
+            return true;
+        })
+        .filter((todo) => {
+            // 검색어가 포함된 TodoItem만 필터링
+            const todoDetail = todo.detail || ''; // todo.detail이 undefined인 경우 빈 문자열로 대체
+            return todoDetail.toLowerCase().includes((searchValue || '').toLowerCase());
+        });
 
     return (
         <TodoBoardWrap>

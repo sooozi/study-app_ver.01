@@ -81,9 +81,11 @@ function TodoNav({ onSearchChange, onFilterChange }) {
     const [activeFilter, setActiveFilter] = useState('all');
 
     const handleSearchChange = (event) => {
-        const value = event.target.value;
-        setSearchValue(event.target.value);
-        onSearchChange(event.target.value);
+        if (event && event.target) {
+            const value = event.target.value;
+            setSearchValue(value);
+            onSearchChange(value);
+        }
     };
 
     const handleFilterChange = (filter) => {

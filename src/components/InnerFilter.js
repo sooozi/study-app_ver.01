@@ -42,7 +42,7 @@ function InnerFilter({ onSearchChange, onSortChange, style }) {
         <FilterInner style={{ ...style }}>
             <SearchBar
                 type="text"
-                value={searchValue}
+                value={searchValue || ''} // 또는 기본값을 지정
                 placeholder='🔍 Search'
                 onChange={handleSearchChange}
             />
