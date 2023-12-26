@@ -5,6 +5,7 @@ const PomoBoardWrap = styled.div `
   background: #fff;
   padding: 1.2rem 1rem;
   border-radius: 1.5rem;
+  width: 100%;
 `;
 
 const TimerWrap = styled.div `
@@ -60,16 +61,14 @@ function PomoBoard() {
     return (
         <PomoBoardWrap>
             <TimerWrap>
-                <div>
-                    <span>{String(minutes).padStart(2, '0')}:</span>
-                    <span>{String(seconds).padStart(2, '0')}</span>
-                </div>
-                <div>
-                    <button onClick={startTimer}>Start</button>
-                    <button onClick={pauseTimer}>Pause</button>
-                    <button onClick={resetTimer}>Reset</button>
-                </div>
+                <span>{String(minutes).padStart(2, '0')}:</span>
+                <span>{String(seconds).padStart(2, '0')}</span>
             </TimerWrap>
+            <div>
+                <button onClick={startTimer}>Start</button>
+                <button onClick={pauseTimer}>Pause</button>
+                <button onClick={resetTimer}>Reset</button>
+            </div>
         </PomoBoardWrap>
     );
 }
