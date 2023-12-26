@@ -1,6 +1,5 @@
 import { default as React, useState } from 'react';
 import styled from "styled-components";
-import InnerFilter from "./InnerFilter";
 import TodoCalendar from './TodoCalendar';
 
 const TodoInner= styled.div `
@@ -98,13 +97,13 @@ function TodoNav({ onSearchChange, onFilterChange }) {
             <InnerTopTit>Menu</InnerTopTit>
             <ContWrap>
                 <div>
-                    <ContBox>
+                    {/* <ContBox>
                         <InnerTit>Search</InnerTit>
                         <InnerFilter
                             onSearchChange={handleSearchChange}
                             style={{ margin: 0 }}
                         />
-                    </ContBox>
+                    </ContBox> */}
                     <ContBox>
                         <InnerTit>Tasks</InnerTit>
                         <InnerTask>
