@@ -50,6 +50,11 @@ const PomoTime = styled.input `
     margin-bottom: 10px;
     width: 100%;
     max-width: fit-content;
+    -moz-appearance: textfield;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
