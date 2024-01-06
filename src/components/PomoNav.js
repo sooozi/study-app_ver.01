@@ -85,8 +85,7 @@ const AddNewPomo = styled.button `
 
 
 
-function TodoNav() {
-    const [minutes, setMinutes] = useState(25);
+function PomoNav({ onSetMinutes }) {
     const [inputMinutes, setInputMinutes] = useState('');
 
     const handleInputChange = (event) => {
@@ -95,7 +94,7 @@ function TodoNav() {
 
     const handleSetMinutes = () => {
         if (!isNaN(inputMinutes) && inputMinutes >= 0) {
-            setMinutes(parseInt(inputMinutes, 10));
+            onSetMinutes(parseInt(inputMinutes, 10));
             setInputMinutes('');
         }
     };
@@ -121,4 +120,4 @@ function TodoNav() {
     );
 }
   
-export default TodoNav;
+export default PomoNav;

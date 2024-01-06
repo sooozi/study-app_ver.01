@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import PomoBoard from '../components/PomoBoard';
 import PomoNav from '../components/PomoNav';
@@ -12,12 +12,18 @@ const InnnerContainer = styled.div `
 `;
 
 function Pomodoro() {
+  const [newMinutes, setPomoMinutes] = useState(25);
+
+  const handleSetMinutes = (newMinutes) => {
+    setPomoMinutes(newMinutes);
+  };
+
     return (
       <>
         <Title titleText="Let's" gradTitleText="Pomodoro" iconBox="⏰" subTitleText="Change your day, one Pomodoro at a time!" />
         <InnnerContainer>
-          <PomoNav />
-          <PomoBoard />
+          <PomoNav onSetMinutes={handleSetMinutes} />
+          <PomoBoard minutes={newMinutes} />
         </InnnerContainer>
       </>
     );

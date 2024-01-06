@@ -57,8 +57,8 @@ const PomoBtn= styled.button `
     }
 `;
 
-function PomoBoard() {
-    const [minutes, setMinutes] = useState(25);
+function PomoBoard({ minutes: initialMinutes }) {
+    const [minutes, setMinutes] = useState(initialMinutes);
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
 
@@ -72,18 +72,18 @@ function PomoBoard() {
                         clearInterval(interval);
                         setIsActive(false);
                     } else {
-                        setMinutes(minutes - 1);
+                        setMinutes((prevMinutes) => prevMinutes - 1);
                         setSeconds(59);
                     }
                 } else {
-                    setSeconds(seconds - 1);
+                    setSeconds((prevSeconds) => prevSeconds - 1);
                 }
             }, 1000);
         } else {
             clearInterval(interval);
         }
     
-    return () => clearInterval(interval);
+        return () => clearInterval(interval);
     }, [isActive, minutes, seconds]);
 
     const startTimer = () => {
@@ -96,7 +96,7 @@ function PomoBoard() {
 
     const resetTimer = () => {
         setIsActive(false);
-        setMinutes(25);
+        setMinutes(initialMinutes);
         setSeconds(0);
     };
 
@@ -104,7 +104,7 @@ function PomoBoard() {
         <PomoBoardWrap>
             <InnerTopTit>Pomodoro</InnerTopTit>
             <TimerWrap>
-                <span>{String(minutes).padStart(2, '0')}:</span>
+                <span>{String(initialMinutes).padStart(2, '0')}:</span>
                 <span>{String(seconds).padStart(2, '0')}</span>
             </TimerWrap>
             <BtnWrap>
