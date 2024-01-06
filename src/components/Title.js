@@ -12,7 +12,7 @@ const TitTxt = styled.h3`
   display: inline-block;
   font-weight: 700;
   font-size: ${txtSize.titLarge};
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 `;
 
 const GradaTitTxt = styled(TitTxt) `

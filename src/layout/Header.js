@@ -58,7 +58,7 @@ function Header() {
     return (
       <>
         <HeaderWrap>
-            <LogoWrap>logo</LogoWrap>
+            <LogoWrap>ZIPCOAK</LogoWrap>
             <NavBar />
             <UserWrap>
                 <ToastBox>

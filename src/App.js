@@ -10,13 +10,13 @@ const AppWrap = styled.div`
   width: 100%;
   max-width: 1080px;
   border-radius: 3rem;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   margin: 0 50px;
   height: 85vh;
 `;
 
 const Container = styled.div`
-  max-width: 1000px;
+  /* max-width: 1000px; */
   width: 100%;
   height: 100%;
   margin: 0 auto;
