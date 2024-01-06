@@ -86,6 +86,9 @@ const PomoTime = styled.input `
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
+        &::placeholder {
+            color: transparent;
+        }
     }
 `;
 
