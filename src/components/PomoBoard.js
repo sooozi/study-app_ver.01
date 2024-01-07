@@ -64,27 +64,33 @@ function PomoBoard({ minutes: initialMinutes }) {
 
     useEffect(() => {
         let interval;
-    
+      
         if (isActive) {
-            interval = setInterval(() => {
-                if (seconds === 0) {
-                    if (minutes === 0) {
-                        clearInterval(interval);
-                        setIsActive(false);
-                    } else {
-                        setMinutes(prevMinutes => prevMinutes - 1);
-                        setSeconds(59);
-                    }
-                } else {
-                    setSeconds((prevSeconds) => prevSeconds - 1);
-                }
-            }, 1000);
+          interval = setInterval(() => {
+            // eslint-disable-next-line no-undef
+            setPrevTime((prevTime) => {
+              const newMinutes = prevTime.minutes;
+              const newSeconds = prevTime.seconds - 1;
+      
+              if (newMinutes === 0 && newSeconds === -1) {
+                clearInterval(interval);
+                setIsActive(false);
+                return prevTime; // 상태 업데이트 없음
+              }
+      
+              if (newSeconds === -1) {
+                return { minutes: newMinutes - 1, seconds: 59 };
+              }
+      
+              return { minutes: newMinutes, seconds: newSeconds };
+            });
+          }, 1000);
         } else {
-            clearInterval(interval);
+          clearInterval(interval);
         }
-    
+      
         return () => clearInterval(interval);
-    }, [isActive, minutes, seconds]);
+      }, [isActive]);
 
     const startTimer = () => {
         setIsActive(true);
