@@ -72,7 +72,7 @@ function PomoBoard({ minutes: initialMinutes }) {
                         clearInterval(interval);
                         setIsActive(false);
                     } else {
-                        setMinutes(minutes - 1);
+                        setMinutes(prevMinutes => prevMinutes - 1);
                         setSeconds(59);
                     }
                 } else {
