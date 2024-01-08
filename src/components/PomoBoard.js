@@ -68,21 +68,21 @@ function PomoBoard({ minutes: initialMinutes }) {
         if (isActive) {
           interval = setInterval(() => {
             // eslint-disable-next-line no-undef
-            setPrevTime((prevTime) => {
-              const newMinutes = prevTime.minutes;
-              const newSeconds = prevTime.seconds - 1;
-      
+            setSeconds((prevSeconds) => {
+              const newMinutes = minutes;
+              const newSeconds = prevSeconds - 1;
+            
               if (newMinutes === 0 && newSeconds === -1) {
                 clearInterval(interval);
                 setIsActive(false);
-                return prevTime; // 상태 업데이트 없음
+                return 0; // 초를 0으로 재설정
               }
-      
+            
               if (newSeconds === -1) {
-                return { minutes: newMinutes - 1, seconds: 59 };
+                return 59;
               }
-      
-              return { minutes: newMinutes, seconds: newSeconds };
+            
+              return newSeconds;
             });
           }, 1000);
         } else {
