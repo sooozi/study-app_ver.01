@@ -63,34 +63,30 @@ function PomoBoard({ minutes: initialMinutes }) {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        let interval;
-      
-        if (isActive) {
-          interval = setInterval(() => {
-            // eslint-disable-next-line no-undef
-            setSeconds((prevSeconds) => {
-              const newMinutes = minutes;
-              const newSeconds = prevSeconds - 1;
-            
-              if (newMinutes === 0 && newSeconds === -1) {
+      let interval;
+
+      const startInterval = () => {
+        interval = setInterval(() => {
+            if (seconds > 0) {
+                setSeconds((prevSeconds) => prevSeconds - 1);
+            } else if (minutes > 0) {
+                setMinutes((prevMinutes) => prevMinutes - 1);
+                setSeconds(59);
+            } else {
                 clearInterval(interval);
                 setIsActive(false);
-                return 0; // 초를 0으로 재설정
-              }
-            
-              if (newSeconds === -1) {
-                return 59;
-              }
-            
-              return newSeconds;
-            });
-          }, 1000);
-        } else {
+            }
+        }, 1000);
+      };
+  
+      if (isActive) {
+        startInterval();
+      } else {
           clearInterval(interval);
-        }
-      
-        return () => clearInterval(interval);
-      }, [isActive]);
+      }
+
+      return () => clearInterval(interval);
+    }, [isActive, minutes, seconds, initialMinutes]);
 
     const startTimer = () => {
         setIsActive(true);
@@ -110,7 +106,7 @@ function PomoBoard({ minutes: initialMinutes }) {
         <PomoBoardWrap>
             <InnerTopTit>Pomodoro</InnerTopTit>
             <TimerWrap>
-                <span>{String(initialMinutes).padStart(2, '0')}:</span>
+                <span>{String(minutes).padStart(2, '0')}:</span>
                 <span>{String(seconds).padStart(2, '0')}</span>
             </TimerWrap>
             <BtnWrap>
