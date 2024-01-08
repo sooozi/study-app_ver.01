@@ -58,76 +58,80 @@ const PomoBtn= styled.button `
 `;
 
 function PomoBoard({ minutes: initialMinutes }) {
-    const [minutes, setMinutes] = useState(initialMinutes);
-    const [seconds, setSeconds] = useState(0);
-    const [isActive, setIsActive] = useState(false);
+  // 타이머 상태를 관리하는 상태 변수들을 선언합니다.
+  const [minutes, setMinutes] = useState(initialMinutes);
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
 
-    useEffect(() => {
-      let interval;
+  // 타이머 로직을 다루는 useEffect를 작성합니다.
+  useEffect(() => {
+    let interval;
+
+    const startInterval = () => {
+        interval = setInterval(() => {
+            if (seconds > 0) {
+                setSeconds((prevSeconds) => prevSeconds - 1);
+            } else if (minutes > 0) {
+                setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0)); // 음수 방지
+                setSeconds(59);
+            } else {
+                clearInterval(interval);
+                setIsActive(false);
+            }
+        }, 1000);
+    };
   
-      const startInterval = () => {
-          interval = setInterval(() => {
-              if (seconds > 0) {
-                  setSeconds((prevSeconds) => prevSeconds - 1);
-              } else if (minutes > 0) {
-                  setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0)); // 음수 방지
-                  setSeconds(59);
-              } else {
-                  clearInterval(interval);
-                  setIsActive(false);
-              }
-          }, 1000);
-      };
+    // isActive와 시간이 0보다 큰 경우에만 타이머를 시작합니다.
+    if (isActive && (minutes > 0 || seconds > 0)) {
+        startInterval();
+    } else {
+        clearInterval(interval);
+    }
   
-      // 초기 타이머 값이나 isActive가 변경될 때마다 실행
-      if (isActive && (minutes > 0 || seconds > 0)) {
-          startInterval();
-      } else {
-          clearInterval(interval);
-      }
-  
-      return () => clearInterval(interval);
+    // 컴포넌트 언마운트 시에 clearInterval을 호출하여 메모리 누수를 방지합니다.
+    return () => clearInterval(interval);
   }, [isActive, minutes, seconds, initialMinutes]);
 
   useEffect(() => {
     setMinutes(Math.max(initialMinutes, 0)); // 음수일 경우 0으로 설정
-    setSeconds(0); // 초를 0으로 리셋
-}, [isActive, initialMinutes]);
-
-    
-
-    const startTimer = () => {
-        setIsActive(true);
-    };
-
-    const pauseTimer = () => {
-        setIsActive(false);
-    };
-
-    const resetTimer = (newInitialMinutes) => {
-      setIsActive(false);
-      setMinutes(newInitialMinutes);
-      setSeconds(0);
+    // setSeconds(0); // 초를 0으로 리셋
+  }, [isActive, initialMinutes]);
+  
+  const startTimer = () => {
+    setIsActive(true);
+  };
+  
+  const pauseTimer = () => {
+    setIsActive(false);
   };
 
-    useEffect(() => {
-      resetTimer(initialMinutes);
+  // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
+  useEffect(() => {
+    resetTimer(initialMinutes);
   }, [initialMinutes]);
   
-    return (
-        <PomoBoardWrap>
-            <InnerTopTit>Pomodoro</InnerTopTit>
-            <TimerWrap>
-                <span>{String(Math.max(minutes, 0)).padStart(2, '0')}:</span>
-                <span>{String(seconds).padStart(2, '0')}</span>
-            </TimerWrap>
-            <BtnWrap>
-                <PomoBtn onClick={startTimer}>🚀 Start</PomoBtn>
-                <PomoBtn onClick={pauseTimer}>⛔ Pause</PomoBtn>
-                <PomoBtn onClick={resetTimer}>⏱️ Reset</PomoBtn>
-            </BtnWrap>
-        </PomoBoardWrap>
-    );
+  // 타이머를 리셋하는 함수를 정의합니다.
+  const resetTimer = (newInitialMinutes) => {
+    setIsActive(false);
+    setMinutes(newInitialMinutes);
+    setSeconds(0);
+  };
+  
+  
+  return (
+    <PomoBoardWrap>
+      <InnerTopTit>Pomodoro</InnerTopTit>
+      <TimerWrap>
+        <span>{String(Math.max(minutes, 0)).padStart(2, '0')}:</span>
+        <span>{String(seconds).padStart(2, '0')}</span>
+      </TimerWrap>
+      <BtnWrap>
+        <PomoBtn onClick={startTimer}>🚀 Start</PomoBtn>
+        <PomoBtn onClick={pauseTimer}>⛔ Pause</PomoBtn>
+        <PomoBtn onClick={resetTimer}>⏱️ Reset</PomoBtn>
+      </BtnWrap>
+    </PomoBoardWrap>
+  );
 }
 
 export default PomoBoard;
