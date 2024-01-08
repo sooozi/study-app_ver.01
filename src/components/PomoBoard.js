@@ -64,29 +64,37 @@ function PomoBoard({ minutes: initialMinutes }) {
 
     useEffect(() => {
       let interval;
-
+  
       const startInterval = () => {
-        interval = setInterval(() => {
-            if (seconds > 0) {
-                setSeconds((prevSeconds) => prevSeconds - 1);
-            } else if (minutes > 0) {
-                setMinutes((prevMinutes) => prevMinutes - 1);
-                setSeconds(59);
-            } else {
-                clearInterval(interval);
-                setIsActive(false);
-            }
-        }, 1000);
+          interval = setInterval(() => {
+              if (seconds > 0) {
+                  setSeconds((prevSeconds) => prevSeconds - 1);
+              } else if (minutes > 0) {
+                  setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0)); // 음수 방지
+                  setSeconds(59);
+              } else {
+                  clearInterval(interval);
+                  setIsActive(false);
+              }
+          }, 1000);
       };
   
-      if (isActive) {
-        startInterval();
+      // 초기 타이머 값이나 isActive가 변경될 때마다 실행
+      if (isActive && (minutes > 0 || seconds > 0)) {
+          startInterval();
       } else {
           clearInterval(interval);
       }
-
+  
       return () => clearInterval(interval);
-    }, [isActive, minutes, seconds, initialMinutes]);
+  }, [isActive, minutes, seconds, initialMinutes]);
+
+  useEffect(() => {
+    setMinutes(Math.max(initialMinutes, 0)); // 음수일 경우 0으로 설정
+    setSeconds(0); // 초를 0으로 리셋
+}, [isActive, initialMinutes]);
+
+    
 
     const startTimer = () => {
         setIsActive(true);
@@ -96,17 +104,21 @@ function PomoBoard({ minutes: initialMinutes }) {
         setIsActive(false);
     };
 
-    const resetTimer = () => {
-        setIsActive(false);
-        setMinutes(initialMinutes);
-        setSeconds(0);
-    };
+    const resetTimer = (newInitialMinutes) => {
+      setIsActive(false);
+      setMinutes(newInitialMinutes);
+      setSeconds(0);
+  };
 
+    useEffect(() => {
+      resetTimer(initialMinutes);
+  }, [initialMinutes]);
+  
     return (
         <PomoBoardWrap>
             <InnerTopTit>Pomodoro</InnerTopTit>
             <TimerWrap>
-                <span>{String(minutes).padStart(2, '0')}:</span>
+                <span>{String(Math.max(minutes, 0)).padStart(2, '0')}:</span>
                 <span>{String(seconds).padStart(2, '0')}</span>
             </TimerWrap>
             <BtnWrap>
