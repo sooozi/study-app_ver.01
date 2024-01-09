@@ -65,6 +65,7 @@ function PomoBoard({ minutes: initialMinutes }) {
   const [isActive, setIsActive] = useState(false);
   const intervalRef = useRef(null);
 
+  //pauseTimer 순서를 변경하니 start > puase > start 문제(pause 클릭 시 분의 숫자가 초기값으로 변경되거나 재 start가 안되는 문제 발생)가 해결 => 순서가 문제였는듯 
   const pauseTimer = () => {
     console.log("타이머 일시 정지");
   
