@@ -64,82 +64,85 @@ function PomoBoard({ minutes: initialMinutes }) {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const intervalRef = useRef(null);
-  
-  // 타이머 로직을 다루는 useEffect를 작성합니다.
-  useEffect(() => {
 
-    const startInterval = () => {
-      intervalRef.current = setInterval(() => {
-        if (isActive && (minutes > 0 || seconds > 0)) {
-          if (seconds > 0) {
-            setSeconds((prevSeconds) => prevSeconds - 1);
-          } else if (minutes > 0) {
-            setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
-            setSeconds(59);
-          }
-        } else {
-          clearInterval(intervalRef.current);
-          setIsActive(false);
-        }
-      }, 1000);
-    };
+  const pauseTimer = () => {
+    console.log("타이머 일시 정지");
   
-    // isActive와 시간이 0보다 큰 경우에만 타이머를 시작합니다.
-    if (isActive && (minutes > 0 || seconds > 0)) {
-      startInterval();
-    } else {
+    // 타이머가 활성화된 경우에만 멈추도록 수정
+    if (intervalRef.current) {
       clearInterval(intervalRef.current);
+      setIsActive(false);  // 타이머를 멈추고, 현재 상태를 유지
     }
+  };
   
-    // 컴포넌트 언마운트 시에 clearInterval을 호출하여 메모리 누수를 방지합니다.
-    return () => clearInterval(intervalRef.current);
+// 타이머 로직을 다루는 useEffect를 작성합니다.
+useEffect(() => {
+  const startInterval = () => {
+    intervalRef.current = setInterval(() => {
+      if (isActive && (minutes > 0 || seconds > 0)) {
+        if (seconds > 0) {
+          setSeconds((prevSeconds) => prevSeconds - 1);
+        } else if (minutes > 0) {
+          setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
+          setSeconds(59);
+        }
+      } else {
+        clearInterval(intervalRef.current);
+        setIsActive(false);
+      }
+    }, 1000);
+  };
+
+  // isActive와 시간이 0보다 큰 경우에만 타이머를 시작합니다.
+  if (isActive && (minutes > 0 || seconds > 0)) {
+    startInterval();
+  } else {
+    clearInterval(intervalRef.current);
+  }
+
+  // 컴포넌트 언마운트 시에 clearInterval을 호출하여 메모리 누수를 방지합니다.
+  return () => clearInterval(intervalRef.current);
 }, [isActive, minutes, seconds]);
 
+// 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
 useEffect(() => {
-  // 이 부분에서 초기값을 설정할 때 initialMinutes를 사용하도록 변경
-  setMinutes(Math.max(initialMinutes, 0));
-}, [isActive, initialMinutes]);
+  resetTimer(initialMinutes);
+}, [initialMinutes]);
   
   const startTimer = () => {
     if (!isActive) {
-      console.log("Starting Timer");
+      console.log("타이머 시작");
       setIsActive(true);
-
-      // 타이머가 활성화된 경우에는 새로운 interval을 시작
+  
+      // 타이머가 활성화된 경우에만 interval을 시작
       if (minutes > 0 || seconds > 0) {
-        intervalRef.current = setInterval(() => {
-          if (isActive && (minutes > 0 || seconds > 0)) {
-            if (seconds > 0) {
-              setSeconds((prevSeconds) => prevSeconds - 1);
-            } else if (minutes > 0) {
-              setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
-              setSeconds(59);
+        if (!intervalRef.current) { // 기존에 설정된 interval이 없을 때만 새로운 interval 설정
+          console.log("새로운 interval 시작");
+          intervalRef.current = setInterval(() => {
+            if (isActive && (minutes > 0 || seconds > 0)) {
+              if (seconds > 0) {
+                setSeconds((prevSeconds) => prevSeconds - 1);
+              } else if (minutes > 0) {
+                setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
+                setSeconds(59);
+              }
+            } else {
+              clearInterval(intervalRef.current);
+              setIsActive(false);
             }
-          } else {
-            clearInterval(intervalRef.current);
-            setIsActive(false);
-          }
-        }, 1000);
+          }, 1000);
+        } else {
+          console.log("이미 interval이 설정되어 있음");
+        }
+      } else {
+        console.log("시간이 0이라 interval을 시작하지 않음");
       }
+    } else {
+      console.log("이미 타이머가 활성화되어 있음");
     }
   };
   
-  const pauseTimer = () => {
-    console.log("Pausing Timer");
-    console.log("Before setting isActive to false:", { minutes, seconds });
-    setIsActive(false);
-    clearInterval(minutes.current);
-    console.log("After setting isActive to false:", { minutes, seconds });
   
-    // 현재 시간 그대로 유지하도록 수정
-    console.log("Setting minutes to current value:", minutes);
-    setMinutes((minutes) => minutes);
-  };
-
-  // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
-  useEffect(() => {
-    resetTimer(initialMinutes);
-  }, [initialMinutes]);
   
   
   // 타이머를 리셋하는 함수를 정의합니다.
