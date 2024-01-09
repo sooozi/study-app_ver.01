@@ -95,17 +95,43 @@ function PomoBoard({ minutes: initialMinutes }) {
     return () => clearInterval(intervalRef.current);
 }, [isActive, minutes, seconds]);
 
-  useEffect(() => {
-    setMinutes(Math.max(initialMinutes, 0));
-  }, [isActive, initialMinutes]);
+useEffect(() => {
+  // 이 부분에서 초기값을 설정할 때 initialMinutes를 사용하도록 변경
+  setMinutes(Math.max(initialMinutes, 0));
+}, [isActive, initialMinutes]);
   
   const startTimer = () => {
-    setIsActive(true);
+    if (!isActive) {
+      console.log("Starting Timer");
+      setIsActive(true);
+
+      // 타이머가 활성화된 경우에는 새로운 interval을 시작
+      if (minutes > 0 || seconds > 0) {
+        intervalRef.current = setInterval(() => {
+          if (isActive && (minutes > 0 || seconds > 0)) {
+            if (seconds > 0) {
+              setSeconds((prevSeconds) => prevSeconds - 1);
+            } else if (minutes > 0) {
+              setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
+              setSeconds(59);
+            }
+          } else {
+            clearInterval(intervalRef.current);
+            setIsActive(false);
+          }
+        }, 1000);
+      }
+    }
   };
   
   const pauseTimer = () => {
+    console.log("Pausing Timer");
+    console.log("Before setting isActive to false:", { minutes, seconds });
     setIsActive(false);
     clearInterval(intervalRef.current);
+    console.log("After setting isActive to false:", { minutes, seconds });
+    // setMinutes((prevMinutes) => prevMinutes);
+    // setSeconds((prevSeconds) => prevSeconds);
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.

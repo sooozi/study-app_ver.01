@@ -94,9 +94,9 @@ function PomoNav({ onSetMinutes }) {
 
     const handleSetMinutes = () => {
         if (!isNaN(inputMinutes) && inputMinutes >= 0) {
-          console.log("Setting minutes:", inputMinutes); // 확인을 위한 로그
-          onSetMinutes(parseInt(inputMinutes, 10));
-          setInputMinutes('');
+            console.log("Setting minutes:", inputMinutes); // 확인을 위한 로그
+            onSetMinutes(parseInt(inputMinutes, 10));
+            setInputMinutes('');
         }
     };
 
