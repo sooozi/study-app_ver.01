@@ -126,12 +126,14 @@ useEffect(() => {
   
   const pauseTimer = () => {
     console.log("Pausing Timer");
+    console.log("Before setting isActive to false:", { minutes, seconds });
     setIsActive(false);
-    clearInterval(intervalRef.current);
+    clearInterval(minutes.current);
     console.log("After setting isActive to false:", { minutes, seconds });
   
-    // setMinutes를 이전 상태 기반으로 업데이트하는 부분 수정
-    setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
+    // 현재 시간 그대로 유지하도록 수정
+    console.log("Setting minutes to current value:", minutes);
+    setMinutes((minutes) => minutes);
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
