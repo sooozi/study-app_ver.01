@@ -93,7 +93,7 @@ function PomoBoard({ minutes: initialMinutes }) {
   
     // 컴포넌트 언마운트 시에 clearInterval을 호출하여 메모리 누수를 방지합니다.
     return () => clearInterval(intervalRef.current);
-  }, [isActive, minutes, seconds]);
+}, [isActive, minutes, seconds]);
 
   useEffect(() => {
     setMinutes(Math.max(initialMinutes, 0));
@@ -105,7 +105,6 @@ function PomoBoard({ minutes: initialMinutes }) {
   
   const pauseTimer = () => {
     clearInterval(intervalRef.current);
-    
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
