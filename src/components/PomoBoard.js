@@ -100,7 +100,9 @@ function PomoBoard({ minutes: initialMinutes }) {
   }, [isActive, initialMinutes]);
   
   const startTimer = () => {
-    setIsActive(true);
+    if (!isActive) {
+      setIsActive(true);
+    }
   };
   
   const pauseTimer = () => {
