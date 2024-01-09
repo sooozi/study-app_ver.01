@@ -105,6 +105,7 @@ function PomoBoard({ minutes: initialMinutes }) {
   
   const pauseTimer = () => {
     clearInterval(intervalRef.current);
+    
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
