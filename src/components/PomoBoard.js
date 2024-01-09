@@ -106,9 +106,6 @@ function PomoBoard({ minutes: initialMinutes }) {
   const pauseTimer = () => {
     setIsActive(false);
     clearInterval(intervalRef.current);
-    // 현재의 분과 초를 유지하도록 설정
-    setMinutes((prevMinutes) => prevMinutes);
-    setSeconds((prevSeconds) => prevSeconds);
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
