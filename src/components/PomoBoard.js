@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 
@@ -68,17 +69,19 @@ function PomoBoard({ minutes: initialMinutes }) {
     let interval;
 
     const startInterval = () => {
-        interval = setInterval(() => {
-            if (seconds > 0) {
-                setSeconds((prevSeconds) => prevSeconds - 1);
-            } else if (minutes > 0) {
-                setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0)); // 음수 방지
-                setSeconds(59);
-            } else {
-                clearInterval(interval);
-                setIsActive(false);
-            }
-        }, 1000);
+      interval = setInterval(() => {
+        if (isActive && (minutes > 0 || seconds > 0)) {
+          if (seconds > 0) {
+            setSeconds((prevSeconds) => prevSeconds - 1);
+          } else if (minutes > 0) {
+            setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0)); // 음수 방지
+            setSeconds(59);
+          }
+        } else {
+          clearInterval(interval);
+          setIsActive(false);
+        }
+      }, 1000);
     };
   
     // isActive와 시간이 0보다 큰 경우에만 타이머를 시작합니다.
@@ -103,12 +106,14 @@ function PomoBoard({ minutes: initialMinutes }) {
   
   const pauseTimer = () => {
     setIsActive(false);
+    clearInterval(interval); // Pause 버튼 클릭 시 interval을 지워서 카운트다운 멈춤
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
   useEffect(() => {
     resetTimer(initialMinutes);
   }, [initialMinutes]);
+  
   
   // 타이머를 리셋하는 함수를 정의합니다.
   const resetTimer = (newInitialMinutes) => {
