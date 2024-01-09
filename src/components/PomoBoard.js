@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from 'react';
 import styled from "styled-components";
 
 const PomoBoardWrap = styled.div `
@@ -63,22 +63,22 @@ function PomoBoard({ minutes: initialMinutes }) {
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
-
+  const intervalRef = useRef(null);
+  
   // 타이머 로직을 다루는 useEffect를 작성합니다.
   useEffect(() => {
-    let interval;
 
     const startInterval = () => {
-      interval = setInterval(() => {
+      intervalRef.current = setInterval(() => {
         if (isActive && (minutes > 0 || seconds > 0)) {
           if (seconds > 0) {
             setSeconds((prevSeconds) => prevSeconds - 1);
           } else if (minutes > 0) {
-            setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0)); // 음수 방지
+            setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
             setSeconds(59);
           }
         } else {
-          clearInterval(interval);
+          clearInterval(intervalRef.current);
           setIsActive(false);
         }
       }, 1000);
@@ -86,18 +86,17 @@ function PomoBoard({ minutes: initialMinutes }) {
   
     // isActive와 시간이 0보다 큰 경우에만 타이머를 시작합니다.
     if (isActive && (minutes > 0 || seconds > 0)) {
-        startInterval();
+      startInterval();
     } else {
-        clearInterval(interval);
+      clearInterval(intervalRef.current);
     }
   
     // 컴포넌트 언마운트 시에 clearInterval을 호출하여 메모리 누수를 방지합니다.
-    return () => clearInterval(interval);
-  }, [isActive, minutes, seconds, initialMinutes]);
+    return () => clearInterval(intervalRef.current);
+  }, [isActive, minutes, seconds]);
 
   useEffect(() => {
-    setMinutes(Math.max(initialMinutes, 0)); // 음수일 경우 0으로 설정
-    // setSeconds(0); // 초를 0으로 리셋
+    setMinutes(Math.max(initialMinutes, 0));
   }, [isActive, initialMinutes]);
   
   const startTimer = () => {
@@ -105,8 +104,7 @@ function PomoBoard({ minutes: initialMinutes }) {
   };
   
   const pauseTimer = () => {
-    setIsActive(false);
-    clearInterval(interval); // Pause 버튼 클릭 시 interval을 지워서 카운트다운 멈춤
+    clearInterval(intervalRef.current);
   };
 
   // 초기 시간 설정 및 초기 시간이 변경될 때 타이머를 리셋합니다.
