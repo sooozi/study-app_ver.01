@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from "styled-components";
 
 const PomoBoardWrap = styled.div `
-  background: #fff;
-  padding: 1.2rem 1rem;
-  border-radius: 1.5rem;
-  width: 100%;
+    background: #fff;
+    padding: 1.2rem 1rem;
+    border-radius: 1.5rem;
+    width: 100%;
 `;
 
 const TimerWrap = styled.div `
@@ -69,8 +69,8 @@ function PomoBoard({ minutes: initialMinutes }) {
     const pauseTimer = () => {
         // 타이머가 활성화된 경우에만 멈추도록 수정
         if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        setIsActive(false);  // 타이머를 멈추고, 현재 상태를 유지
+            clearInterval(intervalRef.current);
+            setIsActive(false);  // 타이머를 멈추고, 현재 상태를 유지
         }
     };
   
@@ -115,36 +115,34 @@ function PomoBoard({ minutes: initialMinutes }) {
         // 타이머가 활성화된 경우에만 interval을 시작
         if (minutes > 0 || seconds > 0) {
             if (!intervalRef.current) { // 기존에 설정된 interval이 없을 때만 새로운 interval 설정
-            intervalRef.current = setInterval(() => {
-                if (isActive && (minutes > 0 || seconds > 0)) {
-                if (seconds > 0) {
-                    setSeconds((prevSeconds) => prevSeconds - 1);
-                } else if (minutes > 0) {
-                    setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
-                    setSeconds(59);
-                }
-                } else {
-                clearInterval(intervalRef.current);
-                setIsActive(false);
-                }
-            }, 1000);
+                intervalRef.current = setInterval(() => {
+                    if (isActive && (minutes > 0 || seconds > 0)) {
+                        if (seconds > 0) {
+                            setSeconds((prevSeconds) => prevSeconds - 1);
+                        } else if (minutes > 0) {
+                            setMinutes((prevMinutes) => Math.max(prevMinutes - 1, 0));
+                            setSeconds(59);
+                        }
+                    } else {
+                        clearInterval(intervalRef.current);
+                        setIsActive(false);
+                    }
+                }, 1000);
             } else {
             }
         } else {
             console.log("시간이 0이라 interval을 시작하지 않음");
         }
         } else {
-        console.log("이미 타이머가 활성화되어 있음");
+            console.log("이미 타이머가 활성화되어 있음");
         }
     };
     
     // 타이머를 리셋하는 함수를 정의합니다.
     const resetTimer = (newInitialMinutes) => {
         setIsActive(false);
-    
         // 값이 정상적인지 확인
         const newMinutes = newInitialMinutes !== undefined ? newInitialMinutes : initialMinutes;
-    
         setMinutes(newMinutes);
         setSeconds(0);
     };
