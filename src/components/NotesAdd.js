@@ -9,6 +9,10 @@ const NoteAddInner= styled.div `
     border-radius: 1.5rem;
     width: clamp(150px, 14vw, 250px);
     min-width: 150px;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        width: 100%;
+    }
 `;
 
 const NoteInnerTit = styled.span `
@@ -35,6 +39,7 @@ const SelectBox = styled.select `
 `;
 
 const NewNoteTit= styled.input `
+    display: block;
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #ffdbb8;

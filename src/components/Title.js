@@ -6,12 +6,32 @@ const txtSize = {
     medium: '20px',
     default: '16px',
     small: '12px',
-  }
+}
+
+// 미디어 쿼리를 사용하여 화면 크기에 따라 값 조정
+const mediaQueries = {
+  largeScreen: '@media screen and (max-width: 1200px)',
+  mobileScreen: '@media screen and (max-width: 767px)',
+  smallScreen: '@media screen and (max-width: 600px)',
+}
+
+const actualTxtSize = {
+  titLarge: `${txtSize.titLarge} ${mediaQueries.mobileScreen}`,
+  large: `${txtSize.large}`,
+  medium: `${txtSize.medium}`,
+  default: `${txtSize.default}`,
+  small: `${txtSize.small}`,
+}
 
 const TitTxt = styled.h3`
   display: inline-block;
   font-weight: 700;
-  font-size: ${txtSize.titLarge};
+  font-size: ${actualTxtSize.titLarge};
+
+  /* 767px 이하일 때 크기 변경 */
+  ${mediaQueries.smallScreen} {
+    font-size: ${actualTxtSize.large};
+  }
   margin-bottom: 1rem;
 `;
 
@@ -29,7 +49,7 @@ const IconBox = styled(TitTxt) `
 const SubTitTxt = styled.span`
   display: block;
   font-weight: 500;
-  font-size: ${txtSize.default};
+  font-size: ${actualTxtSize.default};
 `;
 
 const Title = function({ titleText, gradTitleText, iconBox, subTitleText }){

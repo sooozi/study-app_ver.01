@@ -11,6 +11,10 @@ const TodoInner= styled.div `
     width: clamp(150px, 14vw, 250px);
     min-width: 150px;
     height: initial;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        width: 100%;
+    }
 `;
 
 const InnerTopTit = styled.span `

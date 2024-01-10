@@ -2,24 +2,29 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const ButtonStyle = css`
-  position: relative;
-  padding: 0 1.5rem;
-  border-radius: 3rem;
-  min-width: 90px;
-  height: 33px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-  span {
-    font-size: 15px;
-    font-family: 'Montserrat';
-    font-weight: 100;
-    letter-spacing: 0;
-  }
+    position: relative;
+    padding: 0 1.5rem;
+    border-radius: 3rem;
+    min-width: 90px;
+    height: 33px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    span {
+        font-size: 15px;
+        font-family: 'Montserrat';
+        font-weight: 100;
+        letter-spacing: 0;
+    }
+    /* / 태블릿, 아이패드 / */
+    @media only screen and (max-device-width : 1023px) {
+        padding: 0;
+        min-width: 70px;
+    }
 `;
 
 const BasicButton = styled.button`
