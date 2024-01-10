@@ -9,6 +9,32 @@ const PomoBoardWrap = styled.div `
     width: 100%;
 `;
 
+const BubbleWrap = styled.div `
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgb(255, 175, 88);
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    border-radius: 15px;
+    display: inline-block;
+    font-weight: bold;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 10px;
+        border-style: solid;
+        border-width: 15px 15px 0;
+        border-color: rgb(255, 175, 88) transparent;
+        display: block;
+        width: 0;
+        z-index: 1;
+    }
+`;
+
 const TimerWrap = styled.div `
     background-color: rgba(255, 243, 229, 1);
     padding: 1.2rem 0;
@@ -110,7 +136,7 @@ function PomoBoard({ minutes: initialMinutes }) {
   
     const startTimer = () => {
         if (!isActive) {
-        setIsActive(true);
+            setIsActive(true);
     
         // 타이머가 활성화된 경우에만 interval을 시작
         if (minutes > 0 || seconds > 0) {
@@ -149,16 +175,17 @@ function PomoBoard({ minutes: initialMinutes }) {
     
     return (
         <PomoBoardWrap>
-        <InnerTopTit>Pomodoro</InnerTopTit>
-        <TimerWrap>
-            <span>{String(Math.max(minutes, 0)).padStart(2, '0')}:</span>
-            <span>{String(seconds).padStart(2, '0')}</span>
-        </TimerWrap>
-        <BtnWrap>
-            <PomoBtn onClick={startTimer}>🚀 Start</PomoBtn>
-            <PomoBtn onClick={pauseTimer}>⛔ Pause</PomoBtn>
-            <PomoBtn onClick={() => resetTimer()}>⏱️ Reset</PomoBtn>
-        </BtnWrap>
+            <InnerTopTit>Pomodoro</InnerTopTit>
+            <BubbleWrap>Start Pomodoro!</BubbleWrap>
+            <TimerWrap>
+                <span>{String(Math.max(minutes, 0)).padStart(2, '0')}:</span>
+                <span>{String(seconds).padStart(2, '0')}</span>
+            </TimerWrap>
+            <BtnWrap>
+                <PomoBtn onClick={startTimer}>🚀 Start</PomoBtn>
+                <PomoBtn onClick={pauseTimer}>⛔ Pause</PomoBtn>
+                <PomoBtn onClick={() => resetTimer()}>⏱️ Reset</PomoBtn>
+            </BtnWrap>
         </PomoBoardWrap>
     );
 }
