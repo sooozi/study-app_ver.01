@@ -25,6 +25,11 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     margin: 0 auto;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        width: auto;
+        margin: 0 1rem;
+    }
 `;
 
 function App() {
