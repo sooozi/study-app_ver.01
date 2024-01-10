@@ -144,8 +144,6 @@ useEffect(() => {
   };
   
   
-  
-  
   // 타이머를 리셋하는 함수를 정의합니다.
   const resetTimer = (newInitialMinutes) => {
     setIsActive(false);
