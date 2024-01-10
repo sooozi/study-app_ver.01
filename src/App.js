@@ -29,6 +29,7 @@ const Container = styled.div`
     @media only screen and (max-device-width : 767px) {
         width: auto;
         margin: 0 1rem;
+        overflow: hidden;
     }
 `;
 
