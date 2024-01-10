@@ -56,6 +56,11 @@ const ToastBox = styled.div`
     margin: 0 !important;
     height: 45px;
     padding: 0 2rem;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        height: 40px;
+        padding: 0 1.5rem;
+    }
   }
   .btn_hide {
     position: absolute;

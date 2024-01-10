@@ -19,6 +19,10 @@ const ButtonStyle = css`
         font-family: 'Montserrat';
         font-weight: 100;
         letter-spacing: 0;
+        /* / 스마트폰 모바일(가로) / */
+        @media only screen and (max-device-width : 767px) {
+            font-size: 13px;
+        }
     }
     /* / 태블릿, 아이패드 / */
     @media only screen and (max-device-width : 1023px) {
