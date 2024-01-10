@@ -17,6 +17,8 @@ const AppWrap = styled.div`
     @media only screen and (max-device-width : 767px) {
         border-radius: 2rem;
         padding: 1rem;
+        margin: 0 1rem;
+        max-width: 700px;
     }
 `;
 
@@ -28,7 +30,7 @@ const Container = styled.div`
     /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         width: auto;
-        margin: 0 1rem;
+        margin: 0 .5rem;
         overflow: hidden;
     }
 `;

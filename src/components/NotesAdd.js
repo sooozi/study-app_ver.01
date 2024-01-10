@@ -54,6 +54,10 @@ const NewNoteTit= styled.input `
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
     }
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        max-width: -webkit-fill-available;
+    }
 `;
 
 const NewNoteDesc= styled.textarea `
@@ -71,6 +75,10 @@ const NewNoteDesc= styled.textarea `
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
+    }
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        max-width: -webkit-fill-available;
     }
 `;
 
