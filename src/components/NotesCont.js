@@ -6,6 +6,10 @@ const NoteListWrap= styled.ul `
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        display: block;
+    }
 `;
 
 const NoteInnerTit = styled.span `

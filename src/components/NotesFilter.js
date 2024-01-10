@@ -7,6 +7,17 @@ const NoteFilterInner= styled.div `
 
 const Form = styled.form `
     display: flex;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        flex-wrap: wrap;
+        input, select {
+            width: 100%;
+            margin: 0;
+        }
+        select {
+            margin-top: 10px;
+        }
+    }
 `;
 
 const SearchBar= styled.input `
