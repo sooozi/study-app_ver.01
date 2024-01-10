@@ -37,7 +37,7 @@ const BubbleWrap = styled.div `
 
 const TimerWrap = styled.div `
     background-color: rgba(255, 243, 229, 1);
-    padding: 1.2rem 0;
+    padding: 2rem 0;
     border-radius: 1.5rem;
     text-align: center;
     font-size: 4.5rem;
