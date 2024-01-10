@@ -11,7 +11,7 @@ const txtSize = {
 // 미디어 쿼리를 사용하여 화면 크기에 따라 값 조정
 const mediaQueries = {
   largeScreen: '@media screen and (max-width: 1200px)',
-  mobileScreen: '@media screen and (max-width: 767px)',
+  mobileScreen: '@media screen and (max-device-width: 767px)',
   smallScreen: '@media screen and (max-width: 600px)',
 }
 
