@@ -18,7 +18,8 @@ const AppWrap = styled.div`
         border-radius: 2rem;
         padding: 1rem;
         margin: 0 1rem;
-        max-width: 700px;
+        max-width: 500px;
+        width: -webkit-fill-available;
     }
 `;
 

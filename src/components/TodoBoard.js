@@ -97,6 +97,10 @@ const TodoDate = styled.p`
     font-weight: 500;
     font-size: 10px;
     color: rgba(57, 32, 5, 0.5);
+    @media only screen and (max-device-width : 767px) {
+        width: max-content;
+        font-size: 8px;
+    }
 `;
 
 const DeleteButton = styled.button`

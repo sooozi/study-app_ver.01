@@ -29,6 +29,10 @@ const InnerTit = styled.span `
     font-weight: 500;
     font-size: 13px;
     margin-bottom: 10px;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        margin-top: 1rem;
+    }
 `;
 
 const InnerTask = styled.div `

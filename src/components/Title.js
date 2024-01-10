@@ -27,12 +27,15 @@ const TitTxt = styled.h3`
   display: inline-block;
   font-weight: 700;
   font-size: ${actualTxtSize.titLarge};
+  margin-bottom: 1rem;
 
   /* 767px 이하일 때 크기 변경 */
   ${mediaQueries.mobileScreen} {
     font-size: ${actualTxtSize.large};
   }
-  margin-bottom: 1rem;
+  ${mediaQueries.smallScreen} {
+    font-size: ${actualTxtSize.medium};
+  }
 `;
 
 const GradaTitTxt = styled(TitTxt) `
