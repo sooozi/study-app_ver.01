@@ -16,7 +16,7 @@ const mediaQueries = {
 }
 
 const actualTxtSize = {
-  titLarge: `${txtSize.titLarge} ${mediaQueries.mobileScreen}`,
+  titLarge: `${txtSize.titLarge}`,
   large: `${txtSize.large}`,
   medium: `${txtSize.medium}`,
   default: `${txtSize.default}`,
@@ -29,7 +29,7 @@ const TitTxt = styled.h3`
   font-size: ${actualTxtSize.titLarge};
 
   /* 767px 이하일 때 크기 변경 */
-  ${mediaQueries.smallScreen} {
+  ${mediaQueries.mobileScreen} {
     font-size: ${actualTxtSize.large};
   }
   margin-bottom: 1rem;

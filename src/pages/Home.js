@@ -8,12 +8,24 @@ const Wrapper = styled.div`
 `;
 
 const BigTxt = styled.h3 `
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bolder;
-  letter-spacing: -0.1rem;
-  line-height: 1.4;
-  color: rgb(57, 32, 5);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    letter-spacing: -0.1rem;
+    line-height: 1.4;
+    color: rgb(57, 32, 5);
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        font-size: 2.5rem;
+    }
+    /* / 스마트폰 모바일(세로) / */
+    @media only screen and (max-device-width : 479px) {
+        font-size: 2rem;
+    }
+    /* / 스마트폰 모바일(아이폰 SE) / */
+    @media only screen and (max-device-width : 374px) {
+        font-size: 1.5rem;
+    }
 `;
 
 const GradaBigTxt = styled(BigTxt) `
@@ -30,6 +42,10 @@ const Description = styled.p`
     font-weight: 100;
     line-height: 1.4;
     margin: 2rem 0 3rem;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        font-size: 12px;
+    }
 `;
 
 const ToastBox = styled.div`
