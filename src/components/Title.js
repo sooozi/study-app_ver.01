@@ -49,20 +49,21 @@ const IconBox = styled(TitTxt) `
   margin-left: 3px;
 `;
 
-const SubTitTxt = styled.span`
-  display: block;
-  font-weight: 500;
-  font-size: ${actualTxtSize.default};
+const TitleWrap = styled.div`
+    margin: 0;
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        padding: 0 0.25rem;
+    }
 `;
 
 const Title = function({ titleText, gradTitleText, iconBox, subTitleText }){
   return(
-    <div style={{margin: '0 0 0 0',}}>
+    <TitleWrap>
       <TitTxt>{titleText}</TitTxt>
       <GradaTitTxt>{gradTitleText}</GradaTitTxt>
       <IconBox>{iconBox}</IconBox>
-      {/* <SubTitTxt>{subTitleText}</SubTitTxt> */}
-    </div>
+    </TitleWrap>
   )
 }
 

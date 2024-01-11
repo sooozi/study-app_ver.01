@@ -31,7 +31,7 @@ const Container = styled.div`
     /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         width: auto;
-        margin: 0 .5rem;
+        margin: 0 .25rem;
         overflow: hidden;
     }
 `;

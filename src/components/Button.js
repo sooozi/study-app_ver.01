@@ -49,7 +49,7 @@ const BorderButton = styled.button`
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-            mask-composite: exclude; 
+    mask-composite: exclude; 
   }
 `;
 

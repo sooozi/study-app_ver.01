@@ -32,10 +32,25 @@ const GlobalStyle = createGlobalStyle`
     background-color: #F5F5F5;
   }
 
-  ::-webkit-scrollbar-thumb {
+  textarea::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(255, 219, 184, 1);
     background-color: rgba(255, 219, 184, 0.5);
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 20px;
+  }
+  *::-webkit-scrollbar {
+    background-color: transparent;
+    width: 5px;
+    border-radius: 20px;
+  }
+  *::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: rgb(255, 175, 88);
+    border-radius: 20px;
   }
 `;
 

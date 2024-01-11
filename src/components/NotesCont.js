@@ -24,6 +24,10 @@ const NoteListCont= styled.li `
     width: clamp(150px, 10rem, 250px);
     border-radius: 10px;
     box-shadow: 0px 0px 5px 1px  rgba(255, 243, 229, 1);
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+      width: auto;
+    }
 `;
 
 const NewNoteTit= styled.input `

@@ -12,6 +12,8 @@ const InnnerContainer = styled.div `
     /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         flex-wrap: wrap;
+        overflow-y: auto;
+        padding: 0 0.25rem 1rem 0.25rem;
     }
 `;
 

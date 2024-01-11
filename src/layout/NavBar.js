@@ -22,6 +22,10 @@ const Nav = styled.nav`
     @media only screen and (max-device-width : 1023px) {
         gap: 1rem;
     }
+    /* / 스마트폰 모바일(가로) / */
+    @media only screen and (max-device-width : 767px) {
+        display: none;
+    }
 `;
 
 function NavBar() {
