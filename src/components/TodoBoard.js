@@ -103,8 +103,6 @@ const TodoDate = styled.p`
     }
 `;
 
-
-
 const DeleteButton = styled.button`
   color: #fff;
   border: none;
