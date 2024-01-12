@@ -1,4 +1,4 @@
-import React from 'react';
+import { default as React, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import styled from "styled-components";
@@ -44,25 +44,22 @@ const HamburgerMenu = styled.button`
     }
 `;
 
-const HamburgerIcon = () => (
+const HamburgerMenuIcon = ({ isOpen, onClick }) => (
     <svg
       width="18"
       height="18"
       viewBox="0 0 18 18"
-      xmlns="http://www.w3.org/2000/svg"
+      onClick={onClick}
     >
       <polyline
         id="globalnav-menutrigger-bread-bottom"
-        className="globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom"
-        fill="#fff"
-        stroke="#fff"
+        className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom ${isOpen ? 'open' : ''}`}
+        fill="none"
+        stroke="currentColor"
         strokeWidth="1.2"
         strokeLinecap="round"
         strokeLinejoin="round"
         points="2 12, 16 12"
-        style={{
-          /* background: red; */
-        }}
       >
         <animate
           id="globalnav-anim-menutrigger-bread-bottom-open"
@@ -74,10 +71,6 @@ const HamburgerIcon = () => (
           calcMode="spline"
           keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1"
           values=" 2 12, 16 12; 2 9, 16 9; 3.5 15, 15 3.5"
-          style={{
-            background: 'red !important',
-            color: 'red !important',
-          }}
         ></animate>
         <animate
           id="globalnav-anim-menutrigger-bread-bottom-close"
@@ -93,8 +86,8 @@ const HamburgerIcon = () => (
       </polyline>
       <polyline
         id="globalnav-menutrigger-bread-top"
-        className="globalnav-menutrigger-bread globalnav-menutrigger-bread-top"
-        fill="freeze"
+        className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-top ${isOpen ? 'open' : ''}`}
+        fill="none"
         stroke="currentColor"
         strokeWidth="1.2"
         strokeLinecap="round"
@@ -158,6 +151,10 @@ const ToastBox = styled.div`
 `;
 
 function Header() {
+    const [isMenuOpen, setMenuOpen] = useState(false);
+    const toggleMenu = () => {
+        setMenuOpen(!isMenuOpen);
+      };
     const PreparingNotify = () => toast('Preparing...!', {
         icon: '🙇‍♀️',
         style: {
@@ -170,7 +167,7 @@ function Header() {
         <HeaderWrap>
             <LogoWrap>ZIPCOAK</LogoWrap>
             <HamburgerMenu>
-                <HamburgerIcon />
+                <HamburgerMenuIcon isOpen={isMenuOpen} onClick={toggleMenu} />
                 <NavBar />
                 <UserWrap>
                     <ToastBox>
