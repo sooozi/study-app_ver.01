@@ -32,6 +32,9 @@ const HamburgerMenu = styled.button`
     /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         /* display: none; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
         width: 30px;
         height: 30px;
@@ -40,6 +43,89 @@ const HamburgerMenu = styled.button`
         color: #fff;
     }
 `;
+
+const HamburgerIcon = () => (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        id="globalnav-menutrigger-bread-bottom"
+        className="globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom"
+        fill="#fff"
+        stroke="#fff"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        points="2 12, 16 12"
+        style={{
+          /* background: red; */
+        }}
+      >
+        <animate
+          id="globalnav-anim-menutrigger-bread-bottom-open"
+          attributeName="points"
+          keyTimes="0;0.5;1"
+          dur="0.24s"
+          begin="indefinite"
+          fill="freeze"
+          calcMode="spline"
+          keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1"
+          values=" 2 12, 16 12; 2 9, 16 9; 3.5 15, 15 3.5"
+          style={{
+            background: 'red !important',
+            color: 'red !important',
+          }}
+        ></animate>
+        <animate
+          id="globalnav-anim-menutrigger-bread-bottom-close"
+          attributeName="points"
+          keyTimes="0;0.5;1"
+          dur="0.24s"
+          begin="indefinite"
+          fill="freeze"
+          calcMode="spline"
+          keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1"
+          values=" 3.5 15, 15 3.5; 2 9, 16 9; 2 12, 16 12"
+        ></animate>
+      </polyline>
+      <polyline
+        id="globalnav-menutrigger-bread-top"
+        className="globalnav-menutrigger-bread globalnav-menutrigger-bread-top"
+        fill="freeze"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        points="2 5, 16 5"
+      >
+        <animate
+          id="globalnav-anim-menutrigger-bread-top-open"
+          attributeName="points"
+          keyTimes="0;0.5;1"
+          dur="0.24s"
+          begin="indefinite"
+          fill="freeze"
+          calcMode="spline"
+          keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1"
+          values=" 2 5, 16 5; 2 9, 16 9; 3.5 3.5, 15 15"
+        ></animate>
+        <animate
+          id="globalnav-anim-menutrigger-bread-top-close"
+          attributeName="points"
+          keyTimes="0;0.5;1"
+          dur="0.24s"
+          begin="indefinite"
+          fill="freeze"
+          calcMode="spline"
+          keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1"
+          values=" 3.5 3.5, 15 15; 2 9, 16 9; 2 5, 16 5"
+        ></animate>
+      </polyline>
+    </svg>
+  );
 
 const UserWrap = styled.div`
     display: flex;
@@ -84,6 +170,7 @@ function Header() {
         <HeaderWrap>
             <LogoWrap>ZIPCOAK</LogoWrap>
             <HamburgerMenu>
+                <HamburgerIcon />
                 <NavBar />
                 <UserWrap>
                     <ToastBox>
