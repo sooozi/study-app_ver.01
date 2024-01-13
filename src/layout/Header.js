@@ -41,6 +41,9 @@ const HamburgerMenu = styled.button`
         border-radius: 50%;
         background-image: linear-gradient(45deg, rgb(255, 175, 88) 20%, rgb(255, 65, 65) 100%);
         color: #fff;
+        &.open {
+            /* Add styles for open state if needed */
+        }
     }
 `;
 
@@ -161,7 +164,7 @@ function Header() {
       <>
         <HeaderWrap>
             <LogoWrap>ZIPCOAK</LogoWrap>
-            <HamburgerMenu>
+            <HamburgerMenu className={isMenuOpen ? 'open' : ''}>
                 <HamburgerMenuIcon isOpen={isMenuOpen} onClick={toggleMenu} />
                 <NavBar />
                 <UserWrap>
