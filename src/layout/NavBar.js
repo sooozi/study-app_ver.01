@@ -24,7 +24,18 @@ const Nav = styled.nav`
     }
     /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
-        display: none;
+      opacity: 0;
+      z-index: -1;
+      flex-direction: column;
+      top: 0;
+      transform: translate(0, 0);
+      /* right: 0; */
+      left: 0;
+      width: 100%;
+      background: rgba(255, 243, 229, 1);
+      a {
+        padding: 5px 0;
+      }
     }
 `;
 

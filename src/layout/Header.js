@@ -35,7 +35,7 @@ const HamburgerMenu = styled.button`
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
+        /* position: relative; */
         width: 30px;
         height: 30px;
         border-radius: 50%;
