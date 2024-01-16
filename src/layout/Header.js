@@ -38,29 +38,38 @@ const HamburgerMenu = styled.div`
 `;
 
 const HamburgerMenuBtn = ({ isOpen, onClick }) => {
+    const [animationClass, setAnimationClass] = useState('');
+    const [elapsedTime, setElapsedTime] = useState(0);
+  
     useEffect(() => {
-      let timeoutId;
+      let intervalId;
   
       if (isOpen) {
-        timeoutId = setTimeout(() => {
-          // 5초 후에 메뉴를 엽니다.
-          onClick();
+        // Set an interval to update the color gradually over 5 seconds
+        intervalId = setInterval(() => {
+          setElapsedTime((prevElapsedTime) => prevElapsedTime + 100);
+        }, 100);
+  
+        // After 5 seconds, clear the interval and apply the 'open' class
+        setTimeout(() => {
+          clearInterval(intervalId);
+          setAnimationClass('open');
         }, 5000);
+      } else {
+        // If isOpen is false, reset the elapsedTime and remove the 'open' class
+        setElapsedTime(0);
+        setAnimationClass('');
       }
   
       return () => {
-        clearTimeout(timeoutId);
+        clearInterval(intervalId);
       };
-    }, [isOpen, onClick]);
+    }, [isOpen]);
   
     return (
-      <StyledButton
-        type="button"
-        onClick={onClick}
-        isOpen={isOpen}
-      >
-        <HamburgerMenuIcon isOpen={isOpen} />
-      </StyledButton>
+        <StyledButton type="button" onClick={onClick} isOpen={isOpen} animationClass={animationClass}>
+            <HamburgerMenuIcon isOpen={isOpen} />
+        </StyledButton>
     );
 };
 
@@ -68,6 +77,7 @@ const StyledButton = styled.button`
   border: 0;
   background-color: transparent;
   padding: 0;
+
   @media only screen and (max-device-width: 767px) {
     display: flex;
     align-items: center;
@@ -79,14 +89,12 @@ const StyledButton = styled.button`
     color: #fff;
     position: relative;
     z-index: 1;
-    transition-delay: 5s;
-    svg {
-      transition: 2s ease-in-out;
+    &.${props => props.animationClass} {
+        svg {
+            color: red !important;
+        }
     }
-  }
-
-  &.open {
-    /* Add additional styles for the 'open' state if needed */
+    transition: transform 2s ease-in-out;
   }
 `;
 
