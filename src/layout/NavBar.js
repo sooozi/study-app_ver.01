@@ -19,6 +19,7 @@ const Nav = styled.nav`
         font-size: 15px;
         letter-spacing: -0.01rem;
     }
+    
     @media only screen and (max-device-width : 1023px) {
         gap: 1rem;
     }
