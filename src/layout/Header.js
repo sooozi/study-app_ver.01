@@ -37,17 +37,41 @@ const HamburgerMenu = styled.div`
     }
 `;
 
-const HamburgerMenuBtn = styled.button`
+const HamburgerMenuBtn = ({ isOpen, onClick }) => {
+    useEffect(() => {
+      let timeoutId;
+  
+      if (isOpen) {
+        timeoutId = setTimeout(() => {
+          // 5초 후에 메뉴를 엽니다.
+          onClick();
+        }, 5000);
+      }
+  
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }, [isOpen, onClick]);
+  
+    return (
+      <StyledButton
+        type="button"
+        onClick={onClick}
+        isOpen={isOpen}
+      >
+        <HamburgerMenuIcon isOpen={isOpen} />
+      </StyledButton>
+    );
+};
+
+const StyledButton = styled.button`
   border: 0;
   background-color: transparent;
   padding: 0;
-  /* / 스마트폰 모바일(가로) / */
   @media only screen and (max-device-width: 767px) {
-    /* display: none; */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* position: relative; */
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -60,39 +84,15 @@ const HamburgerMenuBtn = styled.button`
       transition: 2s ease-in-out;
     }
   }
-  ${({ isOpen }) => isOpen && `
-    svg {
-      animation: rotateArrow 5s forwards;
-    }
-  `}
-  @keyframes rotateArrow {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(180deg);
-    }
+
+  &.open {
+    /* Add additional styles for the 'open' state if needed */
   }
 `;
 
-const HamburgerMenuIcon = ({ isOpen, onClick }) => {
-    useEffect(() => {
-      let timeoutId;
-  
-      if (isOpen) {
-        timeoutId = setTimeout(() => {
-          // 5초 후에 화살표를 다시 변경합니다.
-          onClick();
-        }, 5000);
-      }
-  
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }, [isOpen, onClick]);
-
+const HamburgerMenuIcon = ({ isOpen }) => {
     return (
-    <svg width="18" height="18" viewBox="0 0 18 18" onClick={onClick}>
+    <svg width="18" height="18" viewBox="0 0 18 18">
         <polyline
         id="globalnav-menutrigger-bread-bottom"
         className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom ${isOpen ? 'open' : ''}`}
@@ -221,9 +221,7 @@ function Header() {
                         <button className="btn_hide" onClick={PreparingNotify} />
                     </ToastBox>
                 </UserWrap>
-                <HamburgerMenuBtn>
-                    <HamburgerMenuIcon isOpen={isMenuOpen} onClick={toggleMenu} />
-                </HamburgerMenuBtn>
+                <HamburgerMenuBtn isOpen={isMenuOpen} onClick={toggleMenu} />
             </HamburgerMenu>
         </HeaderWrap>
         <Routes>
