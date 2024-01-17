@@ -9,8 +9,6 @@ import Pomodoro from '../pages/Pomodoro';
 import ToDoList from '../pages/ToDoList';
 import NavBar from './NavBar';
 
-
-
 const HeaderWrap = styled.div`
     display: flex;
     justify-content: space-between;
@@ -91,82 +89,88 @@ const StyledButton = styled.button`
     color: #fff;
     position: relative;
     z-index: 1;
+    transition: transform 2s ease-in-out;
     &.${props => props.animationClass} {
         svg {
-            color: red !important;
+        color: red;
+        transition: color 5s ease-in-out;
         }
     }
-    transition: transform 2s ease-in-out;
   }
 `;
 
-const HamburgerIcon = styled.svg`
-    display: block;
-    margin: auto;
-    width: 30px;
-    height: 30px;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: transform 5s ease-in-out;
-    path {
-        color: #fff;
-    }
-`;
-
-// 햄버거 메뉴 아이콘을 감싸는 버튼 스타일
-const Buttons = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  outline: none;
-
-  /* 메뉴가 열렸을 때의 스타일 */
-  &:hover ${HamburgerIcon} {
-    transform: rotate(45deg);
-  }
-`;
-
-const HamburgerMenuIcon = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMenuOpen(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [isMenuOpen]);
-
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
-  return (
-    <div>
-      <Buttons onClick={toggleMenu}>
-        <HamburgerIcon>
-          {isMenuOpen ? (
-            // 엑스 아이콘
-            <g transform="rotate(45 12 12)">
-              <path d="M6 12H18" />
-              <path d="M6 12H18" />
-            </g>
-          ) : (
-            // 햄버거 메뉴 아이콘
-            <>
-              <path d="M3 12H21" />
-              <path d="M3 6H21" />
-            </>
-          )}
-        </HamburgerIcon>
-      </Buttons>
-    </div>
-  );
+const HamburgerMenuIcon = ({ isOpen }) => {
+    return (
+    <svg width="18" height="18" viewBox="0 0 18 18">
+        <polyline
+        id="globalnav-menutrigger-bread-bottom"
+        className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom ${isOpen ? 'open' : ''}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        points={isOpen ? "3 15, 15 3" : "2 12, 16 12"}
+        >
+        <animate
+            id="globalnav-anim-menutrigger-bread-bottom-open"
+            attributeName="points"
+            keyTimes="0;0.5;1"
+            dur="0.4s"
+            begin="indefinite"
+            fill="freeze"
+            calcMode="spline"
+            keySplines="0.42, 0, 0.58, 1;0, 0, 0.58, 1"
+            values={isOpen ? " 3 15, 15 3; 9 9, 9 9" : " 2 12, 16 12; 2 9, 16 9; 3.5 15, 15 3.5"}
+        ></animate>
+        <animate
+            id="globalnav-anim-menutrigger-bread-bottom-close"
+            attributeName="points"
+            keyTimes="0;0.5;1"
+            dur="0.4s"
+            begin="indefinite"
+            fill="freeze"
+            calcMode="spline"
+            keySplines="0.42, 0, 0.58, 1;0, 0, 0.58, 1"
+            values={isOpen ? " 9 9, 9 9; 3 15, 15 3" : " 3.5 15, 15 3.5; 2 9, 16 9; 2 12, 16 12"}
+        ></animate>
+        </polyline>
+        <polyline
+        id="globalnav-menutrigger-bread-top"
+        className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-top ${isOpen ? 'open' : ''}`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        points={isOpen ? "3 3, 15 15" : "2 5, 16 5"}
+        >
+        <animate
+            id="globalnav-anim-menutrigger-bread-top-open"
+            attributeName="points"
+            keyTimes="0;0.5;1"
+            dur="0.4s"
+            begin="indefinite"
+            fill="freeze"
+            calcMode="spline"
+            keySplines="0.42, 0, 0.58, 1;0, 0, 0.58, 1"
+            values={isOpen ? " 3 3, 15 15; 9 9, 9 9" : " 2 5, 16 5; 2 9, 16 9; 3.5 3.5, 15 15"}
+        ></animate>
+        <animate
+            id="globalnav-anim-menutrigger-bread-top-close"
+            attributeName="points"
+            keyTimes="0;0.5;1"
+            dur="0.4s"
+            begin="indefinite"
+            fill="freeze"
+            calcMode="spline"
+            keySplines="0.42, 0, 0.58, 1;0, 0, 0.58, 1"
+            values={isOpen ? " 9 9, 9 9; 3 3, 15 15" : " 3.5 3.5, 15 15; 2 9, 16 9; 2 5, 16 5"}
+        ></animate>
+        </polyline>
+    </svg>
+    );
 };
-  
-  
 
 const UserWrap = styled.div`
     display: flex;
