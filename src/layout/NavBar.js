@@ -28,14 +28,17 @@ const Nav = styled.nav`
       opacity: 0;
       z-index: -1;
       flex-direction: column;
+      justify-content: flex-start;
       top: 0;
       transform: translate(0, 0);
-      /* right: 0; */
       left: 0;
       width: 100%;
+      height: 100vh;
       background: rgba(255, 243, 229, 1);
+      padding-top: 1rem;
       a {
         padding: 5px 0;
+        flex: inherit;
       }
     }
 `;
