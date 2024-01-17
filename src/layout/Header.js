@@ -1,6 +1,6 @@
 import { default as React, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import Button from '../components/Button';
 import Home from '../pages/Home';
@@ -92,8 +92,8 @@ const StyledButton = styled.button`
     transition: transform 2s ease-in-out;
     &.${props => props.animationClass} {
         svg {
-        color: red;
-        transition: color 5s ease-in-out;
+            color: red;
+            transition: color 5s ease-in-out;
         }
     }
   }
@@ -204,9 +204,18 @@ const ToastBox = styled.div`
 
 function Header() {
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
+
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
-      };
+    };
+
+    const closeMenu = () => {
+        if (isMenuOpen) {
+          setMenuOpen(false);
+        }
+    };
+
     const PreparingNotify = () => toast('Preparing...!', {
         icon: '🙇‍♀️',
         style: {
@@ -214,35 +223,52 @@ function Header() {
         },
     });
 
-    return (
-      <>
-        <HeaderWrap>
+    const handleRouteClick = (path) => {
+        closeMenu();
+        navigate(path);
+      };
+
+      return (
+        <>
+          <HeaderWrap>
             <LogoWrap>ZIPCOAK</LogoWrap>
             <HamburgerMenu className={isMenuOpen ? 'open' : ''}>
-                <NavBar />
-                <UserWrap>
-                    <ToastBox>
-                        <Button buttonText="Login" showArrow={false} isBorderButton={true} />
-                        <button className="btn_hide" onClick={PreparingNotify} />
-                    </ToastBox>
-                    <ToastBox>
-                        <Button buttonText="Sign up" showArrow={false} isGradButton={true} />
-                        <button className="btn_hide" onClick={PreparingNotify} />
-                    </ToastBox>
-                </UserWrap>
-                <HamburgerMenuBtn isOpen={isMenuOpen} onClick={toggleMenu} />
+              <NavBar />
+              <UserWrap>
+                <ToastBox>
+                  <Button buttonText="Login" showArrow={false} isBorderButton={true} onClick={PreparingNotify} />
+                </ToastBox>
+                <ToastBox>
+                  <Button buttonText="Sign up" showArrow={false} isGradButton={true} onClick={PreparingNotify} />
+                </ToastBox>
+              </UserWrap>
+              <HamburgerMenuBtn isOpen={isMenuOpen} onClick={toggleMenu} />
             </HamburgerMenu>
-        </HeaderWrap>
-        <Routes>
-            <Route>
-                <Route path='/' element={<Home />} />
-                <Route path='/Note' element={<Note />} />
-                <Route path='/Pomodoro' element={<Pomodoro />} />
-                <Route path='/ToDoList' element={<ToDoList />} />
-            </Route>
-        </Routes>
-      </>
-    );
-  }
+          </HeaderWrap>
+          <Routes>
+            <Route
+              path='/'
+              element={<Home />}
+              onClick={() => handleRouteClick('/')}
+            />
+            <Route
+              path='/Note'
+              element={<Note />}
+              onClick={() => handleRouteClick('/Note')}
+            />
+            <Route
+              path='/Pomodoro'
+              element={<Pomodoro />}
+              onClick={() => handleRouteClick('/Pomodoro')}
+            />
+            <Route
+              path='/ToDoList'
+              element={<ToDoList />}
+              onClick={() => handleRouteClick('/ToDoList')}
+            />
+          </Routes>
+        </>
+      );
+    }
   
   export default Header;
