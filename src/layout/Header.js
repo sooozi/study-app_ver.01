@@ -42,28 +42,28 @@ const HamburgerMenuBtn = ({ isOpen, onClick }) => {
     const [elapsedTime, setElapsedTime] = useState(0);
   
     useEffect(() => {
-      let intervalId;
-  
-      if (isOpen) {
-        // Set an interval to update the color gradually over 5 seconds
-        intervalId = setInterval(() => {
-          setElapsedTime((prevElapsedTime) => prevElapsedTime + 100);
-        }, 100);
-  
-        // After 5 seconds, clear the interval and apply the 'open' class
-        setTimeout(() => {
-          clearInterval(intervalId);
-          setAnimationClass('open');
-        }, 5000);
-      } else {
-        // If isOpen is false, reset the elapsedTime and remove the 'open' class
-        setElapsedTime(0);
-        setAnimationClass('');
-      }
-  
-      return () => {
-        clearInterval(intervalId);
-      };
+        let intervalId;
+    
+        if (isOpen) {
+            // Set an interval to update the color gradually over 5 seconds
+            intervalId = setInterval(() => {
+                setElapsedTime((prevElapsedTime) => prevElapsedTime + 100);
+            }, 100);
+    
+            // After 5 seconds, clear the interval and apply the 'open' class
+            setTimeout(() => {
+                clearInterval(intervalId);
+                setAnimationClass('open');
+            }, 5000);
+        } else {
+            // If isOpen is false, reset the elapsedTime and remove the 'open' class
+            setElapsedTime(0);
+            setAnimationClass('');
+        }
+    
+        return () => {
+            clearInterval(intervalId);
+        };
     }, [isOpen]);
   
     return (
@@ -74,43 +74,43 @@ const HamburgerMenuBtn = ({ isOpen, onClick }) => {
 };
 
 const StyledButton = styled.button`
-  border: 0;
-  background-color: transparent;
-  padding: 0;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
 
-  @media only screen and (max-device-width: 767px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-image: linear-gradient(45deg, rgb(255, 175, 88) 20%, rgb(255, 65, 65) 100%);
-    color: #fff;
-    position: relative;
-    z-index: 1;
-    transition: transform 2s ease-in-out;
-    &.${props => props.animationClass} {
-        svg {
-            color: red;
-            transition: color 5s ease-in-out;
+    @media only screen and (max-device-width: 767px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-image: linear-gradient(45deg, rgb(255, 175, 88) 20%, rgb(255, 65, 65) 100%);
+        color: #fff;
+        position: relative;
+        z-index: 1;
+        transition: transform 2s ease-in-out;
+        &.${props => props.animationClass} {
+            svg {
+                color: red;
+                transition: color 5s ease-in-out;
+            }
         }
     }
-  }
 `;
 
 const HamburgerMenuIcon = ({ isOpen }) => {
     return (
     <svg width="18" height="18" viewBox="0 0 18 18">
         <polyline
-        id="globalnav-menutrigger-bread-bottom"
-        className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom ${isOpen ? 'open' : ''}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        points={isOpen ? "3 15, 15 3" : "2 12, 16 12"}
+            id="globalnav-menutrigger-bread-bottom"
+            className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom ${isOpen ? 'open' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            points={isOpen ? "3 15, 15 3" : "2 12, 16 12"}
         >
         <animate
             id="globalnav-anim-menutrigger-bread-bottom-open"
@@ -136,14 +136,14 @@ const HamburgerMenuIcon = ({ isOpen }) => {
         ></animate>
         </polyline>
         <polyline
-        id="globalnav-menutrigger-bread-top"
-        className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-top ${isOpen ? 'open' : ''}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        points={isOpen ? "3 3, 15 15" : "2 5, 16 5"}
+            id="globalnav-menutrigger-bread-top"
+            className={`globalnav-menutrigger-bread globalnav-menutrigger-bread-top ${isOpen ? 'open' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            points={isOpen ? "3 3, 15 15" : "2 5, 16 5"}
         >
         <animate
             id="globalnav-anim-menutrigger-bread-top-open"
@@ -182,24 +182,24 @@ const UserWrap = styled.div`
 `;
 
 const ToastBox = styled.div`
-  position: relative;
-  width: fit-content;
-  margin: 0 auto;
-  button {
-    margin: 0 !important;
-  }
-  .btn_hide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-  }
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    button {
+        margin: 0 !important;
+    }
+    .btn_hide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: 0;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
 `;
 
 function Header() {
@@ -226,49 +226,49 @@ function Header() {
     const handleRouteClick = (path) => {
         closeMenu();
         navigate(path);
-      };
+    };
 
-      return (
+    return (
         <>
-          <HeaderWrap>
-            <LogoWrap>ZIPCOAK</LogoWrap>
-            <HamburgerMenu className={isMenuOpen ? 'open' : ''}>
-              <NavBar handleRouteClick={handleRouteClick} />
-              <UserWrap>
-                <ToastBox>
-                  <Button buttonText="Login" showArrow={false} isBorderButton={true} onClick={PreparingNotify} />
-                </ToastBox>
-                <ToastBox>
-                  <Button buttonText="Sign up" showArrow={false} isGradButton={true} onClick={PreparingNotify} />
-                </ToastBox>
-              </UserWrap>
-              <HamburgerMenuBtn isOpen={isMenuOpen} onClick={toggleMenu} />
-            </HamburgerMenu>
-          </HeaderWrap>
-          <Routes>
-            <Route
-              path='/'
-              element={<Home />}
-              onClick={() => handleRouteClick('/')}
-            />
-            <Route
-              path='/Note'
-              element={<Note />}
-              onClick={() => handleRouteClick('/Note')}
-            />
-            <Route
-              path='/Pomodoro'
-              element={<Pomodoro />}
-              onClick={() => handleRouteClick('/Pomodoro')}
-            />
-            <Route
-              path='/ToDoList'
-              element={<ToDoList />}
-              onClick={() => handleRouteClick('/ToDoList')}
-            />
-          </Routes>
+            <HeaderWrap>
+                <LogoWrap>ZIPCOAK</LogoWrap>
+                <HamburgerMenu className={isMenuOpen ? 'open' : ''}>
+                    <NavBar handleRouteClick={handleRouteClick} />
+                    <UserWrap>
+                        <ToastBox>
+                            <Button buttonText="Login" showArrow={false} isBorderButton={true} onClick={PreparingNotify} />
+                        </ToastBox>
+                        <ToastBox>
+                            <Button buttonText="Sign up" showArrow={false} isGradButton={true} onClick={PreparingNotify} />
+                        </ToastBox>
+                    </UserWrap>
+                    <HamburgerMenuBtn isOpen={isMenuOpen} onClick={toggleMenu} />
+                </HamburgerMenu>
+            </HeaderWrap>
+            <Routes>
+                <Route
+                    path='/'
+                    element={<Home />}
+                    onClick={() => handleRouteClick('/')}
+                />
+                <Route
+                    path='/Note'
+                    element={<Note />}
+                    onClick={() => handleRouteClick('/Note')}
+                />
+                <Route
+                    path='/Pomodoro'
+                    element={<Pomodoro />}
+                    onClick={() => handleRouteClick('/Pomodoro')}
+                />
+                <Route
+                    path='/ToDoList'
+                    element={<ToDoList />}
+                    onClick={() => handleRouteClick('/ToDoList')}
+                />
+            </Routes>
         </>
-      );
-    }
+    );
+}
   
-  export default Header;
+export default Header;
