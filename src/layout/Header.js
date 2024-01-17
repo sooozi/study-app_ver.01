@@ -67,7 +67,7 @@ const HamburgerMenuBtn = ({ isOpen, onClick }) => {
     }, [isOpen]);
   
     return (
-        <StyledButton type="button" onClick={onClick} isOpen={isOpen} animationClass={animationClass}>
+        <StyledButton type="button" onClick={onClick} isOpen={isOpen} data-animation-class={animationClass}>
             <HamburgerMenuIcon isOpen={isOpen} />
         </StyledButton>
     );
@@ -233,7 +233,7 @@ function Header() {
           <HeaderWrap>
             <LogoWrap>ZIPCOAK</LogoWrap>
             <HamburgerMenu className={isMenuOpen ? 'open' : ''}>
-              <NavBar />
+              <NavBar handleRouteClick={handleRouteClick} />
               <UserWrap>
                 <ToastBox>
                   <Button buttonText="Login" showArrow={false} isBorderButton={true} onClick={PreparingNotify} />

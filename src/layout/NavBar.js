@@ -40,20 +40,20 @@ const Nav = styled.nav`
     }
 `;
 
-function NavBar() {
+function NavBar({ handleRouteClick }) {
   return (
     <>
       <Nav>
-        <Link to="/">
+        <Link to="/" onClick={() => handleRouteClick('/')}>
           Home
         </Link>
-        <Link to="/Note">
+        <Link to="/Note" onClick={() => handleRouteClick('/Note')}>
           Notes
         </Link>
-        <Link to="/ToDoList">
+        <Link to="/ToDoList" onClick={() => handleRouteClick('/ToDoList')}>
           ToDoList
         </Link>
-        <Link to="/Pomodoro">
+        <Link to="/Pomodoro" onClick={() => handleRouteClick('/Pomodoro')}>
           Pomodoro
         </Link>
       </Nav>
