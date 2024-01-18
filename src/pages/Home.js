@@ -99,7 +99,7 @@ function Home() {
           </StyleSheetManager>
           <BigTxt>With Zipcoak</BigTxt>
           <Description>
-            Make your study time delightful with the Zipcoak study app!<br></br>
+            Make your study time delightful<br className="mo"></br> with the Zipcoak study app!<br></br>
             Hope you enjoy it! 😉
           </Description>
           <ToastBox>

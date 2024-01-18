@@ -13,7 +13,7 @@ const InnnerContainer = styled.div `
     @media only screen and (max-device-width : 767px) {
         flex-wrap: wrap;
         overflow-y: auto;
-        padding: 0 0.25rem 1rem 0.25rem;
+        padding: 0 0.25rem;
         height: calc(100% - 90px);
     }
 `;

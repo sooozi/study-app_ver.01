@@ -52,6 +52,13 @@ const GlobalStyle = createGlobalStyle`
     background-color: rgb(255, 175, 88);
     border-radius: 20px;
   }
+
+  br.mo {
+    display: none;
+    @media only screen and (max-device-width : 767px) {
+      display: block;
+    }
+  }
 `;
 
 export default GlobalStyle;

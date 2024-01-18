@@ -55,6 +55,7 @@ const StyleCalendar = styled(Calendar)`
     .react-calendar__tile--now {
         background: rgb(255, 175, 88);
         border-radius: 50%;
+        aspect-ratio: 1/1;
     }
     .react-calendar__tile--active {
         font-weight: bold;

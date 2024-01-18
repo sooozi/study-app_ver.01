@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const NoteFilterInner= styled.div `
     margin: 10px 0;
+    @media only screen and (max-device-width : 767px) {
+        margin: 1rem 0
+    }
 `;
 
 const Form = styled.form `

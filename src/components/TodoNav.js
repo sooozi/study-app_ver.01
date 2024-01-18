@@ -22,6 +22,9 @@ const InnerTopTit = styled.span `
     font-weight: 600;
     font-size: 15px;
     margin-bottom: 1rem;
+    @media only screen and (max-device-width : 767px) {
+        margin-bottom: 0;
+    }
 `;
 
 const InnerTit = styled.span `

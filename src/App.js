@@ -2,7 +2,6 @@ import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import styled from "styled-components";
 import Header from './layout/Header';
-import GlobalStyle from './style/GlobalStyle';
 
 
 const AppWrap = styled.div`
@@ -49,13 +48,13 @@ function App() {
 
   return (
     <>
-      <GlobalStyle />
       <AppWrap>
         <Container>
           <Header /> 
         </Container>
         <Toaster position="top-center" />   
       </AppWrap>
+      {/* <GlobalStyle /> */}
     </>
   );
 }

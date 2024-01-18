@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 
 const TodoBoardWrap = styled.div `
-  background: #fff;
-  padding: 1.2rem 1rem;
-  border-radius: 1.5rem;
-  width: 100%;
+    background: #fff;
+    padding: 1.2rem 1rem;
+    border-radius: 1.5rem;
+    width: 100%;
 `;
 
 const TodoAddWrap = styled.div `
@@ -39,6 +39,9 @@ const NewTodoTit = styled.input `
             color: transparent;
         }
     }
+    @media only screen and (max-device-width: 767px) {
+        margin: 0;
+    }
 `;
 
 const TodayDate = styled.span `
@@ -65,6 +68,9 @@ const AddNewTodo= styled.button `
     transition: all 0.2s ease-in-out;
     &:hover {
         background-color: rgb(255, 65, 65);
+    }
+    @media only screen and (max-device-width: 767px) {
+        max-width: none;
     }
 `;
 
@@ -115,6 +121,10 @@ const Form = styled.form `
     gap: 10px;
     border-bottom: 1px solid #eaeaea;
     margin-bottom: 15px;
+    @media only screen and (max-device-width: 767px) {
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
 `;
 
 function TodoBoard({ filter: todoFilter, searchValue  }) {

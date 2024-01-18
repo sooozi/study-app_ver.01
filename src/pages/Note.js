@@ -11,9 +11,10 @@ const NoteContainer = styled.div `
     height: 85%;
     /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
-        flex-wrap: wrap;
-        overflow-y: auto;
-        padding: 0 0.25rem 1rem 0.25rem;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      padding: 0 0.25rem;
+      height: calc(100% - 90px);
     }
 `;
 

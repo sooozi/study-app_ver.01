@@ -9,8 +9,11 @@ const NoteAddWrap= styled.div `
   width: 100%;
   /* / 스마트폰 모바일(가로) / */
   @media only screen and (max-device-width : 767px) {
-      width: -webkit-fill-available;
+    width: -webkit-fill-available;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
     }
+  }
 `;
 
 
