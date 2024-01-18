@@ -33,9 +33,10 @@ const Nav = styled.nav`
       transform: translate(0, 0);
       left: 0;
       width: 100%;
-      height: 100vh;
+      height: calc(100vh - 18vh);
       background: rgba(255, 243, 229, 1);
       padding-top: 1rem;
+      border-radius: 1rem;
       a {
         padding: 5px 0;
         flex: inherit;

@@ -43,6 +43,9 @@ const GradaTitTxt = styled(TitTxt) `
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(0, 0, 0, 0);
   margin-left: 15px;
+  @media only screen and (max-device-width : 767px) {
+    margin-left: 10px;
+  }
 `;
 
 const IconBox = styled(TitTxt) `

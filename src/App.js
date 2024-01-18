@@ -21,6 +21,9 @@ const AppWrap = styled.div`
         max-width: 500px;
         width: -webkit-fill-available;
     }
+    @media only screen and (max-device-width : 320px) {
+        padding: 1rem 5px;
+    }
 `;
 
 const Container = styled.div`
@@ -32,7 +35,7 @@ const Container = styled.div`
     @media only screen and (max-device-width : 767px) {
         width: auto;
         margin: 0 .25rem;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
 `;
 

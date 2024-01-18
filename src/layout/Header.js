@@ -31,7 +31,7 @@ const HamburgerMenu = styled.div`
         &.open {
             nav {
                 opacity: 1;
-                z-index: 1;
+                z-index: 2;
             }
         }
     }
@@ -88,7 +88,7 @@ const StyledButton = styled.button`
         background-image: linear-gradient(45deg, rgb(255, 175, 88) 20%, rgb(255, 65, 65) 100%);
         color: #fff;
         position: relative;
-        z-index: 1;
+        z-index: 2;
         transition: transform 2s ease-in-out;
         &.${props => props.animationClass} {
             svg {

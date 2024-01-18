@@ -22,6 +22,10 @@ const BubbleWrap = styled.div `
     border-radius: 15px;
     display: inline-block;
     font-weight: bold;
+    @media only screen and (max-device-width : 767px) {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
 
     &::after {
         content: "";
@@ -44,6 +48,9 @@ const TimerWrap = styled.div `
     text-align: center;
     font-size: 4.5rem;
     font-weight: 600;
+    @media only screen and (max-device-width: 767px) {
+        font-size: 2.5rem;
+    }
 `;
 
 const InnerTopTit = styled.span `
@@ -57,6 +64,10 @@ const BtnWrap = styled.div `
     display: flex;
     gap: 1rem;
     margin: 1rem 0;
+    @media only screen and (max-device-width: 767px) {
+        flex-direction: column;
+        gap: 10px;
+    }
 `;
 
 const PomoBtn= styled.button `

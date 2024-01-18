@@ -55,6 +55,9 @@ const PomoTime = styled.input `
     width: 100%;
     max-width: fit-content;
     -moz-appearance: textfield;
+    @media only screen and (max-device-width : 767px) {
+        max-width: -webkit-fill-available;
+    }
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
         -webkit-appearance: none;
