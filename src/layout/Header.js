@@ -77,6 +77,7 @@ const StyledButton = styled.button`
     border: 0;
     background-color: transparent;
     padding: 0;
+    display: none;
 
     @media only screen and (max-device-width: 767px) {
         display: flex;

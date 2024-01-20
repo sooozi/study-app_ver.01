@@ -10,6 +10,7 @@ const NoteContainer = styled.div `
     gap: 1rem;
     height: 85%;
     height: calc(100% - 110px);
+    overflow: hidden;
     @media only screen and (max-device-width : 767px) {
       flex-wrap: wrap;
       overflow-y: auto;
