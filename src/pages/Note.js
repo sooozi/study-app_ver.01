@@ -5,11 +5,11 @@ import NotesBoard from '../components/NotesBoard';
 import { Title } from '../components/Title';
 
 const NoteContainer = styled.div `
-    box-sizing: border-box; /* 박스 모델의 영향을 고려하여 box-sizing 설정 */
+    box-sizing: border-box;
     display: flex;
     gap: 1rem;
     height: 85%;
-    /* / 스마트폰 모바일(가로) / */
+    height: calc(100% - 110px);
     @media only screen and (max-device-width : 767px) {
       flex-wrap: wrap;
       overflow-y: auto;
