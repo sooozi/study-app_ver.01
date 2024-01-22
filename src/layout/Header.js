@@ -37,14 +37,14 @@ const HamburgerMenu = styled.div`
     }
 `;
 
-const HamburgerMenuBtn = ({ isOpen, onClick }) => {
+const HamburgerMenuBtn = ({ isHamOpen, onClick }) => {
     const [animationClass, setAnimationClass] = useState('');
     const [elapsedTime, setElapsedTime] = useState(0);
   
     useEffect(() => {
         let intervalId;
     
-        if (isOpen) {
+        if (isHamOpen) {
             // Set an interval to update the color gradually over 5 seconds
             intervalId = setInterval(() => {
                 setElapsedTime((prevElapsedTime) => prevElapsedTime + 100);
@@ -64,11 +64,11 @@ const HamburgerMenuBtn = ({ isOpen, onClick }) => {
         return () => {
             clearInterval(intervalId);
         };
-    }, [isOpen]);
+    }, [isHamOpen]);
   
     return (
-        <StyledButton type="button" onClick={onClick} isOpen={isOpen} data-animation-class={animationClass}>
-            <HamburgerMenuIcon isOpen={isOpen} />
+        <StyledButton type="button" onClick={onClick} isOpen={isHamOpen} data-animation-class={animationClass}>
+            <HamburgerMenuIcon isOpen={isHamOpen} />
         </StyledButton>
     );
 };
