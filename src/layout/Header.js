@@ -218,7 +218,6 @@ function Header() {
     };
 
     const PreparingNotify = () => {
-        console.log('PreparingNotify 함수가 호출되었습니다');
         toast('준비 중입니다...!', {
             icon: '🙇‍♀️',
             style: {
@@ -240,10 +239,12 @@ function Header() {
                     <NavBar handleRouteClick={handleRouteClick} />
                     <UserWrap>
                         <ToastBox>
-                            <Button buttonText="Login" showArrow={false} isBorderButton={true} onClick={PreparingNotify} />
+                            <Button buttonText="Login" showArrow={false} isBorderButton={true}/>
+                            <button className="btn_hide" onClick={PreparingNotify} />
                         </ToastBox>
                         <ToastBox>
-                            <Button buttonText="Sign up" showArrow={false} isGradButton={true} onClick={PreparingNotify} />
+                            <Button buttonText="Sign up" showArrow={false} isGradButton={true}/>
+                            <button className="btn_hide" onClick={PreparingNotify} />
                         </ToastBox>
                     </UserWrap>
                     <HamburgerMenuBtn isOpen={isMenuOpen} onClick={toggleMenu} />
