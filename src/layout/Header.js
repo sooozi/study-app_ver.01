@@ -217,12 +217,15 @@ function Header() {
         }
     };
 
-    const PreparingNotify = () => toast('Preparing...!', {
-        icon: '🙇‍♀️',
-        style: {
-          fontWeight: '600',
-        },
-    });
+    const PreparingNotify = () => {
+        console.log('PreparingNotify 함수가 호출되었습니다');
+        toast('준비 중입니다...!', {
+            icon: '🙇‍♀️',
+            style: {
+                fontWeight: '600',
+            },
+        });
+    };
 
     const handleRouteClick = (path) => {
         closeMenu();
