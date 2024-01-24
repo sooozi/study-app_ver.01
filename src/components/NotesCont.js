@@ -26,6 +26,9 @@ const NoteListCont= styled.li `
     box-shadow: 0px 0px 5px 1px  rgba(255, 243, 229, 1);
     @media only screen and (max-device-width : 767px) {
       width: auto;
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
     }
 `;
 
