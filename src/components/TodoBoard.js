@@ -82,11 +82,20 @@ const TodoItem = styled.div`
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #ffdbb8;
+    @media only screen and (max-device-width: 767px) {
+        display: block;
+    }
+
 `;
 
 const TodoItemInner = styled.div`
     display: flex;
     align-items: center;
+    @media only screen and (max-device-width: 767px) {
+        &:not(:first-child) {
+            margin-left: 25px;
+        }
+    }
 `;
 
 const Checkbox = styled.input`
