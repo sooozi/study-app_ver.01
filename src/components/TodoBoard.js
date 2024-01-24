@@ -84,6 +84,7 @@ const TodoItem = styled.div`
     border: 1px solid #ffdbb8;
     @media only screen and (max-device-width: 767px) {
         display: block;
+        position: relative;
     }
 
 `;
@@ -115,6 +116,7 @@ const TodoDate = styled.p`
     @media only screen and (max-device-width : 767px) {
         width: max-content;
         font-size: 8px;
+        padding: 3px 0;
     }
 `;
 
@@ -123,6 +125,12 @@ const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
+  @media only screen and (max-device-width: 767px) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px;
+    }
 `;
 
 const Form = styled.form `
