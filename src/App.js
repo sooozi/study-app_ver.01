@@ -1,5 +1,5 @@
 import React from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import styled from "styled-components";
 import Header from './layout/Header';
 
@@ -26,11 +26,9 @@ const AppWrap = styled.div`
 `;
 
 const Container = styled.div`
-    /* max-width: 1000px; */
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         width: auto;
         margin: 0 .25rem;
@@ -39,12 +37,12 @@ const Container = styled.div`
 `;
 
 function App() {
-  const PreparingNotify = () => toast('Preparing...!', {
-    icon: '🙇‍♀️',
-    style: {
-      fontWeight: '600',
-    },
-  });
+  // const PreparingNotify = () => toast('Preparing...!', {
+  //   icon: '🙇‍♀️',
+  //   style: {
+  //     fontWeight: '600',
+  //   },
+  // });
 
   return (
     <>
