@@ -218,7 +218,7 @@ function Header() {
     };
 
     const PreparingNotify = () => {
-        toast('준비 중입니다...!', {
+        toast('Coming soon...!', {
             icon: '🙇‍♀️',
             style: {
                 fontWeight: '600',
