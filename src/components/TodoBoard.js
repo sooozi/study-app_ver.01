@@ -86,7 +86,6 @@ const TodoItem = styled.div`
         display: block;
         position: relative;
     }
-
 `;
 
 const TodoItemInner = styled.div`
@@ -125,7 +124,7 @@ const DeleteButton = styled.button`
   border: none;
   cursor: pointer;
   background-color: transparent;
-  @media only screen and (max-device-width: 767px) {
+    @media only screen and (max-device-width: 767px) {
         position: absolute;
         top: 0;
         right: 0;

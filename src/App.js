@@ -12,7 +12,6 @@ const AppWrap = styled.div`
     padding: 2rem;
     margin: 0 50px;
     height: 85vh;
-    /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         border-radius: 2rem;
         padding: 1rem;

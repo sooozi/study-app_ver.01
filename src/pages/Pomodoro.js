@@ -10,7 +10,6 @@ const InnnerContainer = styled.div `
     gap: 1rem;
     height: 100%;
     height: calc(100% - 110px);
-    /* / 스마트폰 모바일(가로) / */
     @media only screen and (max-device-width : 767px) {
         flex-wrap: wrap;
         overflow-y: auto;

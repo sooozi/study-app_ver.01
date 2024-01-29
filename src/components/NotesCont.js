@@ -92,17 +92,17 @@ const NoteContDesc= styled.textarea `
     overflow: auto;
 `;
 
-const NoteContCategory = styled.span `
-    display: inline-block;
-    font-size: 10px;
-    color: rgb(255, 175, 88);
-    font-weight: bolder;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    padding: 5px 10px;
-    border: 1px solid rgb(255, 175, 88);
-    line-height: 11px;
-`;
+// const NoteContCategory = styled.span `
+//     display: inline-block;
+//     font-size: 10px;
+//     color: rgb(255, 175, 88);
+//     font-weight: bolder;
+//     margin-bottom: 10px;
+//     border-radius: 20px;
+//     padding: 5px 10px;
+//     border: 1px solid rgb(255, 175, 88);
+//     line-height: 11px;
+// `;
 
 const NoteContDate= styled.span `
     display: block;
