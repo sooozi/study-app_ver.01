@@ -49,7 +49,7 @@ const NewNoteTit= styled.input `
     color: rgb(57, 32, 5);
     margin-bottom: 10px;
     width: 100%;
-    max-width: fit-content;
+    max-width: -webkit-fill-available;
     &:focus, &:focus-visible  {
         border: 1px solid rgba(255, 243, 229, 1);
         background-color: rgba(255, 243, 229, 1);
